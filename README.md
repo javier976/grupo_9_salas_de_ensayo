@@ -16,3 +16,4 @@ Inspiraciones:
 - https://www.thehallofrock.com/
 - https://www.eltoke.co/
 - https://www.belgranostudio.com/
+- https://zala.app/
