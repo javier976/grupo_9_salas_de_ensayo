@@ -19,3 +19,6 @@ Inspiraciones:
 - https://www.eltoke.co/
 - https://www.belgranostudio.com/
 - https://zala.app/
+
+
+WIRE FRAME (2 páginas): https://marvelapp.com/prototype/2faf4j4g/screen/87494148/handoff
