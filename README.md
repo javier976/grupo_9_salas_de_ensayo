@@ -7,7 +7,7 @@ Público objetivo: Bandas de rock y pop. Músicos novatos o con experiencia que 
 
 Integrantes:
 - Eugenia Remetin
-- Jonathan Rojas
+- Jhonatan Rojas
 - Bruno Sigillo
 - Manuel Nieva
 - Javier Ramírez
