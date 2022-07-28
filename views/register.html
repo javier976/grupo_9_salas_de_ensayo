@@ -9,9 +9,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     <!-- LIBRERIA FONTAWESOME-->
     <script src="https://kit.fontawesome.com/439c181295.js" crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <!-- ESTILOS PROPIOS-->
     <link href="/css/styles.css" rel="stylesheet">
     <link href="/css/colors.css" rel="stylesheet">
+    <link href="/css/header.css" rel="stylesheet">
+    <link href="/css/index.css" rel="stylesheet">
+    <link href="/css/article.css" rel="stylesheet">
+    <link href="/css/register.css" rel="stylesheet">
+
 
     <!--TITULO -->
     <title>1771 Studios</title>
@@ -21,51 +28,114 @@
 <body>
     <header>
         <div class="top-header">
-            <div class="logo">
-                <img src="images/logo1771.png" alt="logo1771">
-
-                <ul class="enlaces">
-                    <li>
-                        <a href="/register">Creá tu cuenta</a>
-                        <i class="fas fa id-card" aria-hidden="true"></i>
-                    </li>
-                    <li>
-                        <a href="/login">Iniciar sesión</a>
-                        <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
-                    </li>
-                    <li><a href="#">¿Cómo llegar?</a></li>
-                    <li><a href="#">Reservar clase</a></li>
-                    <li><a href="#">Reservar ensayo</a></li>
-                </ul>
-            </div>
-            <div class="description-1771">
-                <h2>1771 Studios, un espacio creado por y para músicos</h2>
-                <p>Registrate para ser parte de una experiencia profesional, con sonido de calidad en amplios y
-                    agradables espacios</p>
+            <img src="images/logo1771.png" alt="logo1771">
+            <ul class="enlaces">
+                <li><a href="/register">Registrarme</a></li>
+                <li><a href="#mapa">¿Cómo llegar?</a></li>
+                <li><a href="/productCart">Reservar clase</a></li>
+                <li><a href="/productCart">Reservar ensayo</a></li>
+                <li><a href="/productDetail">Paga tu reserva</a></li>
+            </ul>
+            <div class="burger-container">
+                <div class="burger-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
             </div>
         </div>
     </header>
-    <main class="register">
-        <form action="/" method="POST" class="form-register">
-            <div class="datos1">
-                <input type="text" name="name" placeholder="Nombre y apellido">
-                <input type="text" name="user" placeholder="Nombre de usuario">
-                <input type="email" name="email" placeholder="E-mail">
-            </div>
-            <h4>Fecha de nacimiento</h4>
-            <div class="datos2">
-                <input type="date" name="fecha de nacimiento">
-                <input type="text" name="domicilio" placeholder="domicilio">
-            </div>
-            <h4>Perfil del usuario</h4>
-            <div class="profile">
-                <input type="radio" name="profile" value="si" id="buy">
-                <label for="buy">comprador</label>
-                <input type="radio" name="profile" value="si" id="sell">
-                <label for="sell">vendedor</label>
-            </div>
-        </form>
+
+    <main>
+        <div class="register-card-body">
+            <p class="register-box-msg">Registrarse</p>
+            <form action="/registro" method="POST">
+                <div class="row">
+                    <div class="row-user">
+                        <div class="form-group">
+                            <label for="username">Usuario</label>
+                            <input style="font-family: 'Font Awesome 5 Free'; font-weight: 600;" type="text"
+                                name="username" id="username" class="form-control users"
+                                placeholder=" &#xf007; Ingrese Usuario" maxLength="20" minLenght="5" required>
+                        </div>
+                    </div>
+                    <div class="row-data">
+                        <div class="row-data1">
+                            <div class="form-group">
+                                <label for="pass">Contraseña</label>
+                                <input style="font-family: 'Font Awesome 5 Free'; font-weight: 600;" type="password"
+                                    name="pass" id="pass" class="form-control"
+                                    placeholder=" &#xf084; Ingrese Contraseña" minLenght="5" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastname">Nombre y Apellido</label>
+                                <input style="font-family: 'Font Awesome 5 Free'; font-weight: 600;" type="text"
+                                    name="lastname" id="lastname" class="form-control"
+                                    placeholder=" &#xf2c2; Nombre y Apellido" required>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="birth">Fecha de Nacimiento</label>
+                                <input style="font-family: 'Font Awesome 5 Free'; font-weight: 600;" type="date"
+                                    name="birth" id="birth" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Domicilio</label>
+                                <input style="font-family: 'Font Awesome 5 Free'; font-weight: 600;" type="text"
+                                    name="address" id="address" class="form-control"
+                                    placeholder=" &#xe065; Ingrese domicilio" required>
+                            </div>
+
+                        </div>
+
+                        <div class="row-data2">
+                            <div class="form-group">
+                                <label for="pass2">Repetir Contraseña</label>
+                                <input style="font-family: 'Font Awesome 5 Free'; font-weight: 600;" type="password"
+                                    name="pass2" id="pass2" class="form-control"
+                                    placeholder=" &#xf084; Repita Contraseña" minLenght="5" required>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row-button">
+                        <div class="row-button-box">
+                            <button class="ov-btn-grow-spin" type="submit">
+                                <i class="fas fa-share-square"></i> Enviar
+                            </button>
+                            <button class="ov-btn-grow-box" type="submit">
+                                <i class="fas fa-broom"></i> Limpiar
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+
     </main>
+    <footer>
+        <section>
+            <div>
+                <ul class="home">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Sobre nosotros</a></li>
+                    <li><a href="#">Contactanos</a></li>
+                    <li><a href="#">Política de datos personales</a></li>
+                </ul>
+            </div>
+            <div class="search-button-container">
+                <div class="search-container">
+                    <input type="text" placeholder="Ingresa tu E-mail">
+                    <button class="ov-btn-grow-spin" type="submit">
+                        <i class="fas fa-share-square"></i> Enviar </button>
+                </div>
+        </section>
+    </footer>
+</body>
+
+</html>
 </body>
 
 </html>
