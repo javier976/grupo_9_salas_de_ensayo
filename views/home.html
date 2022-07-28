@@ -52,8 +52,12 @@
                 <p>Registrate para ser parte de una experiencia profesional, con sonido de calidad en amplios y
                     agradables espacios</p>
                 <div class="login">
-                    <input type="email" name="email" placeholder="Correo">
-                    <input type="password" name="password" placeholder="contraseña">
+                        <label for="email"></label>
+                        <input type="email" name="email" id="email" class="form-control email" placeholder="Correo"
+                            maxLength="20" minLenght="5" required>
+                        <label for="username"></label>
+                        <input type="password" name="pass" id="pass" class="form-control" placeholder="Contraseña"
+                            minLenght="5" required>
                     <button class="ov-btn-grow-spin" type="submit">Iniciar sesión</button>
                 </div>
             </div>
