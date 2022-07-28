@@ -1,0 +1,73 @@
+main {
+    width: 90%;
+    margin: 0 auto;
+}
+
+section.info {
+    margin-top: 15px;
+    display: flex;
+    padding: 0 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    justify-content: space-around;
+}
+
+section.info .description-1771 {
+    width: 64%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+section .images {
+    width: 30%;
+    margin-top: 15px;
+}
+
+
+section .images img{
+    width: 420px;
+    background-size: 100%;
+    height: 250px;
+}
+
+
+section.info .description-1771 p {
+    width: 86%;
+    color: gray;
+    font-size: 17px;
+}
+
+section.info .description-1771 h2 {
+    margin-bottom: 10px;
+    color: #666;
+    font-size: 26px;
+}
+
+section.info .description-1771 .login {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+section.info .description-1771 input,
+section.info .description-1771 button {
+    width: 32%;
+}
+
+@media (max-width: 768px) {
+    section.info .description-1771 {
+        width: 100%;
+    }
+    
+    section .images {
+        width: 100%;
+    }
+
+    section.info .description-1771 input,
+section.info .description-1771 button {
+    width: 80%;
+}
+}

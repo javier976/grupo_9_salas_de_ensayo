@@ -1,0 +1,78 @@
+html {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 8%;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+p.register-box-msg {
+    color: #47525E;
+    font-size: 40px;
+    line-height: 51px;
+    width: 600px;
+    text-align: center;
+}
+
+input#username.form-control.users {
+    display: flex;
+    font-weight: 600;
+    background-color: #FFFFFF;
+    border: 1px solid #8492A6;
+    border-radius: 5px;
+    width: 287px;
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+input#email.form-control.email {
+    font-weight: 600;
+    background-color: #FFFFFF;
+    border: 1px solid #8492A6;
+    border-radius: 5px;
+    width: 287px;
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+input#pass.form-control {
+    font-weight: 600;
+    background-color: #FFFFFF;
+    border: 1px solid #8492A6;
+    border-radius: 5px;
+    width: 287px;
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+input#pass2.form-control {
+    font-weight: 600;
+    background-color: #FFFFFF;
+    border: 1px solid #8492A6;
+    border-radius: 5px;
+    width: 287px;
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+button.ov-btn-grow-spin {
+    width: 288px;
+    height: 50px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+button.ov-btn-grow-box {
+    width: 200px;
+    height: 30px;
+    color: #666;
+}
+
+div .description-1771 {
+    margin-top: 20px;
+    color: #666;
+}
