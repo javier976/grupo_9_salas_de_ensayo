@@ -1,221 +1,153 @@
-/* main { */
-    width: 80%;
-    /**border:  1px solid black; **/
-    margin:auto;
-    margin-top: 40px;
-    background-color: var(--blanco);
-    color: var(--grisOscuro);
-    margin-bottom: 40px;
-    box-shadow: 0px 0px 10px rgb(100,100,100);
-}
-
-main label {
-    font-size: 14px;
-    font-weight: bold;
-    color: #313131;
-}
-
-.register-card-body {
-    margin-bottom: 20px;
-}
-
-.register-card-body  p {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.row {
-    /** border: 1px solid green; **/
-    margin: 20px;
-}
-
-/*
-.row-data1 {
-    border: 1px solid pink;
-}
-
-.row-data2 {
-    border: 1px solid blue; 
+/* html {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 8%;
 } */
 
-.form-group {
+/* div {
     display: flex;
     flex-direction: column;
-}
-
-.form-group input {
-    margin-top: 5px;
-    height: 30px;
-    border: 1px solid #ced4da
-}
-
-.form-group label{
-    margin-top: 10px;
-}
- 
-.buyCell {
-/* border: 1px solid red; */
-    display: flex;
-    flex-direction: column;
-} 
-
-.buyCell-Group {
-    display: flex;
-    /* border:1px solid #ced4da; */
-    margin-top: 5px;
-    height: 30px;
-    width: 95%;
     align-items: center;
-} 
+} */
 
-.buyCell-Group .input-cell {
-    margin-left: 10px;
-    margin-top: 0;
-    height: 15px;
-    width: 20px;
-} 
-
-.buyCell-Group label {
-    margin:0;
-    margin-left: 5px;
-}
-
-.form-group input:focus {
-    outline: none;
-    /* border: 1px solid #06c; */
-}
-
-.category-Group div {
+.top-header {
     display: flex;
-    text-align: center;
-    width: 10px ;
 }
 
-.groupCategory { 
-    /**border: 1px solid purple;**/
+main {
     display: flex;
-    height: 28.5px;
+    flex-direction: column;
     
 }
 
-
-.groupCategory label, input {
-    margin: 0;
-}
-
-.groupCategory input {
-    height: 10px;
-    margin-right: 5px;
-    margin-left: 5px;
-}
-
-.label-group {
-    margin-top: 8px;
-}
-
-.category-Group {
-    border: 1px solid #ced4da;
-    margin-top: 5px;
-    padding: 5px 0;  
-    width: 95%;
-}
-
-.row-button {
-    /* border: 1px solid #ce0246; */
-    height: 100px;
+main .form-container {
+    border: 1px solid red;
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+main .description-container {
+    border: 1px solid blue;
+}
+
+main .form-container p {
+    border: 1px solid green;
+    text-align: center;
+}
+
+main .form-container form {
+    border: 1px solid brown;
+    display: flex;
+    justify-content: center;
+
+}
+
+main .form-container form .row {
+    border: 1px solid violet;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+}
+
+main .form-container form .row input {
+    padding: 10px;
+    margin: 5px;
+}
+
+main .form-container form .row .row-user {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
-.row-button-box {
+.row-button {
+    border: 1px solid yellow;
+}
+
+.row-button button {
+    padding: 10px;
+    margin: 5px;
+    background: #46515D;
+    color: #fff;
+}
+
+.row-button .row-button-box {
     display: flex;
-    /* border: 1px solid violet; */
-    width: 90%;
-    height: 50%;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
 }
 
-.row-button-box button {
-    height: 100%;
-    width: 48%;
+.row-button .row-button-box button {
+    width: 80%;
+}
+
+
+/* p.register-box-msg {
+    color: #47525E;
+    font-size: 40px;
+    line-height: 51px;
+    width: 600px;
     text-align: center;
-    /* margin-right: 20px; */
-    font-size: 12px;
-    font-weight: bold;
-    /* letter-spacing: 2px; */
-    cursor: pointer;
 }
 
-/******** MEDIA QUERIES ****** /
-
-/* ++++++ 768 ++++++ */
-@media (min-width: 768px) {
-
-    .row-data {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .row-data1 {
-        width: 49%;
-    }
-
-    .row-data2 {
-        width: 49%;
-    }
-
-    .row-button-box {
-        display: flex;
-        /* border: 1px solid violet; */
-        width: 80%;
-        height: 50%;
-        justify-content: center;
-    }
-
-    .row-button-box button {
-        height: 100%;
-        width: 30%;
-        margin-right: 20px;
-        font-size: 14px;
-        font-weight: normal;
-        letter-spacing: 2px;
-        cursor: pointer;
-    }
-
-    .form-group input {
-        width: 100%;
-    }
-
-    .category-Group {
-        width: 100%;
-    }
-
+input#username.form-control.users {
+    display: flex;
+    font-weight: 600;
+    background-color: #FFFFFF;
+    border: 1px solid #8492A6;
+    border-radius: 5px;
+    width: 287px;
+    height: 50px;
+    margin-bottom: 15px;
 }
 
-
-
-/* +++++ 1024 +++++ */
-
-@media (min-width: 1024px) {
-    .row-button-box {
-        display: flex;
-        /* border: 1px solid violet; */
-        width: 80%;
-        height: 50%;
-        justify-content: center;
-    }
-
-    .row-button-box button {
-        height: 100%;
-        width: 30%;
-        margin-right: 20px;
-        font-size: 14px;
-        font-weight: normal;
-        letter-spacing: 2px;
-        cursor: pointer;
-    }
-
+input#email.form-control.email {
+    font-weight: 600;
+    background-color: #FFFFFF;
+    border: 1px solid #8492A6;
+    border-radius: 5px;
+    width: 287px;
+    height: 50px;
+    margin-bottom: 15px;
 }
+
+input#pass.form-control {
+    font-weight: 600;
+    background-color: #FFFFFF;
+    border: 1px solid #8492A6;
+    border-radius: 5px;
+    width: 287px;
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+input#pass2.form-control {
+    font-weight: 600;
+    background-color: #FFFFFF;
+    border: 1px solid #8492A6;
+    border-radius: 5px;
+    width: 287px;
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+button.ov-btn-grow-spin {
+    width: 288px;
+    height: 50px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+button.ov-btn-grow-box {
+    width: 200px;
+    height: 30px;
+    color: #666;
+}
+
+div .description-1771 {
+    margin-top: 20px;
+    color: #666;
+} */
