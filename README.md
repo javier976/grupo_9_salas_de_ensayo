@@ -22,5 +22,3 @@ Inspiraciones:
 
 
 WIRE FRAME (2 páginas): https://marvelapp.com/prototype/2faf4j4g/screen/87494148/handoff
-
-TABLERO DE TRELLO: https://trello.com/b/dLR4DtHt/proyecto-integrador
