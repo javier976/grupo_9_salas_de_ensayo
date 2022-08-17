@@ -2,7 +2,7 @@ const express = require('express')
 const path = require('path');
 const app = express();
 const publicPath = path.join(__dirname, "./public");
-const mainRouter = require('./routes/mainRouter');
+const mainRouter = require('./routers/mainRouter');
 
 app.use(express.static('./public'));
 app.use('/', mainRouter);
