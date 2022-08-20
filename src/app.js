@@ -4,25 +4,16 @@ const app = express();
 const publicPath = path.join(__dirname, "./public");
 const mainRouter = require('./routers/mainRouter');
 
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
 app.use(express.static('./public'));
 app.use('/', mainRouter);
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/views/home.html');
-});
+    res.render('index')
+})
 
-app.get('/productCart', (req, res) => {
-    res.sendFile(__dirname + '/views/productCart.html');
-});
-
-app.get('/productDetail', (req, res) => {
-    res.sendFile(__dirname + '/views/productDetail.html');
-});
-
-app.get('/register', (req, res) => {
-    res.sendFile(__dirname + '/views/register.html');
-});
-
-app.listen(3030,() => {
+app.listen(3030, () => {
     console.log("servidor iniciado en: http://localhost:3030");
 });

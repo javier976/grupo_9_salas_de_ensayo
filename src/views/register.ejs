@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--TIPOGRAFIA ROBOTO-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <!-- LIBRERIA FONTAWESOME-->
+    <script src="https://kit.fontawesome.com/439c181295.js" crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- ESTILOS PROPIOS-->
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/register.css" rel="stylesheet">
+
+
+    <!--TITULO -->
+    <title>1771 Studios</title>
+
+</head>
+
+<body>
+    <!-- HEADER -->
+    <%- include('partials/header') %>
+        <main>
+            <div class="form-container">
+                <p class="register-box-msg">Registrate</p>
+                <form action="/register" method="POST">
+                    <div class="row">
+                        <div class="row-user">
+                            <div class="form-group">
+                                <label for="username"></label>
+                                <input style="display: flex; font-family: 'Font Awesome 5 Free'; font-weight: 600;"
+                                    type="text" name="username" id="username" class="form-control users"
+                                    placeholder=" &#xf007; Your Name" maxLength="20" minLenght="5" required>
+                            </div>
+                            <div class="row-email">
+                                <div class="form-group">
+                                    <label for="email"></label>
+                                    <input style="font-family: 'Font Awesome 5 Free'; font-weight: 600;" type="email"
+                                        name="email" id="email" class="form-control email" placeholder=" &#xf007; Email"
+                                        maxLength="20" minLenght="5" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-data">
+                            <div class="row-data1">
+                                <div class="form-group">
+                                    <label for="pass"></label>
+                                    <input style="font-family: 'Font Awesome 5 Free'; font-weight: 600;" type="password"
+                                        name="pass" id="pass" class="form-control" placeholder=" &#xf084; Password"
+                                        minLenght="5" required>
+                                </div>
+                            </div>
+                            <div class="row-data2">
+                                <div class="form-group">
+                                    <label for="pass2"></label>
+                                    <input style="font-family: 'Font Awesome 5 Free'; font-weight: 600;" type="password"
+                                        name="pass2" id="pass2" class="form-control"
+                                        placeholder=" &#xf084; Repeat password" minLenght="5" required>
+                                </div>
+                            </div>
+                            <div class="row-button">
+                                <div class="row-button-box">
+                                    <button class="ov-btn-grow-spin" type="submit">Sing Up
+                                    </button>
+                                    <button class="ov-btn-grow-box" type="reset">Limpiar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="description-container">
+                <p>By signing up you agree to our Terms & Conditions</p>
+            </div>
+        </main>
+        <!-- FOOTER -->
+        <%- include('partials/footer') %>
+</body>
+
+</html>
