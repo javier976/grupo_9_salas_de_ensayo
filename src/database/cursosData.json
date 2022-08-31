@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "titulo": "Guitarra",
+        "descripcionClase": "En tus clases tendrás un encuentro personalizado con el docente a cargo con quién trabajarás técnica y repertorio a tu elección. El docente diseña ejercicios específicos para que logres aprender en forma dinámica, práctica y veloz. Podés optar por la modalidad online o presencial con protocolo. En algunas actividades tendrás la opción de optar por la modalidad grupal, son grupos super reducidos de hasta 2 o 3 alumnos por curso.Los horarios son a combinar con el docente.",
+        "descripcionDocentes": "Nuestros docentes son profesionales recibidos que se adaptaran al nivel en el que te encuentres. Inicial/Intermedio /Avanzado. Desde tu primera clase notarás el avance. Respecto a tu edad… NO HAY EDAD PARA LA MÚSICA.",
+        "concierto": "La escuela te ofrecerá múltiples opciones para que te animes a mostrar lo aprendido. No es obligatorio participar, pero creemos que subir al escenario es parte del aprendizaje musical, por lo que dos veces por año realizamos conciertos que son temáticos para que puedas explorar cada género (jazz/soul/rock nacional/pop/tango/folclore/melódico y más). Cada alumno presenta el repertorio trabajado con el acompañamiento profesional de una banda en vivo. Además realizamos talleres bimetrales de género músical, y grabaciones en estudio.",
+        "precio": "$4.500 x mes"
+    },
+    {
+        "id": 2,
+        "titulo": "Bajo",
+        "descripcionClase": "En tus clases tendrás un encuentro personalizado con el docente a cargo con quién trabajarás técnica y repertorio a tu elección. El docente diseña ejercicios específicos para que logres aprender en forma dinámica, práctica y veloz. Podés optar por la modalidad online o presencial con protocolo. En algunas actividades tendrás la opción de optar por la modalidad grupal, son grupos super reducidos de hasta 2 o 3 alumnos por curso.Los horarios son a combinar con el docente.",
+        "descripcionDocentes": "Nuestros docentes son profesionales recibidos que se adaptaran al nivel en el que te encuentres. Inicial/Intermedio /Avanzado. Desde tu primera clase notarás el avance. Respecto a tu edad… NO HAY EDAD PARA LA MÚSICA.",
+        "concierto": "La escuela te ofrecerá múltiples opciones para que te animes a mostrar lo aprendido. No es obligatorio participar, pero creemos que subir al escenario es parte del aprendizaje musical, por lo que dos veces por año realizamos conciertos que son temáticos para que puedas explorar cada género (jazz/soul/rock nacional/pop/tango/folclore/melódico y más). Cada alumno presenta el repertorio trabajado con el acompañamiento profesional de una banda en vivo. Además realizamos talleres bimetrales de género músical, y grabaciones en estudio.",
+        "precio": "$4.500 x mes"
+    },
+    {
+        "id": 3,
+        "titulo": "Canto",
+        "descripcionClase": "En tus clases tendrás un encuentro personalizado con el docente a cargo con quién trabajarás técnica y repertorio a tu elección. El docente diseña ejercicios específicos para que logres aprender en forma dinámica, práctica y veloz. Podés optar por la modalidad online o presencial con protocolo. En algunas actividades tendrás la opción de optar por la modalidad grupal, son grupos super reducidos de hasta 2 o 3 alumnos por curso.Los horarios son a combinar con el docente.",
+        "descripcionDocentes": "Nuestros docentes son profesionales recibidos que se adaptaran al nivel en el que te encuentres. Inicial/Intermedio /Avanzado. Desde tu primera clase notarás el avance. Respecto a tu edad… NO HAY EDAD PARA LA MÚSICA.",
+        "concierto": "La escuela te ofrecerá múltiples opciones para que te animes a mostrar lo aprendido. No es obligatorio participar, pero creemos que subir al escenario es parte del aprendizaje musical, por lo que dos veces por año realizamos conciertos que son temáticos para que puedas explorar cada género (jazz/soul/rock nacional/pop/tango/folclore/melódico y más). Cada alumno presenta el repertorio trabajado con el acompañamiento profesional de una banda en vivo. Además realizamos talleres bimetrales de género músical, y grabaciones en estudio.",
+        "precio": "$4.000 x mes"
+    },
+    {
+        "id": 4,
+        "titulo": "Bateria",
+        "descripcionClase": "En tus clases tendrás un encuentro personalizado con el docente a cargo con quién trabajarás técnica y repertorio a tu elección. El docente diseña ejercicios específicos para que logres aprender en forma dinámica, práctica y veloz. Podés optar por la modalidad online o presencial con protocolo. En algunas actividades tendrás la opción de optar por la modalidad grupal, son grupos super reducidos de hasta 2 o 3 alumnos por curso.Los horarios son a combinar con el docente.",
+        "descripcionDocentes": "Nuestros docentes son profesionales recibidos que se adaptaran al nivel en el que te encuentres. Inicial/Intermedio /Avanzado. Desde tu primera clase notarás el avance. Respecto a tu edad… NO HAY EDAD PARA LA MÚSICA.",
+        "concierto": "La escuela te ofrecerá múltiples opciones para que te animes a mostrar lo aprendido. No es obligatorio participar, pero creemos que subir al escenario es parte del aprendizaje musical, por lo que dos veces por año realizamos conciertos que son temáticos para que puedas explorar cada género (jazz/soul/rock nacional/pop/tango/folclore/melódico y más). Cada alumno presenta el repertorio trabajado con el acompañamiento profesional de una banda en vivo. Además realizamos talleres bimetrales de género músical, y grabaciones en estudio.",
+        "precio": "$5.000 x mes"
+    },
+    {
+        "id": 5,
+        "titulo": "Teclado",
+        "descripcionClase": "En tus clases tendrás un encuentro personalizado con el docente a cargo con quién trabajarás técnica y repertorio a tu elección. El docente diseña ejercicios específicos para que logres aprender en forma dinámica, práctica y veloz. Podés optar por la modalidad online o presencial con protocolo. En algunas actividades tendrás la opción de optar por la modalidad grupal, son grupos super reducidos de hasta 2 o 3 alumnos por curso.Los horarios son a combinar con el docente.",
+        "descripcionDocentes": "Nuestros docentes son profesionales recibidos que se adaptaran al nivel en el que te encuentres. Inicial/Intermedio /Avanzado. Desde tu primera clase notarás el avance. Respecto a tu edad… NO HAY EDAD PARA LA MÚSICA.",
+        "concierto": "La escuela te ofrecerá múltiples opciones para que te animes a mostrar lo aprendido. No es obligatorio participar, pero creemos que subir al escenario es parte del aprendizaje musical, por lo que dos veces por año realizamos conciertos que son temáticos para que puedas explorar cada género (jazz/soul/rock nacional/pop/tango/folclore/melódico y más). Cada alumno presenta el repertorio trabajado con el acompañamiento profesional de una banda en vivo. Además realizamos talleres bimetrales de género músical, y grabaciones en estudio.",
+        "precio": "4.000 x mes"
+    }
+]

@@ -1,0 +1,9 @@
+[
+    {
+        "id": 0,
+        "name": "user",
+        "email": "user@div.com",
+        "password": "password",
+        "repeat_password": "password" 
+    }
+]
