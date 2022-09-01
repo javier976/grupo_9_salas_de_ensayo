@@ -29,8 +29,12 @@
             <section class="info">
                 <div class="description-1771">
                     <div>
-                        <h2><%= about.titulo %></h2>
-                        <h2><%= about.descripcion %></h2>
+                        <h2>
+                            <%= about.titulo %>
+                        </h2>
+                        <h2>
+                            <%= about.descripcion %>
+                        </h2>
                     </div>
                     <p>Registrate para ser parte de una experiencia profesional, con sonido de calidad en amplios y
                         agradables espacios</p>
@@ -45,21 +49,25 @@
                 </div>
             </section>
             <section class="option">
-                <% salas.forEach(sala => { %>
+                <% salas.forEach(sala=> { %>
                     <a href="/detalleSalas/<%= sala.id %>">
                         <article class="item-article">
                             <img src="/images/<%= sala.img  %> " alt="bateria">
                             <div class="main-article">
-                                <p><%= sala.descripcionCorta %> </p>
+                                <p>
+                                    <%= sala.descripcionCorta %>
+                                </p>
                                 <p>
                                     <%= sala.descripcionDetallada %>
                                 </p>
-                                <h4><%= sala.titulo %> <%= sala.precio %></h4>
+                                <h4>
+                                    <%= sala.titulo %>
+                                        <%= sala.precio %>
+                                </h4>
                             </div>
                         </article>
-                    
                     </a>
-                     <% }) %>                      
+                    <% }) %>
             </section>
             <section class="Masterclasses">
                 <div class="titulo-clases">
@@ -67,36 +75,18 @@
                     <h2>favorito con 1771 Studios Masterclasses</h2>
                 </div>
                 <div class="clases">
-                    <article class="clases-article">
-                        <img src="/images/clase guitarra.jpeg" alt="Guitarra">
-                        <div class="clases">
-                            <h2>Guitarra</h2>
-                        </div>
-                    </article>
-                    <article class="clases-article">
-                        <img src="/images/clase bajo.png" alt="Bajo">
-                        <div class="clases">
-                            <h2>Bajo</h2>
-                        </div>
-                    </article>
-                    <article class="clases-article">
-                        <img src="/images/clase canto.jpeg" alt="Canto">
-                        <div class="clases">
-                            <h2>Canto</h2>
-                        </div>
-                    </article>
-                    <article class="clases-article">
-                        <img src="/images/clase bateria.jpeg" alt="Bateria">
-                        <div class="clases">
-                            <h2>Bateria</h2>
-                        </div>
-                    </article>
-                    <article class="clases-article">
-                        <img src="/images/clase teclado.png" alt="Teclado">
-                        <div class="clases">
-                            <h2>Teclado</h2>
-                        </div>
-                    </article>
+                    <% cursos.forEach(curso=> { %>
+                        <a href="/detalleCursos/<%= curso.id %>">
+                            <article class="clases-article">
+                                <img src="/images/<%= curso.img  %> ">
+                                <div class="clases">
+                                    <p>
+                                        <%= curso.titulo %>
+                                    </p>
+                                </div>
+                            </article>
+                        </a>
+                        <% }) %>
                 </div>
             </section>
             <section>
