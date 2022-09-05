@@ -7,11 +7,16 @@ const cursos = JSON.parse(fs.readFileSync(cursosFilePath, 'utf-8'));
 
 const controller = {
     listaCursos: (req, res) => {
-        res.render('products/cursoDetalle', { cursos });
+        res.render('products/listaCursos', { cursos });
     },
     detalleCursos: (req, res) => {
         const cursoIndex = cursos.find(curso => curso.id == req.params.id);
-        res.render('products/cursoDetalle', { cursoIndex });
+        res.render('products/detalleCursos', { cursoIndex });
+    },
+    delete: (req, res) => {
+        const allCursos = cursos.filter(curso => curso.id != req.params.id);
+        fs.writeFileSync(cursosFilePath, JSON.stringify(allCursos, null, '  '));
+        res.redirect('/products/');
     },
     productCart: (req, res) => {
         res.render('products/productCart');

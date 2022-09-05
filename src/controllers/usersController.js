@@ -9,8 +9,11 @@ const controller = {
     registro: (req, res) => {
         res.render('users/register');
     },
+    login: (req, res) => {
+        res.render('/');
+    },
     createUser: (req, res) => {
-        const usersClone = users;
+        const usersClone =  users;
         const newUser = {
             id: usersClone.length,
             name_user: req.body.name_user,
@@ -21,9 +24,12 @@ const controller = {
         usersClone.push(newUser);
         fs.writeFileSync(usersFilePath, JSON.stringify(usersClone, null, '  '));
         res.redirect('/');
+    },
+    logged: (req, res) => {
+        res.redirect('/');
     }
-};
+}
 
-module.exports = controller;
+    module.exports = controller;
 
 

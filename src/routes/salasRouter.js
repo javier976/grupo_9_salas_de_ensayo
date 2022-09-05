@@ -6,6 +6,6 @@ const salasController = require('../controllers/salasController');
 
 router.get('/productCart', salasController.productCart);
 router.get('/', salasController.listaSalas);
-router.get('/:id/', salasController.detalleSalas);
+router.get('/detalle/:id/', salasController.detalleSalas);
 
 module.exports = router;

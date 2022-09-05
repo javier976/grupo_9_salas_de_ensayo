@@ -7,11 +7,16 @@ const salas = JSON.parse(fs.readFileSync(salasFilePath, 'utf-8'));
 
 const controller = {
     listaSalas: (req, res) => {
-        res.render('products/salaDetalle', { salas });
+        res.render('products/listaSalas', { salas });
     },
     detalleSalas: (req, res) => {
         const salaIndex = salas.find(sala => sala.id == req.params.id);
-        res.render('products/salaDetalle', { salaIndex });
+        res.render('products/detalleSalas', { salaIndex });
+    },
+    delete: (req, res) => {
+        const allSalas = salas.filter(sala => sala.id != req.params.id);
+        fs.writeFileSync(salasFilePath, JSON.stringify(allSalas, null, '  '));
+        res.redirect('/products/');
     },
     productCart: (req, res) => {
         res.render('products/productCart');
