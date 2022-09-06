@@ -10,8 +10,8 @@ const controller = {
         res.render('products/listaSalas', { salas });
     },
     detalleSalas: (req, res) => {
-        const salaIndex = salas.find(sala => sala.id == req.params.id);
-        res.render('products/detalleSalas', { salaIndex });
+        const sala = salas.find(sala => sala.id == req.params.id);
+        res.render('products/detalleSalas', { sala });
     },
     delete: (req, res) => {
         const allSalas = salas.filter(sala => sala.id != req.params.id);
@@ -19,7 +19,7 @@ const controller = {
         res.redirect('/products/');
     },
     productCart: (req, res) => {
-        res.render('products/productCart');
+        res.render('productCart');
     }
 }
 

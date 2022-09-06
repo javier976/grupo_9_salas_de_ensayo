@@ -25,8 +25,46 @@
     <!-- HEADER -->
     <%- include('../partials/header') %>
         <main>
+            <!-- sala detail -->
+            <div class="container salas-wrapper">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="salas-title">Detalle de la sala: <%= sala.titulo %>
+                        </h2>
+                    </div>
+                </div>
+                <div class="sala-detail">
+                    <div class="img-box">
+                        <img src="/images/<%= sala.img %> ">
+                        <p class="sala-detail-description">
+                            <%= sala.descripcionCorta %>
+                                <%= sala.descripcionDetallada %>
+                        </p>
+                    </div>
+                    <div class="sala-info-box">
+                        <article class="sala-detail-info">
+                            <h2 class="sala-detail-title">
+                                <%= sala.titulo %>
+                            </h2>
 
+                            <p class="sala-detail-price">
+                                $<%= sala.precio %>
+                            </p>
 
+                            <button class="btn btn-small addToCart" data-sala-id="3">
+                                <i class="fas fa-cart-plus"></i>Add to cart
+                            </button>
+
+                            <!-- <a href="/products/edit/%=//sala.id //% " class="action-button edit">EDITAR PRODUCTO</a> -->
+                            <form action="/products/delete/<%= sala.id %>?_method=DELETE" method="POST"
+                                style="display: inline-flex">
+                                <button type="submit" class="action-button delete">ELIMINAR</button>
+                            </form>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <!-- /sala detail -->
         </main>
         <!-- FOOTER -->
         <%- include('../partials/footer') %>

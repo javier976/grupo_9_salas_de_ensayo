@@ -10,8 +10,8 @@ const controller = {
         res.render('products/listaCursos', { cursos });
     },
     detalleCursos: (req, res) => {
-        const cursoIndex = cursos.find(curso => curso.id == req.params.id);
-        res.render('products/detalleCursos', { cursoIndex });
+        const curso = cursos.find(curso => curso.id == req.params.id);
+        res.render('products/detalleCursos', { curso });
     },
     delete: (req, res) => {
         const allCursos = cursos.filter(curso => curso.id != req.params.id);

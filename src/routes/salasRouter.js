@@ -6,6 +6,7 @@ const salasController = require('../controllers/salasController');
 
 router.get('/productCart', salasController.productCart);
 router.get('/', salasController.listaSalas);
-router.get('/detalle/:id/', salasController.detalleSalas);
+router.get('/detalleSalas/:id', salasController.detalleSalas);
+router.delete('/delete/:id', salasController.delete);
 
 module.exports = router;

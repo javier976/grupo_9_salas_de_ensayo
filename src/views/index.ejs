@@ -50,7 +50,7 @@
             </section>
             <section class="option">
                 <% salas.forEach(sala=> { %>
-                    <a href="/detalleSalas/<%= sala.id %>">
+                    <a href="/products/detalleSalas/<%= sala.id %>">
                         <article class="item-article">
                             <img src="/images/<%= sala.img  %> ">
                             <div class="main-article">
@@ -76,7 +76,7 @@
                 </div>
                 <div class="clases">
                     <% cursos.forEach(curso=> { %>
-                        <a href="/detalleCursos/<%= curso.id %>">
+                        <a href="/products/detalleCursos/<%= curso.id %>">
                             <article class="clases-article">
                                 <img src="/images/<%= curso.img  %> ">
                                 <div class="clases">

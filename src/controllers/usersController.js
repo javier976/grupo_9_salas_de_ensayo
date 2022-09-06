@@ -16,7 +16,7 @@ const controller = {
         const usersClone =  users;
         const newUser = {
             id: usersClone.length,
-            name_user: req.body.name_user,
+            name: req.body.name,
             email: req.body.email,
             password: req.body.password,
             repeat_password: req.body.repeat_password,
