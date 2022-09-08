@@ -87,11 +87,19 @@ main section .clases h2 {
 
 .Maps  {
   width: 100%;
-  /* position: relative; */
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }  
+
+.Maps h2 {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  z-index: 2;
+  color: #47525E;
+}
   
 .Maps iframe {
 width: 100%;

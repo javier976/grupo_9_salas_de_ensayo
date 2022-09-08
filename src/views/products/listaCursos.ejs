@@ -1,0 +1,68 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--TIPOGRAFIA ROBOTO-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <!-- LIBRERIA FONTAWESOME-->
+    <script src="https://kit.fontawesome.com/439c181295.js" crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- ESTILOS PROPIOS-->
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/register.css" rel="stylesheet">
+
+
+    <!--TITULO -->
+    <title>1771 Studios</title>
+
+</head>
+
+<body>
+    <%- include('../partials/header') %>
+        <main>
+            <h3>Lista de Cursos</h3>
+            <section class="main-section">
+                <div class="curso-container">
+                    <div class="cursos">
+                        <% cursos.forEach(curso=> { %>
+                            <div class="curso-under">
+                                <figure class="curso-image">
+                                    <img src="/images/<%= curso.img %>" />
+                                    <div class="curso-over">
+                                        <a href="/products/<%= curso.id %>"></a>
+                                    </div>
+                                </figure>
+                                <div class="curso-summary">
+                                    <h4>
+                                        <%= curso.titulo %>
+                                    </h4>
+                                    <p>
+                                        <%= curso.descripcionClase %>
+                                    </p>
+                                    <p>
+                                        <%= curso.descripcionDocentes %>
+                                    </p>
+                                    <h6 class="price">
+                                        $<span class="priceValue">
+                                            <%= curso.precio %>
+                                        </span>
+                                    </h6>
+                                    <button class="btn btn-small addToCart" data-curso-id="3">
+                                        <i class="fas fa-cart-plus"></i>Add to cart
+                                    </button>
+                                </div>
+                            </div>
+                            <% }); %>
+                        </div>
+                </div>
+            </section>
+        </main>
+
+        <%- include('../partials/footer') %>
+
+</body>
+
+</html>

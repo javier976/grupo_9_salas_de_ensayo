@@ -172,16 +172,3 @@ section.info .description-1771 button {
 }
 }
 
-/*------FOOTER------*/
-
-footer {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    margin-top: 20px;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-}
