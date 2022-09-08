@@ -16,39 +16,41 @@
 
 main {
     display: flex;
-    flex-direction: column;
-    
+    justify-content: center;
+    align-items: center;
 }
 
 main .form-container {
-    border: 1px solid red;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    row-gap: 15px;
 }
 
-main .description-container {
-    border: 1px solid blue;
-}
+
 
 main .form-container p {
-    border: 1px solid green;
     text-align: center;
 }
 
 main .form-container form {
-    border: 1px solid brown;
     display: flex;
     justify-content: center;
 
 }
 
 main .form-container form .row {
-    border: 1px solid violet;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 60%;
+}
+
+main .form-container form .row >div,
+main .form-container form .row >button,
+main .form-container form .row >input
+{
+    width: 100%;
+    margin: 5px;
 }
 
 main .form-container form .row input {
@@ -57,14 +59,9 @@ main .form-container form .row input {
 }
 
 main .form-container form .row .row-user {
-    border: 1px solid black;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.row-button {
-    border: 1px solid yellow;
 }
 
 .row-button button {
@@ -85,69 +82,3 @@ main .form-container form .row .row-user {
 }
 
 
-/* p.register-box-msg {
-    color: #47525E;
-    font-size: 40px;
-    line-height: 51px;
-    width: 600px;
-    text-align: center;
-}
-
-input#username.form-control.users {
-    display: flex;
-    font-weight: 600;
-    background-color: #FFFFFF;
-    border: 1px solid #8492A6;
-    border-radius: 5px;
-    width: 287px;
-    height: 50px;
-    margin-bottom: 15px;
-}
-
-input#email.form-control.email {
-    font-weight: 600;
-    background-color: #FFFFFF;
-    border: 1px solid #8492A6;
-    border-radius: 5px;
-    width: 287px;
-    height: 50px;
-    margin-bottom: 15px;
-}
-
-input#pass.form-control {
-    font-weight: 600;
-    background-color: #FFFFFF;
-    border: 1px solid #8492A6;
-    border-radius: 5px;
-    width: 287px;
-    height: 50px;
-    margin-bottom: 15px;
-}
-
-input#pass2.form-control {
-    font-weight: 600;
-    background-color: #FFFFFF;
-    border: 1px solid #8492A6;
-    border-radius: 5px;
-    width: 287px;
-    height: 50px;
-    margin-bottom: 15px;
-}
-
-button.ov-btn-grow-spin {
-    width: 288px;
-    height: 50px;
-    color: #666;
-    margin-bottom: 15px;
-}
-
-button.ov-btn-grow-box {
-    width: 200px;
-    height: 30px;
-    color: #666;
-}
-
-div .description-1771 {
-    margin-top: 20px;
-    color: #666;
-} */

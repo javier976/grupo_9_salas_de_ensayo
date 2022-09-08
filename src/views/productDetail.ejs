@@ -13,12 +13,9 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <!-- ESTILOS PROPIOS-->
     <link href="/css/styles.css" rel="stylesheet">
-    <link href="/css/colors.css" rel="stylesheet">
-    <link href="/css/header.css" rel="stylesheet">
-    <link href="/css/index.css" rel="stylesheet">
     <link href="/css/article.css" rel="stylesheet">
-    <!-- <link href="/css/register.css" rel="stylesheet"> -->
-    <link href="/css/footer.css" rel="stylesheet">
+
+
 
     <!--TITULO -->
     <title>1771 Studios</title>
@@ -26,24 +23,9 @@
 </head>
 
 <body>
-    <header>
-        <div class="top-header">
-            <img src="images/logo1771.png" alt="logo1771">
-            <ul class="enlaces">
-                <li><a href="/register">Registrarme</a></li>
-                <li><a href="#mapa">¿Cómo llegar?</a></li>
-                <li><a href="/productCart">Reservar clase</a></li>
-                <li><a href="/productCart">Reservar ensayo</a></li>
-                <li><a href="/productDetail">Paga tu reserva</a></li>
-            </ul>
-            <div class="burger-container">
-                <div class="burger-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </div>
-        </div>
-    </header>
-    <main>
+    <!-- HEADER -->
+    <%- include('partials/header') %>
+        <main>
         <section class="information-guitarra" id="guitarra">
             <h1>INFORMACIÓN </h1>
             </br>
@@ -166,7 +148,7 @@
         </section>
         
     </main>
-</body>
+
 
 <footer>
     <section class="information">
