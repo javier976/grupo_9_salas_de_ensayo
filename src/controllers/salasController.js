@@ -19,7 +19,7 @@ const controller = {
         res.redirect('/products/');
     },
     productCart: (req, res) => {
-        res.render('productCart');
+        res.render('products/productCart');
     }
 }
 

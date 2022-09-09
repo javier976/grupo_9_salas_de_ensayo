@@ -69,38 +69,21 @@
                     <h2>favorito con 1771 Studios Masterclasses</h2>
                 </div>
                 <div class="clases">
-                    <article class="clases-article">
-                        <img src="/images/clase guitarra.jpeg" alt="Guitarra">
-                        <div class="clases">
-                            <h2>Guitarra</h2>
-                        </div>
-                    </article>
-                    <article class="clases-article">
-                        <img src="/images/clase bajo.png" alt="Bajo">
-                        <div class="clases">
-                            <h2>Bajo</h2>
-                        </div>
-                    </article>
-                    <article class="clases-article">
-                        <img src="/images/clase canto.jpeg" alt="Canto">
-                        <div class="clases">
-                            <h2>Canto</h2>
-                        </div>
-                    </article>
-                    <article class="clases-article">
-                        <img src="/images/clase bateria.jpeg" alt="Bateria">
-                        <div class="clases">
-                            <h2>Bateria</h2>
-                        </div>
-                    </article>
-                    <article class="clases-article">
-                        <img src="/images/clase teclado.png" alt="Teclado">
-                        <div class="clases">
-                            <h2>Teclado</h2>
-                        </div>
-                    </article>
+                    <% cursos.forEach(curso=> { %>
+                        <a href="/products/detalleCursos/<%= curso.id %>">
+                            <article class="clases-article">
+                                <img src="/images/<%= curso.img  %> ">
+                                <div class="clases">
+                                    <p>
+                                        <%= curso.titulo %>
+                                    </p>
+                                </div>
+                            </article>
+                        </a>
+                        <% }) %>
                 </div>
             </section>
+
             <section>
                 <div class="Maps">
                     <h2>Visítanos</h2>
