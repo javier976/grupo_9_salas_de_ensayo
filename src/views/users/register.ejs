@@ -12,8 +12,16 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <!-- ESTILOS PROPIOS-->
-    <link href="/css/styles.css" rel="stylesheet">
+    <!-- <link href="/css/styles.css" rel="stylesheet"> -->
+    <!-- <link href="/css/colors.css" rel="stylesheet"> -->
+    <!-- <link href="/css/index.css" rel="stylesheet"> -->
+    <!-- <link href="/css/article.css" rel="stylesheet"> -->
     <link href="/css/register.css" rel="stylesheet">
+    <link href="/css/footer.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/article.css" rel="stylesheet">
+
+
 
 
     <!--TITULO -->
@@ -24,62 +32,32 @@
 <body>
     <!-- HEADER -->
     <%- include('../partials/header') %>
-        <main>
-            <div class="form-container">
-                <p class="register-box-msg">Registrate</p>
-                <form action="/register" method="POST">
-                    <div class="row">
-                        <div class="row-user">
-                            <div class="form-group">
-                                <label for="username"></label>
-                                <input style="display: flex; font-family: 'Font Awesome 5 Free'; font-weight: 600;"
-                                    type="text" name="username" id="username" class="form-control users"
-                                    placeholder=" &#xf007; Your Name" maxLength="20" minLenght="5" required>
-                            </div>
-                            <div class="row-email">
-                                <div class="form-group">
-                                    <label for="email"></label>
-                                    <input style="font-family: 'Font Awesome 5 Free'; font-weight: 600;" type="email"
-                                        name="email" id="email" class="form-control email" placeholder=" &#xf007; Email"
-                                        maxLength="20" minLenght="5" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row-data">
-                            <div class="row-data1">
-                                <div class="form-group">
-                                    <label for="pass"></label>
-                                    <input style="font-family: 'Font Awesome 5 Free'; font-weight: 600;" type="password"
-                                        name="pass" id="pass" class="form-control" placeholder=" &#xf084; Password"
-                                        minLenght="5" required>
-                                </div>
-                            </div>
-                            <div class="row-data2">
-                                <div class="form-group">
-                                    <label for="pass2"></label>
-                                    <input style="font-family: 'Font Awesome 5 Free'; font-weight: 600;" type="password"
-                                        name="pass2" id="pass2" class="form-control"
-                                        placeholder=" &#xf084; Repeat password" minLenght="5" required>
-                                </div>
-                            </div>
-                            <div class="row-button">
-                                <div class="row-button-box">
-                                    <button class="ov-btn-grow-spin" type="submit">Sing Up
-                                    </button>
-                                    <button class="ov-btn-grow-box" type="reset">Limpiar
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+    <main>
+    <div class="form-container" id="newUser">
+        <h2>Registrate</h2>
+        <p class="register-box-msg">Registrate esto des un parrafo</p>
+        <form action="/users/register" method="POST">
+            <div class="row">
+                    <input style="display: flex; font-family: 'Font Awesome 5 Free'; font-weight: 600;"
+                        type="text" name="username" id="username" class="form-control users"
+                        placeholder="  Your Name" maxLength="20" minLenght="5" required>
+                    <input style="font-family: 'Font Awesome 5 Free'; font-weight: 600;" type="email"
+                        name="email" id="email" class="form-control email" placeholder=" Email"
+                        maxLength="20" minLenght="5" required>
+                <input style="font-family: 'Font Awesome 5 Free'; font-weight: 600;" type="password"
+                        name="pass2" id="pass2" class="form-control" placeholder=" password"
+                        minLenght="5" required>
+                    <button class="ov-btn-grow-spin" type="submit">Sing Up
+                    </button>
+    
+                <div class="description-container">
+                    <p>By signing up you agree to our Terms & Conditions</p>
+                </div>
             </div>
-            <div class="description-container">
-                <p>By signing up you agree to our Terms & Conditions</p>
-            </div>
-        </main>
-        <!-- FOOTER -->
-        <%- include('../partials/footer') %>
+        </form>
+    </div>    
+    </main>
+    <%- include('../partials/footer') %>
 </body>
 
 </html>

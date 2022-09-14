@@ -17,9 +17,6 @@ const controller = {
         const allSalas = salas.filter(sala => sala.id != req.params.id);
         fs.writeFileSync(salasFilePath, JSON.stringify(allSalas, null, '  '));
         res.redirect('/products/');
-    },
-    productCart: (req, res) => {
-        res.render('productCart');
     }
 }
 

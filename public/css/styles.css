@@ -8,6 +8,13 @@ body {
     background-color: #fff;
     font-family: "Roboto", sans-serif;
 }
+body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    height: 100vh;
+    background: #f9fafb;
+}
 
 input[type=password],
 input[type=email],
@@ -165,16 +172,3 @@ section.info .description-1771 button {
 }
 }
 
-/*------FOOTER------*/
-
-footer {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    margin-top: 20px;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-}

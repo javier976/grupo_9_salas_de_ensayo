@@ -1,9 +1,13 @@
 [
-    {
-        "id": 0,
-        "name": "user",
-        "email": "user@div.com",
-        "password": "password",
-        "repeat_password": "password" 
-    }
+  {
+    "id": 0,
+    "name": "user",
+    "email": "user@div.com",
+    "password": "password",
+    "repeat_password": "password"
+  },
+  {
+    "id": 1,
+    "email": "manuore97@gmail.com"
+  }
 ]

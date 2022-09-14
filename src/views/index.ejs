@@ -14,6 +14,8 @@
     <!-- ESTILOS PROPIOS-->
     <link href="/css/styles.css" rel="stylesheet">
     <link href="/css/article.css" rel="stylesheet">
+    <link href="/css/footer.css" rel="stylesheet">
+
 
 
 
@@ -29,12 +31,8 @@
             <section class="info">
                 <div class="description-1771">
                     <div>
-                        <h2>
-                            <%= about.titulo %>
-                        </h2>
-                        <h2>
-                            <%= about.descripcion %>
-                        </h2>
+                        <h2><%= about.titulo %></h2>
+                        <h2><%= about.descripcion %></h2>
                     </div>
                     <p>Registrate para ser parte de una experiencia profesional, con sonido de calidad en amplios y
                         agradables espacios</p>
@@ -45,29 +43,25 @@
                     </div>
                 </div>
                 <div class="images">
-                    <img src="/images/header2.jpeg" alt="">
+                    <img src="images/header2.jpeg" alt="">
                 </div>
             </section>
             <section class="option">
-                <% salas.forEach(sala=> { %>
-                    <a href="/products/detalleSalas/<%= sala.id %>">
+                <% salas.forEach(sala => { %>  <!-- DUDA -->
+                    <a href="/salas/detalleSalas/<%= sala.id %>">
                         <article class="item-article">
-                            <img src="/images/<%= sala.img  %> ">
+                            <img src="/images/<%= sala.img  %> " alt="bateria">
                             <div class="main-article">
-                                <p>
-                                    <%= sala.descripcionCorta %>
-                                </p>
+                                <p><%= sala.descripcionCorta %> </p>
                                 <p>
                                     <%= sala.descripcionDetallada %>
                                 </p>
-                                <h4>
-                                    <%= sala.titulo %>
-                                        <%= sala.precio %>
-                                </h4>
+                                <h4><%= sala.titulo %> <%= sala.precio %></h4>
                             </div>
                         </article>
+                    
                     </a>
-                    <% }) %>
+                     <% }) %>                      
             </section>
             <section class="Masterclasses">
                 <div class="titulo-clases">
@@ -76,7 +70,7 @@
                 </div>
                 <div class="clases">
                     <% cursos.forEach(curso=> { %>
-                        <a href="/products/detalleCursos/<%= curso.id %>">
+                        <a href="/cursos/<%= curso.id %>">
                             <article class="clases-article">
                                 <img src="/images/<%= curso.img  %> ">
                                 <div class="clases">
@@ -89,6 +83,7 @@
                         <% }) %>
                 </div>
             </section>
+
             <section>
                 <div class="Maps">
                     <h2>Visítanos</h2>

@@ -29,10 +29,6 @@ app.use((req, res, next) => {
     res.status(404).render('products/not-found')
 });
 
-app.get('/', (req, res) => {
-    res.render('index')
-});
-
 app.listen(3030, () => {
     console.log("servidor iniciado en: http://localhost:3030");
 });

@@ -17,9 +17,6 @@ const controller = {
         const allCursos = cursos.filter(curso => curso.id != req.params.id);
         fs.writeFileSync(cursosFilePath, JSON.stringify(allCursos, null, '  '));
         res.redirect('/products/');
-    },
-    productCart: (req, res) => {
-        res.render('products/productCart');
     }
 }
 

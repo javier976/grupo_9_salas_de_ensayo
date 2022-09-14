@@ -16,6 +16,12 @@ const about = {
 const mainController = {
     index: (req, res) => {
         res.render('index', { about: about, cursos: cursos, salas: salas});
+    },
+    register: (req, res) => {
+        res.render('register');
+    },
+    productCart: (req, res) => {
+        res.render('products/productCart');
     }
 }
 
