@@ -8,6 +8,7 @@ body {
     background-color: #fff;
     font-family: "Roboto", sans-serif;
 }
+
 body {
     display: grid;
     grid-template-columns: 1fr;
@@ -23,15 +24,15 @@ input[type=text] {
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
-  }
+}
 
-  button { 
+button {
     /* box-shadow: 0px 0px 10px rgb(100, 100, 100); */
     background: #666;
     color: white;
     padding: 12px;
     border-radius: 4px;
-    
+
 }
 
 article {
@@ -43,7 +44,7 @@ article {
 header {
     width: 90%;
     margin: 0 auto;
-}    
+}
 
 header .top-header {
     width: 100%;
@@ -54,7 +55,7 @@ header .top-header {
 }
 
 
-header img{
+header img {
     /* border: 2px solid blueviolet; */
     display: flex;
     width: 120px;
@@ -81,21 +82,22 @@ header .burger-container {
     /* border: 3px solid red; */
     display: none;
     justify-content: center;
-    
+
 }
 
 
 @media (max-width: 768px) {
-   header .burger-container {
+    header .burger-container {
         display: flex;
-}  
+    }
 
-header .enlaces {
-    display: none;
-}
-header .top-header {
-    justify-content: space-between;
-}
+    header .enlaces {
+        display: none;
+    }
+
+    header .top-header {
+        justify-content: space-between;
+    }
 }
 
 /*------INDEX------*/
@@ -127,7 +129,7 @@ section .images {
 }
 
 
-section .images img{
+section .images img {
     width: 100%;
 }
 
@@ -155,20 +157,56 @@ section.info .description-1771 button {
 }
 
 
+@media (max-width: 425px) {
+    section.info .description-1771 p {
+        display: none;
+    }
 
+    section.info .description-1771 h2 {
+        margin-bottom: 10px;
+        color: #666;
+        display: flex;
+        font-size: 22px;
+        justify-content: center;
+    }
+}
 
 @media (max-width: 768px) {
     section.info .description-1771 {
         width: 100%;
+        display: flex;
+        align-items: center;
     }
-    
+
     section .images {
         width: 100%;
     }
 
-    section.info .description-1771 input,
-section.info .description-1771 button {
-    width: 80%;
-}
-}
+    section .images img {
+        width: 100%;
+        display: none;
+    }
 
+    section.info .description-1771 input,
+    section.info .description-1771 button {
+        padding: 10px;
+        width: 58%;
+        margin: 6px;
+        border-radius: 5px;
+    }
+
+    section.info .description-1771 h2 {
+        margin-bottom: 10px;
+        color: #666;
+        display: flex;
+        justify-content: center;
+    }
+
+    section.info .description-1771 p {
+        width: 86%;
+        color: gray;
+        margin-bottom: 20px;
+        margin-top: 10px;
+        text-align: center;
+    }
+}
