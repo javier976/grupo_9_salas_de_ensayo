@@ -3,11 +3,20 @@ const path = require('path');
 const app = express();
 const pathPublic = path.join(__dirname, "../public");
 const methodOverride = require('method-override');
-const logMiddleWare = require('./middleWares/logDBMiddleWare')
+const session = require('express-session');
+const cookies = require('cookie-parser');
+const logMiddleWare = require('./middleWares/logDBMiddleWare');
+const userLoggedMiddleware = require('./middleWares/userLoggedMiddleWare');
 
+// CONFIGURACION DE SESION
+app.use(session({
+    secret: '1771 Studios',
+    resave: false,
+    saveUninitialized: false
+}))
 
 const mainRouter = require('./routes/mainRouter');
-const salasRouter = require('./routes/salasRouter')
+const salasRouter = require('./routes/salasRouter');
 const cursosRouter = require('./routes/cursosRouter');
 const usersRouter = require('./routes/usersRouter');
 
@@ -16,6 +25,8 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(logMiddleWare);
+app.use(cookies());
+app.use(userLoggedMiddleware);
 app.use(express.static(pathPublic));
 app.use(methodOverride('_method'));
 app.use(express.json());

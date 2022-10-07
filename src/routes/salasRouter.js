@@ -7,6 +7,6 @@ const salasController = require('../controllers/salasController');
 
 router.get('/', salasController.listaSalas);
 router.get('/detalleSalas/:id', salasController.detalleSalas);
-router.delete('/delete/:id', salasController.delete);
+router.delete('/delete', salasController.delete);
 
 module.exports = router;

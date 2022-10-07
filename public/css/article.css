@@ -117,15 +117,37 @@ main section .clases h2 {
   article div.main-article p {
     display: none;
   }
-}
 
-@media (max-width: 768px) {
   main section.option a {
     width: 100%;
   }
 
   main section .clases {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+}
+
+@media (width: 768px) {
+  main section.option {
+    display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: stretch;
+    background-color: #fff;
+    margin-top: 15px;
+  }
+  
+  main section.option a {
+    width: 100%;
+  }
+
+  main section .clases {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
   }
 
   main section .clases h2 {

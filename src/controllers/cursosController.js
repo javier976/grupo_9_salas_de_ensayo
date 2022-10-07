@@ -16,7 +16,7 @@ const controller = {
     delete: (req, res) => {
         const allCursos = cursos.filter(curso => curso.id != req.params.id);
         fs.writeFileSync(cursosFilePath, JSON.stringify(allCursos, null, '  '));
-        res.redirect('/products/');
+        res.redirect('/delete');
     }
 }
 

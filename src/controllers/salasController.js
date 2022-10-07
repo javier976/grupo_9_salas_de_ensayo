@@ -16,7 +16,7 @@ const controller = {
     delete: (req, res) => {
         const allSalas = salas.filter(sala => sala.id != req.params.id);
         fs.writeFileSync(salasFilePath, JSON.stringify(allSalas, null, '  '));
-        res.redirect('/products/');
+        res.redirect('/products/delete');
     }
 }
 

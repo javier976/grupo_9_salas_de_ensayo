@@ -29,32 +29,38 @@
 <body>
     <!-- HEADER -->
     <%- include('../partials/header') %>
-    <main>
-    <div class="form-container" id="newUser">
-        <h2>Registrate</h2>
-        <p class="register-box-msg">Registrate esto des un parrafo</p>
-        <form action="/users/register" method="POST">
-            <div class="row">
-                    <input style="display: flex; font-family: 'Font Awesome 5 Free'; font-weight: 600;"
-                        type="text" name="username" id="username" class="form-control users"
-                        placeholder="  Your Name" maxLength="20" minLenght="5" required>
-                    <input style="font-family: 'Font Awesome 5 Free'; font-weight: 600;" type="email"
-                        name="email" id="email" class="form-control email" placeholder=" Email"
-                        maxLength="20" minLenght="5" required>
-                <input style="font-family: 'Font Awesome 5 Free'; font-weight: 600;" type="password"
-                        name="pass2" id="pass2" class="form-control" placeholder=" password"
-                        minLenght="5" required>
-                    <button class="ov-btn-grow-spin" type="submit">Sing Up
-                    </button>
-    
-                <div class="description-container">
-                    <p>By signing up you agree to our Terms & Conditions</p>
-                </div>
+        <main>
+            <div class="form-container" id="newUser">
+                <h2>Registrate</h2>
+                <p class="register-box-msg">Registrate esto des un parrafo</p>
+                <form action="/users/register" method="POST">
+                    <div class="row">
+                        <input style="display: flex; font-family: 'Font Awesome 5 Free'; font-weight: 600;" type="text"
+                            name="name" id="name" class="form-control users" placeholder="  Your Name">
+                            <% if (locals.errors && errors.name) { %>
+                             <h4 style="color: red; text-align: left;"><%= errors.name.msg %></h4>
+                            <% } %> 
+                        <input style="font-family: 'Font Awesome 5 Free'; font-weight: 600;" type="email" name="email"
+                            id="email" class="form-control email" placeholder=" Email">
+                            <% if (locals.errors && errors.email) { %>
+                                <h4 style="color: red; text-align: left;"><%= errors.email.msg %></h4>
+                               <% } %> 
+                        <input style="font-family: 'Font Awesome 5 Free'; font-weight: 600;" type="password"
+                            name="password" id="password" class="form-control" placeholder=" password">
+                            <% if (locals.errors && errors.password) { %>
+                                <h4 style="color: red; text-align: left;"><%= errors.password.msg %></h4>
+                               <% } %> 
+                        <button class="ov-btn-grow-spin" type="submit">Sing Up
+                        </button>
+
+                        <div class="description-container">
+                            <p>By signing up you agree to our Terms & Conditions</p>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </form>
-    </div>    
-    </main>
-    <%- include('../partials/footer') %>
+        </main>
+        <%- include('../partials/footer') %>
 </body>
 
 </html>
