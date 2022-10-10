@@ -53,9 +53,9 @@ main .form-container form .row .row-user {
 
 .row-button button {
     padding: 10px;
-    margin: 5px;
     background: #46515D;
     color: #fff;
+    
 }
 
 .row-button .row-button-box {
@@ -66,6 +66,13 @@ main .form-container form .row .row-user {
 
 .row-button .row-button-box button {
     width: 80%;
+}
+
+button:hover {
+    background: #1ce21c;
+    color: #fff;
+    transition:
+    background-color, 1s;
 }
 
 h2 {
