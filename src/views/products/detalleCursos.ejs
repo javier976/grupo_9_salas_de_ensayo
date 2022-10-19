@@ -1,56 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <!-- HEAD -->
-    <%- include('../partials/head') %>
+<!-- HEAD -->
+<%- include('../partials/head') %>
 
-<body>
-    <!-- HEADER -->
-    <%- include('../partials/header') %>
-        <main>
-            <!-- curso detail -->
-            <div class="container cursos-wrapper">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="cursos-title">Detalle del curso: <%= curso.titulo %>
-                        </h2>
-                    </div>
-                </div>
-                <div class="curso-detail">
-                    <div class="img-box">
-                        <img src="/images/<%= curso.img %> ">
-                        <p class="curso-detail-description">
-                            <%= curso.descripcionClase %>
-                                <%= curso.descripcionDocentes %>
-                        </p>
-                    </div>
-                    <div class="curso-info-box">
-                        <article class="curso-detail-info">
-                            <h2 class="curso-detail-title">
-                                <%= curso.titulo %>
+    <body>
+        <!-- HEADER -->
+        <%- include('../partials/header') %>
+            <main>
+                <!-- curso detail -->
+                <div class="container cursos-wrapper">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="cursos-title">Detalle del curso: <%= curso.titulo %>
                             </h2>
-
-                            <p class="curso-detail-price">
-                                $<%= curso.precio %>
+                        </div>
+                    </div>
+                    <div class="curso-detail">
+                        <div class="img-box">
+                            <img src="/images/<%= curso.images %> ">
+                            <p class="curso-detail-description">
+                                En tus clases tendrás un encuentro personalizado con el docente a cargo con quién
+                                trabajarás técnica y repertorio a tu elección. El docente diseña ejercicios específicos
+                                para que logres aprender en forma dinámica, práctica y veloz. Podés optar por la
+                                modalidad online o presencial con protocolo. En algunas actividades tendrás la opción de
+                                optar por la modalidad grupal, son grupos super reducidos de hasta 2 o 3 alumnos por
+                                curso. Los horarios son a combinar con el docente.
+                                Nuestros docentes son profesionales recibidos que se adaptaran al nivel en el que te
+                                encuentres. Inicial/Intermedio /Avanzado. Desde tu primera clase notarás el avance.
+                                Respecto a tu edad… NO HAY EDAD PARA LA MÚSICA.
                             </p>
+                        </div>
+                        <div class="curso-info-box">
+                            <article class="curso-detail-info">
+                                <h2 class="curso-detail-title">
+                                    <%= curso.titulo %>
+                                </h2>
 
-                            <button class="btn btn-small addToCart" data-curso-id="3">
-                                <i class="fas fa-cart-plus"></i>Add to cart
-                            </button>
+                                <p class="curso-detail-price">
+                                    $<%= curso.precio %>
+                                </p>
 
-                            <!-- <a href="/products/edit/%=//sala.id //% " class="action-button edit">EDITAR PRODUCTO</a> -->
-                            <form action="/products/delete?_method=DELETE" method="POST"
-                                style="display: inline-flex">
-                                <button type="submit" class="action-button delete">ELIMINAR</button>
-                            </form>
-                        </article>
+                                <button class="btn btn-small addToCart" data-curso-id="3">
+                                    <i class="fas fa-cart-plus"></i>Add to cart
+                                </button>
+
+                                <!-- <a href="/products/edit/%=//sala.id //% " class="action-button edit">EDITAR PRODUCTO</a> -->
+                                <form action="/products/delete?_method=DELETE" method="POST"
+                                    style="display: inline-flex">
+                                    <button type="submit" class="action-button delete">ELIMINAR</button>
+                                </form>
+                            </article>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- /sala detail -->
-        </main>
-        <!-- FOOTER -->
-        <%- include('../partials/footer') %>
-</body>
+                <!-- /sala detail -->
+            </main>
+            <!-- FOOTER -->
+            <%- include('../partials/footer') %>
+    </body>
 
 </html>

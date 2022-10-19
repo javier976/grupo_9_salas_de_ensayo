@@ -3,7 +3,7 @@
 
 const { validationResult } = require('express-validator');
 const bcryptjs = require('bcryptjs');
-const User = require('../models/User')
+const User = require('../database/models/Usuario')
 
 const controller = {
     registro: (req, res) => {
@@ -24,13 +24,13 @@ const controller = {
         if (userInDB) {
             res.send('error correo');
             return res.render('users/register', {
-            errors: {
-                email: {
-                    msg: 'Este email ya se encuentra registrado'
-                }
-            },
-            oldData: req.body
-        });
+                errors: {
+                    email: {
+                        msg: 'Este email ya se encuentra registrado'
+                    }
+                },
+                oldData: req.body
+            });
         }
 
         const userToCreate = {
@@ -80,6 +80,12 @@ const controller = {
                 }
             }
         })
+    },
+
+    profile: (req, res) => {
+        return res.render('users/perfil', {
+            user: req.session.userLogged,
+        });
     },
 
     logout: (req, res) => {

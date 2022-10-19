@@ -11,30 +11,25 @@
             <section class="info">
                 <div class="description-1771">
                     <div>
-                        <h2><%= about.titulo %></h2>
-                        <h2><%= about.descripcion %></h2>
+                        <h2>1771 Studios, un espacio</h2>
+                        <h2>creado por y para músicos</h2>
                     </div>
                     <p>Registrate para ser parte de una experiencia profesional, con sonido de calidad en amplios y
                         agradables espacios</p>
-                    <!-- <div class="login">
-                        <input type="email" name="email" placeholder="Correo">
-                        <input type="password" name="password" placeholder="contraseña">
-                        <button type="submit" class="submit-button">Ingresa</button>
-                    </div> -->
                 </div>
                 <div class="images">
                     <img src="images/header2.jpeg" alt="">
                 </div>
             </section>
             <section class="option">
-                <% salas.forEach(sala => { %>  <!-- DUDA -->
+                <% salas.forEach(sala => { %> 
                     <a href="/salas/detalleSalas/<%= sala.id %>">
                         <article class="item-article">
-                            <img src="/images/<%= sala.img  %> " alt="bateria">
+                            <img src="/images/<%= sala.images  %> " alt="bateria">
                             <div class="main-article">
-                                <p><%= sala.descripcionCorta %> </p>
+                                <p><%= sala.metros_cuadrados %> </p>
                                 <p>
-                                    <%= sala.descripcionDetallada %>
+                                    <%= sala.descripcion %>
                                 </p>
                                 <h4><%= sala.titulo %> <%= sala.precio %></h4>
                             </div>
@@ -52,7 +47,7 @@
                     <% cursos.forEach(curso=> { %>
                         <a href="/cursos/<%= curso.id %>">
                             <article class="clases-article">
-                                <img src="/images/<%= curso.img  %> ">
+                                <img src="/images/<%= curso.images  %> ">
                                 <div class="clases">
                                     <p>
                                         <%= curso.titulo %>

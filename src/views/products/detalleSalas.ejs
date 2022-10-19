@@ -18,10 +18,10 @@
                 </div>
                 <div class="sala-detail">
                     <div class="img-box">
-                        <img src="/images/<%= sala.img %> ">
+                        <img src="/images/<%= sala.images %> ">
                         <p class="sala-detail-description">
-                            <%= sala.descripcionCorta %>
-                                <%= sala.descripcionDetallada %>
+                            <%= sala.metros_cuadrados %>
+                                <%= sala.descripcion %>
                         </p>
                     </div>
                     <div class="sala-info-box">
@@ -38,8 +38,8 @@
                                 <i class="fas fa-cart-plus"></i>Add to cart
                             </button>
 
-                            <!-- <a href="/products/edit/%=//sala.id //% " class="action-button edit">EDITAR PRODUCTO</a> -->
-                            <form action="/products/delete?_method=DELETE" method="POST"
+                            <a href="/products/editSala/<%= sala.id %> " class="action-button edit">EDITAR PRODUCTO</a>
+                            <form action="/products/deleteSala?_method=DELETE" method="POST"
                                 style="display: inline-flex">
                                 <button type="submit" class="action-button delete">ELIMINAR</button>
                             </form>
