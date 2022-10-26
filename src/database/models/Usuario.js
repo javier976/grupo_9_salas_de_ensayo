@@ -46,6 +46,14 @@ module.exports = (sequelize, dataTypes) => {
         password: {
             type: dataTypes.TEXT,
             allowNull: false
+        },
+       profile_image: {
+            type: dataTypes.TEXT,
+            foreingKey: true
+        },
+        categoria_usuario_id: {
+            type: dataTypes.INTEGER,
+            foreingKey: true
         }
     };
     
@@ -58,9 +66,9 @@ module.exports = (sequelize, dataTypes) => {
     
     Usuario.associate = (models) => {
         Usuario.hasMany(models.Categoria, {
-            as: 'categoria_usuario',
+            as: 'categoria de usuario',
             foreingKey: 'categoria_usuario_id'
-        })
+        });
     }
 
     return Usuario;

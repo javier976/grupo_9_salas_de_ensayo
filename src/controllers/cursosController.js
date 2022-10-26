@@ -13,38 +13,56 @@ const Cursos = db.Curso;
 
 const controller = {
     listaCursos: (req, res) => {
-        res.render('products/listaCursos', { Cursos });
-    },
-    createCurso: (req, res) => {
-        res.render('products/crearCurso');
-    },
-    newCurso: (req, res) => {
-        const cursosClone = Cursos;
-        const newCurso = {
-            id: cursosClone.length,
-            titulo: req.body.titulo,
-            descripcionClase: req.body.descripcionClase,
-            descripcionDocentes: req.body.descripcionDocentes,
-            concierto: req.body.concierto,
-            precio: req.body.precio,
-            img: req.file.filename
-        };
-        cursosClone.push(newCurso);
-        fs.writeFileSync(cursosFilePath, JSON.stringify(cursosClone, null, '  '));
-        res.redirect('/products/');
+        Cursos.findAll()
+            .then(function (cursos) {
+                res.render('products/listaCursos', { cursos });
+            })
     },
     detalleCursos: (req, res) => {
-        const curso = Cursos.find(curso => curso.id == req.params.id);
-        res.render('products/detalleCursos', { curso });
+        Cursos.findByPk(req.params.id)
+            .then(function (curso) {
+                res.render('products/detalleCursos', { curso });
+            })
+    },
+    createCurso: (req, res) => {
+        const cursos = Cursos.findAll();
+        res.render('admin/crearCurso', { cursos });
+    },
+    newCurso: (req, res) => {
+        Cursos.create({
+            titulo: req.body.titulo,
+            duracion: req.body.duracion,
+            precio: req.body.precio,
+            imagen: req.body.imagen 
+        });
+        res.redirect('/products/listaCursos');
     },
     editCurso: (req, res) => {
-        const curso = Cursos.find(curso => curso.id == req.params.id);
-        res.render('products/editarCurso', { curso });
+        Cursos.findByPk(req.params.id)
+        .then (function([curso]){
+            res.render('admin/editarCurso', {curso})
+        })
+    },
+    updatedCurso: (req, res) => {
+        Cursos.update({
+            titulo: req.body.titulo,
+            duracion: req.body.duracion,
+            precio: req.body.precio,
+            imagen: req.body.imagen 
+        }, {
+            where: {
+                id: req.params.id
+            }
+        });
+        res.redirect('/products/listaCursos' + req.params.id);
     },
     deleteCurso: (req, res) => {
-        const allCursos = Cursos.filter(curso => curso.id != req.params.id);
-        fs.writeFileSync(cursosFilePath, JSON.stringify(allCursos, null, '  '));
-        res.redirect('products/deleteCurso');
+        Cursos.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        res.redirect('/products/listaCursos');
     }
 }
 

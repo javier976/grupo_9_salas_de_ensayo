@@ -1,9 +1,12 @@
 // const fs = require('fs');
 // const path = require('path');
-
 const { validationResult } = require('express-validator');
 const bcryptjs = require('bcryptjs');
-const User = require('../database/models/Usuario')
+
+const db = require('../database/models');
+const sequelize = db.sequelize;
+
+const Users = require('../models/User');
 
 const controller = {
     registro: (req, res) => {
@@ -20,7 +23,7 @@ const controller = {
                 oldData: req.body
             });
         }
-        const userInDB = User.findByField('email', req.body.email);
+        const userInDB = Users.findByField('email', req.body.email);
         if (userInDB) {
             res.send('error correo');
             return res.render('users/register', {
@@ -34,11 +37,21 @@ const controller = {
         }
 
         const userToCreate = {
-            ...req.body,
+            nombre: req.body.nombre,
+            apellido: req.body.apellido,
+            direccion: req.body.direccion,
+            ciudad: req.body.ciudad,
+            estado_provincia: req.body.estado_provincia,
+            pais: req.body.pais,
+            codigo_postal: req.body.codigo_postal,
+            telefono: req.body.telefono,
+            email: req.body.email,
             password: bcryptjs.hashSync(req.body.password, 10),
+            profile_image: req.body.profile_image,
+            categoria_usuario_id: 2
         }
 
-        const userCreated = User.create(userToCreate);
+        const userCreated = Users.create(userToCreate);
 
         return res.redirect('/');
     },
@@ -47,8 +60,10 @@ const controller = {
         res.render('users/login');
     },
 
-    processLogin: (req, res) => {
-        const userToLogin = User.findByField('email', req.body.email);
+    processLogin:  (req, res) => {
+            
+        const userToLogin = Users.findByField('username', req.body.username);
+
         if (userToLogin) {
 
             const isCorrectPassword = bcryptjs.compareSync(req.body.password, userToLogin.password);
@@ -61,7 +76,6 @@ const controller = {
                 if (req.body.remember_user) {
                     res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 2 });
                 };
-
                 return res.redirect('/')
             }
             return res.render('users/login', {

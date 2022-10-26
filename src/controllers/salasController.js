@@ -1,44 +1,72 @@
-const { json } = require('express');
-const fs = require('fs');
-const path = require('path');
+// const { json } = require('express');
+// const fs = require('fs');
+// const path = require('path');
 
-const salasFilePath = path.join(__dirname, '../database/salasData.json');
-const salas = JSON.parse(fs.readFileSync(salasFilePath, 'utf-8'));
+// const salasFilePath = path.join(__dirname, '../database/salasData.json');
+// const salas = JSON.parse(fs.readFileSync(salasFilePath, 'utf-8'));
+
+const db = require('../database/models');
+const sequelize = db.sequelize;
+
+const Salas = db.Sala;
 
 const controller = {
-    listaSalas: (req, res) => {
-        res.render('products/listaSalas', { salas });
-    },
-    createSala: (req, res) => {
-        res.render('products/crearSala');
-    },
-    newSala: (req, res) => {
-        const salasClone = salas;
-        const newSala = {
-            id: salasClone.length,
-            titulo: req.body.titulo,
-            descripcionCorta: req.body.descripcionCorta,
-            descripcionDetallada: req.body.descripcionDetallada,
-            precio: req.body.precio,
-            img: req.file.filename
-        };
-        salasClone.push(newSala);
-        fs.writeFileSync(salasFilePath, JSON.stringify(salasClone, null, '  '));
-        res.redirect('/products/');
-    },
-    detalleSalas: (req, res) => {
-        const sala = salas.find(sala => sala.id == req.params.id);
-        res.render('products/detalleSalas', { sala });
-    },
-    editSala: (req, res) => {
-        const sala = salas.find(sala => sala.id == req.params.id);
-        res.render('products/editarSala', { sala });
-    },
-    deleteSala: (req, res) => {
-        const allSalas = salas.filter(sala => sala.id != req.params.id);
-        fs.writeFileSync(salasFilePath, JSON.stringify(allSalas, null, '  '));
-        res.redirect('products/deleteSala');
+        listaSalas: (req, res) => {
+            Salas.findAll()
+                .then(function (salas) {
+                    res.render('products/listaSalas', { salas });
+                })
+        },
+        detalleSalas: (req, res) => {
+            Salas.findByPk(req.params.id)
+                .then(function (sala) {
+                    res.render('products/detalleSalas', { sala });
+                })
+        },
+        createSala: (req, res) => {
+            const salas = Cursos.findAll();
+            res.render('admin/crearSala', { salas });
+        },
+        newSala: (req, res) => {
+            Salas.create({
+                titulo: req.body.titulo,
+                metros_cuadrados: req.body.metros_cuadrados,
+                turno_sala: req.body.turno_sala,
+                precio: req.body.precio,
+                imagen: req.body.imagen,
+                descripcion: req.body.descripcion 
+            });
+            res.redirect('products/listaSalas');
+        },
+        editSala: (req, res) => {
+            Salas.findByPk(req.params.id)
+            .then (function([sala]){
+                res.render('admin/editarSala', {sala})
+            })
+        },
+        updatedSala: (req, res) => {
+            Salas.update({
+                titulo: req.body.titulo,
+                metros_cuadrados: req.body.metros_cuadrados,
+                turno_sala: req.body.turno_sala,
+                precio: req.body.precio,
+                imagen: req.body.imagen,
+                descripcion: req.body.descripcion
+            }, {
+                where: {
+                    id: req.params.id
+                }
+            });
+            res.redirect('products/listaSalas' + req.params.id);
+        },
+        deleteSala: (req, res) => {
+            Salas.destroy({
+                where: {
+                    id: req.params.id
+                }
+            })
+            res.redirect('products/listaSalas');
+        }
     }
-}
 
 module.exports = controller;

@@ -1,27 +1,36 @@
 const express = require('express');
 const { body } = require('express-validator');
 
-const cursosController = require('../controllers/cursosController');
-const uploadFile = require('../middlewares/multerMiddleware');
-
 const router = express.Router();
 
+const cursosController = require('../controllers/cursosController');
+
+const authMiddleware = require('../middleWares/authMiddleware');
+const multerCursosMiddleware = require('../middleWares/multerCursosMiddleware');
+const updatedCursosValidationsMiddleware = require('../middleWares/updatedCursosValidationsMiddleware');
+const cursosValidationsMiddleware = require('../middleWares/cursosValidationsMiddleware');
+
+
+
+// Muestra listado de cursos
 router.get('/', cursosController.listaCursos);
 
-// Muestra vista del create
-router.get('/crearCurso', cursosController.createCurso);
+// Detalle del curso
+
+// Vista del create
+router.get('/crearCurso', authMiddleware, cursosController.createCurso);
 
 // Carga los datos del nuevo curso
-router.post('/crearCurso', uploadFile.single('img'), cursosController.newCurso);
-
-// Detalle del curso
-router.get('/:id/', cursosController.detalleCursos);
+router.post('/crearCurso', cursosValidationsMiddleware, multerCursosMiddleware.single('img'), cursosController.newCurso);
 
 // Muestra la vista de edición del curso
-router.get('/editarCurso/:id/', cursosController.editCurso);
+router.get('/editarCurso/:id', authMiddleware, cursosController.editCurso);
 
-router.delete('/deleteCurso/:id', cursosController.deleteCurso);
+router.post('/editarCurso/:id', updatedCursosValidationsMiddleware, multerCursosMiddleware.single('img'), cursosController.updatedCurso);
 
+router.delete('/deleteCurso/:id', authMiddleware, cursosController.deleteCurso);
+
+router.get('/:id', cursosController.detalleCursos);
 
 
 

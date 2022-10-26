@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--TIPOGRAFIA ROBOTO-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <!-- LIBRERIA FONTAWESOME-->
+    <script src="https://kit.fontawesome.com/439c181295.js" crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- ESTILOS PROPIOS-->
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/register.css" rel="stylesheet">
+
+
+    <!--TITULO -->
+    <title>1771 Studios</title>
+
+</head>
+
+<body>
+    <%- include('../partials/header') %>
+        <main>
+            <h2>Crear Sala</h2>
+            <form action="/salas/crearSala" method="POST">
+                <div>
+                    <label for="">Título</label>
+                    <input type="text" name="titulo">
+                </div>
+                <div>
+                    <label for="">Tamaño</label>
+                    <input type="text" name="metros_cuadrados">
+                </div>
+                <div>
+                    <label for="">Turno</label>
+                    <input type="text" name="turno_sala">
+                </div>
+                <div>
+                    <label for="">Precio</label>
+                    <input type="text" name="precio">
+                </div>
+                <div>
+                    <label for="">Imagen</label>
+                    <input type="img" name="imagen">
+                </div>
+                <div>
+                    <label for="">Descripción</label>
+                    <input type="text" name="descripcion">
+                </div>
+                <button type="submit">Crear</button>
+            </form>
+
+        </main>
+
+        <%- include('../partials/footer') %>
+
+</body>
+
+</html>

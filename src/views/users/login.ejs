@@ -2,6 +2,7 @@
 <html lang="en">
 
 <!-- HEAD -->
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,25 +28,30 @@
 </head>
 
 
-    <body>
-        <%- include('../partials/header') %>
-            <form action="/users/login" method="POST">
-                <main>
-                    <div class="login">
-                        <input type="email" name="email" placeholder="Correo">
-                        <input type="password" name="password" placeholder="contraseña">
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input" name="remember_user">Recordar mi usuario
-                            </label>
-                        </div>
-                        <button class="ov-btn-grow-spin" type="submit">Ingresar
+<body>
+    <%- include('../partials/header') %>
+        <form action="/users/login" method="POST">
+            <main>
+                <div class="login">
+                    <input type="email" name="email" placeholder="Correo">
+                    <input type="password" name="password" placeholder="contraseña">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" name="remember_user">Recordar mi usuario
+                        </label>
                     </div>
-                </main>
-            </form>
+                    <div class="registro">
+                        <a class="registrate" href="/users/register">
+                            <p>¿No tienes una cuenta? Registrate!</p>
+                        </a>
+                    </div>
+                    <button class="ov-btn-grow-spin" type="submit">Ingresar
+                </div>
+            </main>
+        </form>
 
-            <%- include('../partials/footer') %>
+        <%- include('../partials/footer') %>
 
-    </body>
+</body>
 
 </html>

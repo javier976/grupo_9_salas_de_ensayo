@@ -2,20 +2,27 @@ const express = require('express');
 const { body } = require('express-validator');
 
 const salasController = require('../controllers/salasController');
-const uploadFile = require('../middlewares/multerMiddleware');
 
 const router = express.Router();
 
+const authMiddleware = require('../middleWares/authMiddleware');
+const multerCursosMiddleware = require('../middleWares/multerCursosMiddleware');
+const updatedSalasValidationsMiddleware = require('../middleWares/updatedSalasValidationsMiddleware');
+const salasValidationsMiddleware = require('../middleWares/salasValidationsMiddleware');
+
+
 router.get('/', salasController.listaSalas);
 
-router.get('/crearSala', salasController.createSala);
+router.get('/crearSala', authMiddleware, salasController.createSala);
 
-router.post('/crearSala', uploadFile.single('img', salasController.newSala));
+router.post('/crearSala', salasValidationsMiddleware, multerCursosMiddleware.single('img'), salasController.newSala);
 
-router.get('/detalleSalas/:id', salasController.detalleSalas);
+router.get('/editarSala/:id', authMiddleware, salasController.editSala);
 
-router.get('/editarSala/:id', salasController.editSala);
+router.post('/editarSala/:id', updatedSalasValidationsMiddleware, multerCursosMiddleware.single('img'), salasController.updatedSala);
 
-router.delete('/deleteSala', salasController.deleteSala);
+router.delete('/deleteSala/:id', authMiddleware, salasController.deleteSala);
+
+router.get('/:id', salasController.detalleSalas);
 
 module.exports = router;

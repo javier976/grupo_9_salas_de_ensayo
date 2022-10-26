@@ -37,9 +37,9 @@
                     <div class="row">
                         <input style="display: flex; font-family: 'Font Awesome 5 Free'; font-weight: 600;" type="text"
                             name="nombre" id="nombre" class="form-control users" placeholder="Your Name">
-                        <% if (locals.errors && errors.name) { %>
+                        <% if (locals.errors && errors.nombre) { %>
                             <h4 style="color: red; text-align: left;">
-                                <%= errors.name.msg %>
+                                <%= errors.nombre.msg %>
                             </h4>
                             <% } %>
                                 <input style="display: flex; font-family: 'Font Awesome 5 Free'; font-weight: 600;"
@@ -114,6 +114,14 @@
                                                         <%= errors.password.msg %>
                                                     </h4>
                                                     <% } %>
+                                                    <!-- <input style="font-family: 'Font Awesome 5 Free'; font-weight: 600;"
+                                                    type="file" name="imageUser" id="imageUser" class="form-label"
+                                                    placeholder="Imagen">
+                                                 if (locals.errors && errors.imageUser) { 
+                                                    <h4 style="color: red; text-align: left;">
+                                                        < errors.imageUser.msg 
+                                                    </h4>
+                                                     }  -->
                                                         <button class="ov-btn-grow-spin" type="submit">Sing Up
                                                         </button>
 

@@ -2,20 +2,30 @@ const express = require('express');
 const usersController = require('../controllers/usersController');
 
 //Middlewares
-const validationsMiddleWare = require('../middlewares/validationsMiddleWare');
-const guestMiddleWare = require('../middlewares/guestMiddleWare');
-const logDBMiddleWare = require('../middlewares/logDBMiddleWare'); //Ruta de middleWares para DB
+const authMiddleware = require('../middleWares/authMiddleware');
+const guestMiddleware = require('../middleWares/guestMiddleware');
+const multerUserMiddleware = require('../middleWares/multerUserMiddleware');
+const userValidationsMiddleware = require('../middleWares/userValidationsMiddleware');
+// const logDBMiddleware = require('../middleWares/logDBMiddleware'); //Ruta de middleWares para DB
 
 
 const router = express.Router();
 
-router.get('/login', usersController.login);
+//LOGIN
+router.get('/login', guestMiddleware, usersController.login);
 
-router.post('/login', validationsMiddleWare, usersController.processLogin);
+router.post('/login', usersController.processLogin);
 
-router.get('/register', usersController.registro);
+//REGISTER
+router.get('/register', guestMiddleware, usersController.registro);
 
-router.post('/register', validationsMiddleWare, usersController.processRegister);
+router.post('/register', multerUserMiddleware.single('imageUser'), userValidationsMiddleware, usersController.processRegister);
+
+//PERFIL
+router.get('/perfil', authMiddleware, usersController.profile);
+ 
+//LOGOUT
+router.get('/logout/', usersController.logout);
 
 
 module.exports = router;

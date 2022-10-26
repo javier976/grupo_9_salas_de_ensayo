@@ -15,12 +15,12 @@ const Salas = db.Sala;
 
 
 const mainController = {
-    index: (req, res) => {
-        db.Curso.findAll()
-        db.Sala.findAll()
-        .then((salas, cursos) => {
-            res.render('index', { salas, cursos });
-        }) 
+    index: async (req, res) => {
+        const cursos = await db.Curso.findAll()
+        const salas = await db.Sala.findAll()
+        // res.send({salas, cursos});
+        res.render('index', { salas, cursos });
+ 
     },
     register: (req, res) => {
         res.render('register');

@@ -14,9 +14,9 @@
                         <% salas.forEach(sala=> { %>
                             <div class="sala-under">
                                 <figure class="sala-image">
-                                    <img src="/images/<%= sala.img %>" />
+                                    <img src="/images/<%= sala.images %>" />
                                     <div class="sala-over">
-                                        <a href="/products/<%= sala.id %>"></a>
+                                        <a href="/salas/<%= sala.id %>"></a>
                                     </div>
                                 </figure>
                                 <div class="sala-summary">
@@ -24,10 +24,7 @@
                                         <%= sala.titulo %>
                                     </h4>
                                     <p>
-                                        <%= sala.descripcionCorta %>
-                                    </p>
-                                    <p>
-                                        <%= sala.descripcionDetallada %>
+                                        <%= sala.descripcion %>
                                     </p>
                                     <h6 class="price">
                                         $<span class="priceValue">

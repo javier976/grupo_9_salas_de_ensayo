@@ -17,5 +17,18 @@
   "name": "peter",
   "email": "pter@gmail.com",
   "password": "$2a$10$iPXGMy1uLcBkU3rmGzjYpeLGeuuFkH2aJbQcTn5fGgS410.vzvpiK"
+ },
+ {
+  "id": 3,
+  "nombre": "Manuel",
+  "apellido": "Nieva",
+  "email": "manuore97@gmail.com",
+  "direccion": "Av. Del Libertador 5878",
+  "ciudad": "CABA",
+  "estado": "CABA",
+  "pais": "Argentina",
+  "codigo_postal": "1430",
+  "telefono": "1161534641",
+  "password": "$2a$10$VmUwqIvNzvRAGXAXeDm7B.iDjHH7QeyWck.f5icWEkxJb6EgkGCbm"
  }
 ]

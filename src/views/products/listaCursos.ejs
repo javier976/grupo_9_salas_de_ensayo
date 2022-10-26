@@ -1,52 +1,64 @@
 <!DOCTYPE html>
 }<html lang="en">
 
-    <!-- HEAD -->
-    <%- include('../partials/head') %>
+<!-- HEAD -->
+<%- include('../partials/head') %>
 
-<body>
-    <%- include('../partials/header') %>
-        <main>
-            <h3>Lista de Cursos</h3>
-            <section class="main-section">
-                <div class="curso-container">
-                    <div class="cursos">
-                        <% cursos.forEach(curso=> { %>
-                            <div class="curso-under">
-                                <figure class="curso-image">
-                                    <img src="/images/<%= curso.img %>" />
-                                    <div class="curso-over">
-                                        <a href="/products/<%= curso.id %>"></a>
+    <body>
+        <%- include('../partials/header') %>
+            <main>
+                <h1>Lista de Cursos</h1>
+                <section class="main-section">
+                    <div class="curso-container">
+                        <div class="cursos">
+                            <% cursos.forEach(curso=> { %>
+                                <div class="curso-under">
+                                    <figure class="curso-image">
+                                        <img src="/images/<%= curso.images %>" />
+                                        <div class="curso-over">
+                                            <a href="/cursos/<%= curso.id %>"></a>
+                                        </div>
+                                    </figure>
+                                    <div class="curso-summary">
+                                        <h2>
+                                            <%= curso.titulo %>
+                                        </h2>
+                                        <p>
+                                            En tus clases tendrás un encuentro personalizado con el docente a cargo con
+                                            quién
+                                            trabajarás técnica y repertorio a tu elección. El docente diseña ejercicios
+                                            específicos
+                                            para que logres aprender en forma dinámica, práctica y veloz. Podés optar
+                                            por la
+                                            modalidad online o presencial con protocolo. En algunas actividades tendrás
+                                            la opción de
+                                            optar por la modalidad grupal, son grupos super reducidos de hasta 2 o 3
+                                            alumnos por
+                                            curso. Los horarios son a combinar con el docente.
+                                            Nuestros docentes son profesionales recibidos que se adaptaran al nivel en
+                                            el que te
+                                            encuentres. Inicial/Intermedio /Avanzado. Desde tu primera clase notarás el
+                                            avance.
+                                            Respecto a tu edad… NO HAY EDAD PARA LA MÚSICA.
+                                        </p>
+                                        <h3 class="price">
+                                            $<span class="priceValue">
+                                                <%= curso.precio %>
+                                            </span>
+                                        </h3>
+                                        <button class="btn btn-small addToCart" data-curso-id="3">
+                                            <i class="fas fa-cart-plus"></i>Add to cart
+                                        </button>
                                     </div>
-                                </figure>
-                                <div class="curso-summary">
-                                    <h4>
-                                        <%= curso.titulo %>
-                                    </h4>
-                                    <p>
-                                        <%= curso.descripcionClase %>
-                                    </p>
-                                    <p>
-                                        <%= curso.descripcionDocentes %>
-                                    </p>
-                                    <h6 class="price">
-                                        $<span class="priceValue">
-                                            <%= curso.precio %>
-                                        </span>
-                                    </h6>
-                                    <button class="btn btn-small addToCart" data-curso-id="3">
-                                        <i class="fas fa-cart-plus"></i>Add to cart
-                                    </button>
                                 </div>
-                            </div>
-                            <% }); %>
+                                <% }); %>
                         </div>
-                </div>
-            </section>
-        </main>
+                    </div>
+                </section>
+            </main>
 
-        <%- include('../partials/footer') %>
+            <%- include('../partials/footer') %>
 
-</body>
+    </body>
 
 </html>

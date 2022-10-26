@@ -1,56 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <!-- HEAD -->
-    <%- include('../partials/head') %>
+<!-- HEAD -->
+<%- include('../partials/head') %>
 
-<body>
-    <!-- HEADER -->
-    <%- include('../partials/header') %>
-        <main>
-            <!-- sala detail -->
-            <div class="container salas-wrapper">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="salas-title">Detalle de la sala: <%= sala.titulo %>
-                        </h2>
-                    </div>
-                </div>
-                <div class="sala-detail">
-                    <div class="img-box">
-                        <img src="/images/<%= sala.images %> ">
-                        <p class="sala-detail-description">
-                            <%= sala.metros_cuadrados %>
-                                <%= sala.descripcion %>
-                        </p>
-                    </div>
-                    <div class="sala-info-box">
-                        <article class="sala-detail-info">
-                            <h2 class="sala-detail-title">
-                                <%= sala.titulo %>
+    <body>
+        <!-- HEADER -->
+        <%- include('../partials/header') %>
+            <main>
+                <!-- sala detail -->
+                <div class="container salas-wrapper">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="salas-title">Detalle de la sala: <%= sala.titulo %>
                             </h2>
-
-                            <p class="sala-detail-price">
-                                $<%= sala.precio %>
+                        </div>
+                    </div>
+                    <div class="sala-detail">
+                        <div class="img-box">
+                            <img src="/images/<%= sala.images %> ">
+                            <p class="sala-detail-description">
+                                <%= sala.metros_cuadrados %>
+                                    <%= sala.descripcion %>
                             </p>
+                        </div>
+                        <div class="sala-info-box">
+                            <article class="sala-detail-info">
+                                <h2 class="sala-detail-title">
+                                    <%= sala.titulo %>
+                                </h2>
 
-                            <button class="btn btn-small addToCart" data-sala-id="3">
-                                <i class="fas fa-cart-plus"></i>Add to cart
-                            </button>
+                                <p class="sala-detail-price">
+                                    $<%= sala.precio %>
+                                </p>
 
-                            <a href="/products/editSala/<%= sala.id %> " class="action-button edit">EDITAR PRODUCTO</a>
-                            <form action="/products/deleteSala?_method=DELETE" method="POST"
-                                style="display: inline-flex">
-                                <button type="submit" class="action-button delete">ELIMINAR</button>
-                            </form>
-                        </article>
+                                <div class="button-container">
+                                    <% if (locals.userLogged && userLogged.users_categories_id==2 || !locals.userLogged)
+                                        { %>
+                                        <button class="botonBuy">Agregar al carrito</button>
+                                        <% }else{ %>
+                                            <a href="/admin/editarSala/ <%= sala.id %> "
+                                                class="action-button edit">EDITAR</a>
+                                            <% } %>
+                                </div>
+                            </article>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- /sala detail -->
-        </main>
-        <!-- FOOTER -->
-        <%- include('../partials/footer') %>
-</body>
+                <!-- /sala detail -->
+            </main>
+            <!-- FOOTER -->
+            <%- include('../partials/footer') %>
+    </body>
 
 </html>

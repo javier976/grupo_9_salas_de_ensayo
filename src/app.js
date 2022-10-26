@@ -1,12 +1,21 @@
 const express = require('express');
 const path = require('path');
-const app = express();
-const pathPublic = path.join(__dirname, "../public");
 const methodOverride = require('method-override');
 const session = require('express-session');
 const cookies = require('cookie-parser');
-const logMiddleWare = require('./middleWares/logDBMiddleWare');
-const userLoggedMiddleware = require('./middleWares/userLoggedMiddleWare');
+
+const app = express();
+
+const mainRouter = require('./routes/mainRouter');
+const salasRouter = require('./routes/salasRouter');
+const cursosRouter = require('./routes/cursosRouter');
+const usersRouter = require('./routes/usersRouter');
+
+// const pathPublic = path.join(__dirname, "../public");
+// const logMiddleWare = require('./middleWares/logDBMiddleware');
+const userLoggedMiddleware = require('./middleWares/userLoggedMiddleware');
+
+app.use(express.urlencoded({extended: false}));
 
 // CONFIGURACION DE SESION
 app.use(session({
@@ -15,22 +24,19 @@ app.use(session({
     saveUninitialized: false
 }))
 
-const mainRouter = require('./routes/mainRouter');
-const salasRouter = require('./routes/salasRouter');
-const cursosRouter = require('./routes/cursosRouter');
-const usersRouter = require('./routes/usersRouter');
 
+
+app.use(express.static(path.join(__dirname, '../public')));
+app.use(methodOverride('_method'));
+app.use(express.json());
+app.use(cookies());
+app.use(userLoggedMiddleware);
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.use(logMiddleWare);
-app.use(cookies());
-app.use(userLoggedMiddleware);
-app.use(express.static(pathPublic));
-app.use(methodOverride('_method'));
-app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+// app.use(logMiddleWare);
+
 app.use('/', mainRouter);
 app.use('/salas', salasRouter);
 app.use('/cursos', cursosRouter);
