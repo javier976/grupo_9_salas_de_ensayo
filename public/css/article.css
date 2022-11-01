@@ -12,6 +12,10 @@ main section.option a {
   text-decoration: none;
 }
 
+div.clases {
+  background-color: #fff;
+}
+
 div.clases a {
   text-decoration: none;
   color: gray;
@@ -55,8 +59,8 @@ article div.main-article h4 {
 /* xxxxxxxxxxx */
 
 main section article {
-  background-color: #fff;
   margin: 10px 0px;
+  background-color: #f9fafb;
 }
 
 main section article img {
@@ -136,10 +140,9 @@ main section .clases h2 {
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: stretch;
-    background-color: #fff;
     margin-top: 15px;
   }
-  
+
   main section.option a {
     width: 100%;
   }

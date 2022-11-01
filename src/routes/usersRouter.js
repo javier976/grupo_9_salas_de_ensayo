@@ -22,8 +22,12 @@ router.get('/register', guestMiddleware, usersController.registro);
 router.post('/register', multerUserMiddleware.single('imageUser'), userValidationsMiddleware, usersController.processRegister);
 
 //PERFIL
-router.get('/perfil', authMiddleware, usersController.profile);
- 
+router.get('/profile', authMiddleware, usersController.profile && usersController.allUsers);
+
+//EDIT
+router.get('/edit/:id', usersController.edit);
+router.put('/edit/:id', multerUserMiddleware.single('imageUser'), userValidationsMiddleware, usersController.update);
+
 //LOGOUT
 router.get('/logout/', usersController.logout);
 

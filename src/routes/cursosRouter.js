@@ -7,7 +7,6 @@ const cursosController = require('../controllers/cursosController');
 
 const authMiddleware = require('../middleWares/authMiddleware');
 const multerCursosMiddleware = require('../middleWares/multerCursosMiddleware');
-const updatedCursosValidationsMiddleware = require('../middleWares/updatedCursosValidationsMiddleware');
 const cursosValidationsMiddleware = require('../middleWares/cursosValidationsMiddleware');
 
 
@@ -26,7 +25,7 @@ router.post('/crearCurso', cursosValidationsMiddleware, multerCursosMiddleware.s
 // Muestra la vista de edición del curso
 router.get('/editarCurso/:id', authMiddleware, cursosController.editCurso);
 
-router.post('/editarCurso/:id', updatedCursosValidationsMiddleware, multerCursosMiddleware.single('img'), cursosController.updatedCurso);
+router.post('/editarCurso/:id', cursosValidationsMiddleware, multerCursosMiddleware.single('img'), cursosController.updatedCurso);
 
 router.delete('/deleteCurso/:id', authMiddleware, cursosController.deleteCurso);
 

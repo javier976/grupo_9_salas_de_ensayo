@@ -24,10 +24,6 @@ insert into salas values (default, 'Sala Premium', '52 mts2', '4 horas', 50000);
 
 insert into usuarios values (default, 'Manuel', 'Nieva', 'Av. Del Libertador', 'CABA', 'CABA', 'Argentina', '1430', '1561534641', 'manuore97@gmail.com', '1234');
 
-insert into usuarios values (default, 'Jonhy', 'Rojas', 'Av. Cordoba', 'CABA', 'CABA', 'Argentina', '1446', '1578987656', 'jhonatanrojas@gmail.com', '1234');
-
-insert into usuarios values (default, 'Bruno', 'Sigillo', 'Charcas', 'CABA', 'CABA', 'Argentina', '1425', '1534917238', 'brunosigillo0@gmail.com', '1234');
-
 alter table cursos add images text not null;
 
 update cursos set images = 'images/clase guitarra.jpeg' where id = 1;

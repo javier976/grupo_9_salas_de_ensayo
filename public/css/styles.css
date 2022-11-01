@@ -19,11 +19,19 @@ body {
 
 input[type=password],
 input[type=email],
-input[type=text] {
+input[type=text],
+input[type=direccion],
+input[type=ciudad],
+input[type=estado],
+input[type=pais],
+input[type=codigo_postal],
+input[type=telefono] {
     /* width: 100%; */
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
+    margin-left: 15px;
+    border-radius: 20px;
 }
 
 button {
@@ -33,10 +41,6 @@ button {
     padding: 12px;
     border-radius: 4px;
 
-}
-
-article {
-    background-color: red;
 }
 
 /*!! ------HEADER------ !!*/
@@ -156,6 +160,150 @@ section.info .description-1771 button {
     width: 32%;
 }
 
+/* Lista Cursos */
+
+div.curso-container {
+    display: flex;
+}
+
+/* Detalle Curso */
+
+div.container.cursos-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2.cursos-title {
+    margin-bottom: 15px;
+    padding: 8px;
+    background-color: #edae1a;
+    border-radius: 5px;
+    color: #fff;
+}
+
+div.img-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: solid 1px gray;
+    border-left: solid 1px gray;
+    border-right: solid 1px gray;
+}
+
+div.detalle {
+    margin-top: 5px;
+    padding: 8px;
+    background-color: #edae1a;
+    color: #fff;
+    border-radius: 5px;
+    border: solid 2px black;
+}
+
+div.button-container {
+    margin-bottom: 15px;
+}
+
+/* Detalle Salas */
+
+div.container.salas-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div.salas-img-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: solid 1px gray;
+    border-left: solid 1px gray;
+    border-right: solid 1px gray;
+}
+
+.sala-img {
+    width: 75%;
+}
+
+h2.salas-title {
+    margin-bottom: 15px;
+    padding: 8px;
+    background-color: #edae1a;
+    border-radius: 5px;
+    color: #fff;
+}
+
+/* About */
+
+div.description-about {
+    width: 100%;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 5%;
+}
+.about {
+    display: flex;
+    flex-direction: row;
+}
+
+h2.somos {
+    margin-left: 10px;
+    color: #edae1a;
+}
+
+p.about-us {
+    width: 61.4%;
+    margin-top: 40px;
+    background-color: #edae1a;
+    color: #fff;
+    border: solid 1px gray;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+p.about-us-2 {
+    font-size: 20px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    color: #666;
+}
+
+img#logo-about {
+    border: solid 2px black;
+}
+
+/* Carrito de compras*/
+
+.row.no-gutters {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+}
+
+.payment-info {
+    padding: 8px;
+}
+
+.type-card {
+    margin-right: 15px;
+}
+
+.name-client {
+    margin-top: 15px;
+}
+
+.seguir-comprando {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.payment-information {
+    margin-top: 15px;
+}
 
 @media (max-width: 425px) {
     section.info .description-1771 p {
@@ -168,6 +316,35 @@ section.info .description-1771 button {
         display: flex;
         font-size: 22px;
         justify-content: center;
+    }
+
+    div.description-about {
+        width: 100%;
+        margin-top: 5%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 5%;
+    }
+
+    p.about-us {
+        width: 80%;
+        margin-top: 50px;
+    }
+
+    p.about-us-2 {
+        width: 80%;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    h2.about {
+        margin-top: 20px;
+        font-size: 20px;
+    }
+
+    img#logo-about {
+        display: none;
     }
 }
 
@@ -209,4 +386,20 @@ section.info .description-1771 button {
         margin-top: 10px;
         text-align: center;
     }
+
+    div.description-about {
+        width: 100%;
+        margin-top: 5%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 5%;
+    }
+
+    p.about-us {
+        width: 92%;
+        margin-top: 50px;
+    }
+
 }

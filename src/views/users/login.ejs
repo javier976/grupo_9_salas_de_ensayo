@@ -33,8 +33,24 @@
         <form action="/users/login" method="POST">
             <main>
                 <div class="login">
-                    <input type="email" name="email" placeholder="Correo">
-                    <input type="password" name="password" placeholder="contraseña">
+                    <h2>Ingresá</h2>
+                    <input type="text" class="<%=(locals.errors)?'invalid':''%>" name="email" id="email"
+                        value="<%=(locals.oldDataLogin)? oldDataLogin:''%>" placeholder="Email">
+                    <div class="email-errors">
+                        <% if(locals.errors && errors.email){%>
+                            <p class="error">
+                                <%=errors.email.msg%>
+                            </p>
+                            <%}%>
+                    </div>
+                    <input type="password" name="password" id="password" class="<%=(locals.errors)?'invalid':''%>" placeholder="Password">
+                    <div class="password-errors">
+                        <% if(locals.errors && errors.password){%>
+                            <p class="error">
+                                <%=errors.password.msg%>
+                            </p>
+                            <%}%>
+                    </div>
                     <div class="form-check">
                         <label class="form-check-label">
                             <input type="checkbox" class="form-check-input" name="remember_user">Recordar mi usuario
@@ -42,11 +58,12 @@
                     </div>
                     <div class="registro">
                         <a class="registrate" href="/users/register">
-                            <p>¿No tienes una cuenta? Registrate!</p>
+                            <p class="registrate">¿No tienes una cuenta? Registrate!</p>
                         </a>
                     </div>
                     <button class="ov-btn-grow-spin" type="submit">Ingresar
                 </div>
+                <script src="/public/scripts/loginValidations.js"></script>
             </main>
         </form>
 

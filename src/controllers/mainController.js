@@ -27,6 +27,9 @@ const mainController = {
     },
     productCart: (req, res) => {
         res.render('products/productCart');
+    },
+    about: (req, res) => {
+        res.render('about')
     }
 }
 

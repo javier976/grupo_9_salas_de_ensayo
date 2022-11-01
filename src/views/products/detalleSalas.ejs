@@ -17,33 +17,27 @@
                         </div>
                     </div>
                     <div class="sala-detail">
-                        <div class="img-box">
-                            <img src="/images/<%= sala.images %> ">
-                            <p class="sala-detail-description">
-                                <%= sala.metros_cuadrados %>
-                                    <%= sala.descripcion %>
-                            </p>
+                        <div class="salas-img-box">
+                            <img class='sala-img' src="/images/<%= sala.images %> ">
                         </div>
-                        <div class="sala-info-box">
+                        <div class="detalle">
                             <article class="sala-detail-info">
-                                <h2 class="sala-detail-title">
-                                    <%= sala.titulo %>
-                                </h2>
-
+                                <p class="sala-detail-description">
+                                    <%= sala.metros_cuadrados %>
+                                        <%= sala.descripcion %>.
+                                </p>
                                 <p class="sala-detail-price">
-                                    $<%= sala.precio %>
+                                    Precio del turno (4hs) $<%= sala.precio %>
                                 </p>
 
-                                <div class="button-container">
-                                    <% if (locals.userLogged && userLogged.users_categories_id==2 || !locals.userLogged)
-                                        { %>
-                                        <button class="botonBuy">Agregar al carrito</button>
-                                        <% }else{ %>
-                                            <a href="/admin/editarSala/ <%= sala.id %> "
-                                                class="action-button edit">EDITAR</a>
-                                            <% } %>
-                                </div>
                             </article>
+                        </div>
+                        <div class="button-container">
+                            <% if (locals.userLogged && userLogged.users_categories_id==2 || !locals.userLogged) { %>
+                                <button class="botonBuy">Agregar al carrito</button>
+                                <% }else{ %>
+                                    <a href="/admin/editarSala/ <%= sala.id %> " class="action-button edit">EDITAR</a>
+                                    <% } %>
                         </div>
                     </div>
                 </div>
