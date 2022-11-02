@@ -133,100 +133,100 @@ window.addEventListener('load', () => {
         let nombreValidation = validateNombre(nombre.value);
         if (nombreValidation) {
             nombreErrors.innerHTML = nombreValidation
-            nombre.classList.add('invalid')
+            nombre.classList.add('nombre-errors')
         } else {
             nombreErrors.innerHTML = '';
-            avatar.classList.remove('invalid')
+            avatar.classList.remove('nombre-errors')
         }
 
         // APELLIDO VALIDATION
         let apellidoValidation = validateApellido(apellido.value);
         if (apellidoValidation) {
             apellidoErrors.innerHTML = apellidoValidation
-            apellido.classList.add('invalid')
+            apellido.classList.add('apellido-errors')
         } else {
             apellidoErrors.innerHTML = '';
-            avatar.classList.remove('invalid')
+            avatar.classList.remove('apellido-errors')
         }
 
         // DIRECCION VALIDATION
         let direccionValidation = validateDireccion(direccion.value);
         if (direccionValidation) {
             direccionErrors.innerHTML = direccionValidation
-            direccion.classList.add('invalid')
+            direccion.classList.add('direccion-errors')
         } else {
             direccionErrors.innerHTML = '';
-            avatar.classList.remove('invalid')
+            avatar.classList.remove('direccion-errors')
         }
 
         // CIUDAD VALIDATION
         let ciudadValidation = validateCiudad(ciudad.value);
         if (ciudadValidation) {
             ciudadErrors.innerHTML = ciudadValidation
-            ciudad.classList.add('invalid')
+            ciudad.classList.add('ciudad-errors')
         } else {
             ciudadErrors.innerHTML = '';
-            avatar.classList.remove('invalid')
+            avatar.classList.remove('ciudad-errors')
         }
 
         // ESTADO VALIDATION
         let estadoValidation = validateEstado(estado.value);
         if (estadoValidation) {
             estadoErrors.innerHTML = estadoValidation
-            estado.classList.add('invalid')
+            estado.classList.add('estado-errors')
         } else {
             estadoErrors.innerHTML = '';
-            avatar.classList.remove('invalid')
+            avatar.classList.remove('estado-errors')
         }
 
         // PAIS VALIDATION
         let paisValidation = validatePais(pais.value);
         if (paisValidation) {
             paisErrors.innerHTML = paisValidation
-            pais.classList.add('invalid')
+            pais.classList.add('pais-errors')
         } else {
             paisErrors.innerHTML = '';
-            avatar.classList.remove('invalid')
+            avatar.classList.remove('pais-errors')
         }
 
         // CODIGO POSTAL VALIDATION
         let codigoPostalValidation = validateCodigoPostal(codigoPostal.value);
         if (codigoPostalValidation) {
             codigo_postalErrors.innerHTML = codigoPostalValidation
-            codigoPostal.classList.add('invalid')
+            codigoPostal.classList.add('codigo-errors')
         } else {
             codigo_postalErrors.innerHTML = '';
-            avatar.classList.remove('invalid')
+            avatar.classList.remove('codigo-errors')
         }
 
         // TELEFONO VALIDATION
         let telefonoValidation = validateTelefono(telefono.value);
         if (telefonoValidation) {
             telefonoErrors.innerHTML = telefonoValidation
-            telefono.classList.add('invalid')
+            telefono.classList.add('telefono-errors')
         } else {
             telefonoErrors.innerHTML = '';
-            telefono.classList.remove('invalid')
+            telefono.classList.remove('telefono-errors')
         }
-        
+
         // EMAIL VALIDATION
         let emailValidation = validateEmail(email.value);
         if (emailValidation) {
             emailErrors.innerHTML = emailValidation
-            email.classList.add('invalid')
+            email.classList.add('email-errors')
         } else {
             emailErrors.innerHTML = '';
-            email.classList.remove('invalid')
+            email.classList.remove('email-errors')
         }
 
         // PASSWORD VALIDATION
         let passwordValidation = validatePassword(password.value);
         if (passwordValidation) {
             passwordErrors.innerHTML = passwordValidation
-            password.classList.add('invalid')
+            password.classList.add('password-errors')
         } else {
             passwordErrors.innerHTML = '';
-            password.classList.remove('invalid')
+            password.classList.remove('password-errors')
         }
 
         // PERFIL IMAGEN VALIDATION
@@ -238,6 +238,6 @@ window.addEventListener('load', () => {
             profileImageErrors.innerHTML = '';
             profileImage.classList.remove('invalid')
         }
-
+        errors != 0 ? event.preventDefault() : null;
     })
 });

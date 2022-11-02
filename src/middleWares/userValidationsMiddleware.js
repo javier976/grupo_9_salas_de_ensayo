@@ -23,19 +23,19 @@ module.exports = [
 	
 	body('password').notEmpty().withMessage('Tienes que escribir una contraseña'),
 	
-	body('imageUser').custom((value, { req }) => {
-        let file = req.file;
-        let acceptedExtensions = ['.jpg', '.png', '.gif'];
+	// body('imageUser').custom((value, { req }) => {
+    //     let file = req.file;
+    //     let acceptedExtensions = ['.jpg', '.png', '.gif'];
         
-        if (!file) {
-            throw new Error('Debe subir una imagen de perfil.')
-        } else {
-            let fileExtension = path.extname(file.originalname);
-        if (!acceptedExtensions.includes(fileExtension)){
-            throw new Error (`Las extensiones de archivo permitidas son ${acceptedExtensions.join(', ')}.`);
-            }
-        }  
+    //     if (!file) {
+    //         throw new Error('Debe subir una imagen de perfil')
+    //     } else {
+    //         let fileExtension = path.extname(file.originalname);
+    //     if (!acceptedExtensions.includes(fileExtension)){
+    //         throw new Error (`Las extensiones de archivo permitidas son ${acceptedExtensions.join(', ')}.`);
+    //         }
+    //     }  
 
-        return true;
-    })
+    //     return true;
+    // })
 ]

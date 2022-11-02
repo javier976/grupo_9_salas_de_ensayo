@@ -24,36 +24,36 @@
 <body>
     <%- include('../partials/header') %>
         <main>
-            <h2>Crear Sala</h2>
+            <h2>Editar Sala</h2>
             <form action="/salas/editarSala" method="POST">
                 <div>
                     <label for="">Título</label>
-                    <input type="text" name="titulo">
+                    <input type="text" name="titulo" value="<%= sala.titulo %> ">
                 </div>
                 <div>
                     <label for="">Tamaño</label>
-                    <input type="text" name="metros_cuadrados">
+                    <input type="text" name="metros_cuadrados" value="<%= sala.metros_cuadrados %> ">
                 </div>
                 <div>
                     <label for="">Turno</label>
-                    <input type="text" name="turno_sala">
+                    <input type="text" name="turno_sala" value="<%= sala.turno_sala %> ">
                 </div>
                 <div>
                     <label for="">Precio</label>
-                    <input type="text" name="precio">
+                    <input type="text" name="precio" value="<%= sala.precio %> ">
                 </div>
                 <div>
                     <label for="">Imagen</label>
-                    <input type="img" name="imagenSala">
+                    <input type="img" name="imagenSala" value="<%= sala.images %> ">
                 </div>
                 <div>
                     <label for="">Descripción</label>
-                    <input type="text" name="descripcion">
+                    <input type="text" name="descripcion" value="<%= sala.descripcion %> ">
                 </div>
                 <button type="submit">Editar</button>
-                <form action="/salas/delete" method="POST" style="display: inline-flex">
-                    <button type="submit" class="action-button delete">ELIMINAR</button>
-                </form>
+            </form>
+            <form action="/salas/delete" method="POST" style="display: inline-flex">
+                <button type="submit" class="action-button delete">ELIMINAR</button>
             </form>
 
         </main>

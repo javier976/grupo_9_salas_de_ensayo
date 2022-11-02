@@ -8,7 +8,7 @@ const userLogged = async (req, res, next) => {
         res.locals.isLogged = false;
         
         let emailInCookie = req.cookies.userEmail;
-        console.log('hola')
+        // console.log('hola')
 
         let userInCookie = await Users.findOne({
             where:{

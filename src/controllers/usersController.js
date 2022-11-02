@@ -13,47 +13,93 @@ const controller = {
         res.render('users/register');
     },
 
+    // async function (req, res) {
+    //     try {
+    //      const resultValidation = validationResult(req);
+
+    //      if (resultValidation.errors.length > 0) {
+    //          return res.render('users/register', {
+    //              errors: resultValidation.mapped(),
+    //              oldData: req.body,
+    //          });
+    //      }
+    //      let userInDB = await Users.findOne({
+    //          where:{
+    //              email: req.body.email
+    //          }
+    //  });
+
+    //      if (userInDB) {
+    //          return res.render('users/login', {
+    //              errors: {
+    //                  email: {
+    //                      msg: 'Este email ya está en uso'
+    //                  }
+    //              },
+    //              oldData: req.body
+    //          });
+    //      }
+
+    //      let userToCreate = {
+    //         nombre: req.body.nombre,
+    //                     apellido: req.body.apellido,
+    //                     direccion: req.body.direccion,
+    //                     ciudad: req.body.ciudad,
+    //                     estado_provincia: req.body.estado_provincia,
+    //                     pais: req.body.pais,
+    //                     codigo_postal: req.body.codigo_postal,
+    //                     telefono: req.body.telefono,
+    //                     email: req.body.email,
+    //                     profile_image: req.body.profile_image,
+    //                     categoria_usuario_id: 2,
+    //                     password: bcryptjs.hashSync(req.body.password),
+    //      }
+
+
+    //     const userCreated = await Users.create(userToCreate);
+
+
+    //      return  res.redirect('/');
+
+    //  } catch (error) {
+
+    //      res.send(error)
+    //  }
+    //  },
     processRegister: async (req, res) => {
         try {
-            let errors = validationResult(req);
-            
-            if (!errors.isEmpty()) {
+            let resultValidation = validationResult(req);
 
-                errors = errors.mapped();
-
-                let oldData = {
+            if (resultValidation.errors.length > 0) {
+                if (req.file) {
+                    req.file ? fs.unlinkSync(path.join(__dirname, '../public/images/user/' + req.file.filename)) : null;
+                }
+                return res.render('users/register', {
+                    oldData: req.body,
+                    categoria_usuario_id: 2,
+                    errors: resultValidation.mapped()
+                }, 'Error en el registro');
+            } else {
+                let newUser = {
                     nombre: req.body.nombre,
                     apellido: req.body.apellido,
+                    direccion: req.body.direccion,
+                    ciudad: req.body.ciudad,
+                    estado_provincia: req.body.estado_provincia,
+                    pais: req.body.pais,
+                    codigo_postal: req.body.codigo_postal,
                     telefono: req.body.telefono,
                     email: req.body.email,
                     profile_image: req.body.profile_image,
-                    categoria_usuario_id: 2
+                    categoria_usuario_id: 2,
+                    password: bcryptjs.hashSync(req.body.password),
                 };
-            
-            req.file?fs.unlinkSync(path.join(__dirname, '../public/images/user/' + req.file.filename)):null;
-                
-                return res.render('users/register', { errors, oldData });
-            };
 
-            let newUser = {
-                nombre: req.body.nombre,
-                apellido: req.body.apellido,
-                direccion: req.body.direccion,
-                ciudad: req.body.ciudad,
-                estado_provincia: req.body.estado_provincia,
-                pais: req.body.pais,
-                codigo_postal: req.body.codigo_postal,
-                telefono: req.body.telefono,
-                email: req.body.email,
-                profile_image: req.body.profile_image,
-                categoria_usuario_id: 2,
-                password: bcryptjs.hashSync(req.body.password, 10),
-            };
-
-            await Users.create(newUser);
+                await Users.create(newUser);
 
 
-            res.redirect('/users/login');
+                res.redirect('/users/login');
+            }
 
         } catch (error) {
 
@@ -61,7 +107,6 @@ const controller = {
             return res.send(error);
 
         };
-
     },
 
     login: (req, res) => {
@@ -74,23 +119,27 @@ const controller = {
             let userData = req.body;
 
             let userToLogin = await Users.findOne({ where: { email: userData.email } });
-            
+
             if (userToLogin) {
-                if (bcryptjs.compareSync(userData.password, userToLogin.password)) {
+                if (userToLogin.password.substr(0, 7), '$2OS905$') {
 
-                    delete userToLogin.password;  
+                    let passwordOk = bcryptjs.compareSync(req.body.password, userToLogin.password)
+                    if (passwordOk) {
 
-                    req.session.userLogged = userToLogin;
+                        delete userToLogin.password;
 
-                    if (req.body.recordar) {
-                        res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 60 }) 
-                    }; //Creo cookie 'recordar'
+                        req.session.userLogged = userToLogin;
 
+                        if (req.body.recordar) {
+                            res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 60 })
+                        }; //Creo cookie 'recordar'
+
+                    }
                     return res.redirect('/');
                 }
-                return res.render("users/login", { errors: { password: { msg: "constraseña incorrecta" } }, oldDataLogin: userToLogin.email });
+            } else {
+                return res.render("users/login", { errors: { email: { msg: "Email incorrecto" }, password: { msg: "constraseña incorrecta" } }, oldDataLogin: userToLogin.email });
             }
-            return res.render("users/login", { errors: { email: { msg: "Email incorrecto" } } });
         } catch (error) {
 
             console.log('Falla en el controlador: proccesLogin');

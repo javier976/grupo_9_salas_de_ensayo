@@ -24,7 +24,7 @@
 <body>
     <%- include('../partials/header') %>
         <main>
-            <h2>Crear Curso</h2>
+            <h2>Editar Curso</h2>
             <form action="/cursos/editarCurso/<%= curso.id %> " method="POST">
                 <div>
                     <label for="">Título</label>
@@ -43,9 +43,9 @@
                     <input type="img" name="imagenCurso" value="<%= curso.imagen %>">
                 </div>
                 <button type="submit">Editar</button>
-                <form action="/cursos/delete/<%= curso.id %>" method="POST" style="display: inline-flex">
-                    <button type="submit" class="action-button delete">ELIMINAR</button>
-                </form>
+            </form>
+            <form action="/cursos/delete/<%= curso.id %>" method="POST" style="display: inline-flex">
+                <button type="submit" class="action-button delete">ELIMINAR</button>
             </form>
 
         </main>
