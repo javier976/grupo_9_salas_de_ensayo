@@ -47,23 +47,23 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.TEXT,
             allowNull: false
         },
-       profile_image: {
-            type: dataTypes.TEXT,
-            foreingKey: true
+        profile_image: {
+            type: dataTypes.STRING,
+            allowNull: true
         },
         categoria_usuario_id: {
             type: dataTypes.INTEGER,
             foreingKey: true
         }
     };
-    
+
     const config = {
         tableName: 'usuarios',
         timestamps: false
     };
 
     const Usuario = sequelize.define(alias, cols, config);
-    
+
     Usuario.associate = (models) => {
         Usuario.hasMany(models.Categoria, {
             as: 'categoria de usuario',

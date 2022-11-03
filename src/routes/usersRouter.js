@@ -19,14 +19,14 @@ router.post('/login', usersController.processLogin);
 //REGISTER
 router.get('/register', guestMiddleware, usersController.registro);
 
-router.post('/register', multerUserMiddleware.single('imageUser'), userValidationsMiddleware, usersController.processRegister);
+router.post('/register', multerUserMiddleware.single('profile_image'), userValidationsMiddleware, usersController.processRegister);
 
 //PERFIL
-router.get('/profile', authMiddleware, usersController.profile && usersController.allUsers);
+router.get('/perfil', authMiddleware, usersController.profile);
 
 //EDIT
-router.get('/edit/:id', usersController.edit);
-router.put('/edit/:id', multerUserMiddleware.single('imageUser'), userValidationsMiddleware, usersController.update);
+router.get('/userEdit/:id', usersController.edit);
+router.put('/userEdit/:id', multerUserMiddleware.single('profile_image'), userValidationsMiddleware, usersController.update);
 
 //LOGOUT
 router.get('/logout/', usersController.logout);

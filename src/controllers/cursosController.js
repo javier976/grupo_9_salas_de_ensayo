@@ -18,11 +18,10 @@ const controller = {
                 res.render('products/listaCursos', { cursos });
             })
     },
-    detalleCursos: (req, res) => {
-        Cursos.findByPk(req.params.id)
-            .then(function (curso) {
-                res.render('products/detalleCursos', { curso });
-            })
+    detalleCursos: async (req, res) => {
+        let curso = await Cursos.findOne({ where: { id: req.params.id } })
+        res.render('products/detalleCursos', { curso });
+
     },
     createCurso: (req, res) => {
         const cursos = Cursos.findAll();
@@ -33,22 +32,20 @@ const controller = {
             titulo: req.body.titulo,
             duracion: req.body.duracion,
             precio: req.body.precio,
-            imagen: req.body.imagen 
+            imagen: req.body.imagen
         });
         res.redirect('/products/listaCursos');
     },
-    editCurso: (req, res) => {
-        Cursos.findByPk(req.params.id)
-        .then (function([curso]){
-            res.render('admin/editarCurso', {curso})
-        })
+    editCurso: async (req, res) => {
+        let curso = await Cursos.findOne({ where: { id: req.params.id } })
+        res.render('admin/editarCurso', { curso });
     },
     updatedCurso: (req, res) => {
         Cursos.update({
             titulo: req.body.titulo,
             duracion: req.body.duracion,
             precio: req.body.precio,
-            imagen: req.body.imagen 
+            imagen: req.body.imagen
         }, {
             where: {
                 id: req.params.id

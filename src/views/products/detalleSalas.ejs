@@ -33,11 +33,11 @@
                             </article>
                         </div>
                         <div class="button-container">
-                            <% if (locals.userLogged && userLogged.users_categories_id==2 || !locals.userLogged) { %>
+                            
                                 <button class="botonBuy">Agregar al carrito</button>
-                                <% }else{ %>
-                                    <a href="/admin/editarSala/ <%= sala.id %> " class="action-button edit">EDITAR</a>
-                                    <% } %>
+                                
+                                    <a href="/salas/editarSala/<%= sala.id %>"><button class="botonBuy">EDITAR</button></a>
+                                   
                         </div>
                     </div>
                 </div>

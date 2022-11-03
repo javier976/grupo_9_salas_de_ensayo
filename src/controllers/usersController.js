@@ -67,9 +67,10 @@ const controller = {
     //  }
     //  },
     processRegister: async (req, res) => {
+
         try {
             let resultValidation = validationResult(req);
-
+            // console.log(resultValidation);
             if (resultValidation.errors.length > 0) {
                 if (req.file) {
                     req.file ? fs.unlinkSync(path.join(__dirname, '../public/images/user/' + req.file.filename)) : null;
@@ -90,7 +91,7 @@ const controller = {
                     codigo_postal: req.body.codigo_postal,
                     telefono: req.body.telefono,
                     email: req.body.email,
-                    profile_image: req.body.profile_image,
+                    profile_image: req.file.filename,
                     categoria_usuario_id: 2,
                     password: bcryptjs.hashSync(req.body.password),
                 };
@@ -150,12 +151,9 @@ const controller = {
 
     edit: async (req, res) => {
         try {
-            let user = await Users.findByPk(req.params.id, {
-                include: [
-                    'userCategory'
-                ]
-            });
-            return res.render('userEdit', { user })
+
+            let user = await Users.findOne({ where: { id: req.params.id } })
+            res.render('admin/userEdit', { user })
         } catch (error) {
             console.log("Fallo en el edit: " + error);
             return res.json(error);
@@ -164,7 +162,7 @@ const controller = {
 
     update: async (req, res) => {
         try {
-            let user = await Users.findByPk(req.params.id);
+            let user = await Users.findOne({ where: { id: req.params.id } });
             let errors = validationResult(req)
             if (!errors.isEmpty()) {
                 errors = errors.mapped()
@@ -223,16 +221,6 @@ const controller = {
         res.clearCookie('userEmail');
         req.session.destroy();
         return res.redirect('/');
-    },
-
-    allUsers: async (req, res) => {
-        try {
-            const users = await Users.findAll();
-
-            return res.render('./users/profile', { users })
-        } catch (error) {
-            res.send(error)
-        }
     }
 }
 

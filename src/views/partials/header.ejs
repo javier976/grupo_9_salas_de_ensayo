@@ -5,21 +5,20 @@
         </a>
         <ul class="enlaces">
             <%if(locals.isLogged){%>
-                <div class="perfil">
+                <li class="perfil">
                     <a href="/users/perfil" id="perfil" role="button" class="nav-divnk dropdown-toggle">Perfil</a>
-                        <!-- <img src="/img/users/<%=userLogged.imageUser%>" alt="user_image" width="40" class="user-image"><%=userLogged.nombre%> -->
                 </li>
-                <div class="cerrar-sesion">
+                <li class="cerrar-sesion">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                     <a href="/users/logout">Cerrar sesion</a>
-                </div>
+                </li>
             <%}else{%>
-                <div class="iniciar-sesion">
+                <li class="iniciar-sesion">
                     <a href="/users/login">Iniciar sesión</a>
-                </div>
-                <div class="registro">
+                </li>
+                <li class="registro">
                     <a href="/users/register" >Registrate</a>
-                </div>
+                </li>
             <%}%>
             <!-- <li><a href="../users/register">Registrarme</a></li>
             <li><a href="../users/login">Ingresa</a></li> -->

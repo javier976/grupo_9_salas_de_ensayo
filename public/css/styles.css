@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+.error {
+    color: red;
+}
+
 body {
     background-color: #fff;
     font-family: "Roboto", sans-serif;

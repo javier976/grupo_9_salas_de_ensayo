@@ -2,10 +2,10 @@ const multer = require('multer');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, ('./public/images/users'))
+        cb(null, ('./public/images/user'))
     },
     filename: function (req, file, cb) {
-        cb(null, file.originalname + '-' + Date.now())
+        cb(null, Date.now() + '-' + file.originalname)
       }
 });
 const multerUserMiddleware = multer({storage});

@@ -32,7 +32,7 @@
         <main>
             <div class="form-container" id="newUser">
                 <h2>Registrate</h2>
-                <form action="/users/register" method="POST">
+                <form action="/users/register" enctype="multipart/form-data" id="register" method="POST">
                     <div class="row">
                         <input type="text" name="nombre" id="nombre" class="form-control users" placeholder="Nombre">
                         <div class="nombre-errors">
@@ -64,7 +64,7 @@
                         </div>
                         <input type="direccion" name="direccion" id="direccion" class="form-control"
                             placeholder="Direccion">
-                        <div class="dirreccion-errors">
+                        <div class="direccion-errors">
 
                             <% if (locals.errors && errors.direccion) { %>
                                 <h4 class="error">
@@ -81,7 +81,7 @@
                                 </h4>
                                 <% } %>
                         </div>
-                        <input type="estado" name="estado" id="estado" class="form-control"
+                        <input type="estado" name="estado_provincia" id="estado_provincia" class="form-control"
                             placeholder="Estado o Provincia">
                         <div class="estado-errors">
 
@@ -159,7 +159,7 @@
                     </div>
                 </form>
             </div>
-            <script src="/public/scripts/registerValidations.js"></script>
+            <script src="/scripts/registerValidations.js"></script>
         </main>
         <%- include('../partials/footer') %>
 </body>

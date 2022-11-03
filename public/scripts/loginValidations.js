@@ -35,9 +35,9 @@ window.addEventListener('load', () => {
         // EMAIL VALIDATION
         let emailValidation = validateEmail(email.value);
         if(emailValidation){
+            errors +=1;
             emailErrors.innerHTML=emailValidation;
             email.classList.add('invalid');
-            errors +=1;
         } else{
             emailErrors.innerHTML='';
             email.classList.remove('invalid')
@@ -46,14 +46,16 @@ window.addEventListener('load', () => {
         // PASSWORD VALIDATION
         let passwordValidation = validatePassword(password.value);
         if(passwordValidation){
+            errors +=1;
             passwordErrors.innerHTML=passwordValidation
             password.classList.add('invalid');
-            errors +=1;
         } else{
             passwordErrors.innerHTML='';
             password.classList.remove('invalid')
         }
-        errors!=0 ? event.preventDefault(): null;
+        if (errors > 0) {
+            event.preventDefault();
+        }
         
     })
 });
