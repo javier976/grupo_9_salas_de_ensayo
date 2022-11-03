@@ -18,7 +18,7 @@ router.post('/crearSala', salasValidationsMiddleware, multerCursosMiddleware.sin
 
 router.get('/editarSala/:id', authMiddleware, salasController.editSala);
 
-router.post('/editarSala/:id', salasValidationsMiddleware, multerCursosMiddleware.single('img'), salasController.updatedSala);
+router.post('/:id', salasValidationsMiddleware, multerCursosMiddleware.single('img'), salasController.updatedSala);
 
 router.delete('/deleteSala/:id', authMiddleware, salasController.deleteSala);
 
