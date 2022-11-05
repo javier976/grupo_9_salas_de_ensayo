@@ -1,65 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--TIPOGRAFIA ROBOTO-->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
-    <!-- LIBRERIA FONTAWESOME-->
-    <script src="https://kit.fontawesome.com/439c181295.js" crossorigin="anonymous"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <!-- ESTILOS PROPIOS-->
-    <link href="/css/styles.css" rel="stylesheet">
-    <link href="/css/register.css" rel="stylesheet">
+<%- include('../partials/head') %>
 
-
-    <!--TITULO -->
-    <title>1771 Studios</title>
-
-</head>
-
-<body>
-    <%- include('../partials/header') %>
-        <main>
-            <h2>Editar Sala</h2>
-            <form action="salas/editarSala" method="POST">
-                <div>
-                    <label for="">Título</label>
-                    <input type="text" name="titulo" value="<%= sala.titulo %> ">
+    <body>
+        <%- include('../partials/header') %>
+            <main>
+                <div class="form-container" id="sala-edit">
+                    <h2>Editar Sala</h2>
+                    <form action="/salas/editarSala/<%= sala.id %>" id="editarSala" method="POST">
+                        <div>
+                            <label for="">Título</label>
+                            <input type="text" name="titulo" id="titulo" value="<%= sala.titulo %> ">
+                            <div class="titulo-errors">
+                                <% if (locals.errors && titulo.errors) { %>
+                                    <h4 class="error">
+                                        <%= errors.titulo.msg %>
+                                    </h4>
+                                    <% } %>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="">Tamaño</label>
+                            <input type="text" name="metros_cuadrados" id="metros_cuadrados"
+                                value="<%= sala.metros_cuadrados %> ">
+                            <div class="tamaño-errors">
+                                <% if (locals.errors && tamaño.errors) { %>
+                                    <h4 class="error">
+                                        <%= errors.tamaño.msg %>
+                                    </h4>
+                                    <% } %>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="">Turno</label>
+                            <input type="text" name="turno_sala" id="turno_sala" value="<%= sala.turno_sala %> ">
+                            <div class="turno-errors">
+                                <% if (locals.errors && turno.errors) { %>
+                                    <h4 class="error">
+                                        <%= errors.turno.msg %>
+                                    </h4>
+                                    <% } %>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="">Precio</label>
+                            <input type="text" name="precio" id="precio" value="<%= sala.precio %> ">
+                            <div class="precio-sala-errors">
+                                <% if (locals.errors && precio.errors) { %>
+                                    <h4 class="error">
+                                        <%= errors.precio.msg %>
+                                    </h4>
+                                    <% } %>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="">Imagen</label>
+                            <input type="file" name="images" id="images" value="<%= sala.images %> ">
+                            <p class="allowed-formats">
+                                JPG,JPEG,PNG,GIF
+                            </p>
+                            <div class="img-sala-errors">
+                                <% if (locals.errors && imagen.errors) { %>
+                                    <h4 class="error">
+                                        <%= errors.imagen.msg %>
+                                    </h4>
+                                    <% } %>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="">Descripción</label>
+                            <input type="text" name="descripcion" id="descripcion" value="<%= sala.descripcion %> ">
+                            <div class="descripcion-sala-errors">
+                                <% if (locals.errors && descripcion.errors) { %>
+                                    <h4 class="error">
+                                        <%= errors.descripcion.msg %>
+                                    </h4>
+                                    <% } %>
+                            </div>
+                        </div>
+                        <button type="submit">Editar</button>
+                    </form>
+                    <form action="/salas/delete" method="POST" style="display: inline-flex">
+                        <button type="submit" class="action-button delete">ELIMINAR</button>
+                    </form>
                 </div>
-                <div>
-                    <label for="">Tamaño</label>
-                    <input type="text" name="metros_cuadrados" value="<%= sala.metros_cuadrados %> ">
-                </div>
-                <div>
-                    <label for="">Turno</label>
-                    <input type="text" name="turno_sala" value="<%= sala.turno_sala %> ">
-                </div>
-                <div>
-                    <label for="">Precio</label>
-                    <input type="text" name="precio" value="<%= sala.precio %> ">
-                </div>
-                <div>
-                    <label for="">Imagen</label>
-                    <input type="img" name="imagenSala" value="<%= sala.images %> ">
-                </div>
-                <div>
-                    <label for="">Descripción</label>
-                    <input type="text" name="descripcion" value="<%= sala.descripcion %> ">
-                </div>
-                <button type="submit">Editar</button>
-            </form>
-            <form action="/salas/delete" method="POST" style="display: inline-flex">
-                <button type="submit" class="action-button delete">ELIMINAR</button>
-            </form>
+                <script src="/scripts/salaValidations.js"></script>
 
-        </main>
+            </main>
 
-        <%- include('../partials/footer') %>
+            <%- include('../partials/footer') %>
 
-</body>
+    </body>
 
 </html>
