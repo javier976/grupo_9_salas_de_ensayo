@@ -6,13 +6,13 @@
     <body>
         <%- include('../partials/header') %>
             <main>
-                <div class="form-container" id="sala-edit">
-                    <h2>Editar Sala</h2>
+                <div class="form-salaEdit" id="sala-edit">
+                    <h2 class="editSala-title">Editar Sala</h2>
                     <form action="/salas/editarSala/<%= sala.id %>" id="editarSala" method="POST">
-                        <div>
-                            <label for="">Título</label>
-                            <input type="text" name="titulo" id="titulo" value="<%= sala.titulo %> ">
-                            <div class="titulo-errors">
+                        <div class="editSala-elements">
+                            <label class="label-sala" for="">Título</label>
+                            <input class="sala-input" type="text" name="titulo" id="sala-titulo" value="<%= sala.titulo %> ">
+                            <div class="sala-titulo-errors">
                                 <% if (locals.errors && titulo.errors) { %>
                                     <h4 class="error">
                                         <%= errors.titulo.msg %>
@@ -20,9 +20,9 @@
                                     <% } %>
                             </div>
                         </div>
-                        <div>
-                            <label for="">Tamaño</label>
-                            <input type="text" name="metros_cuadrados" id="metros_cuadrados"
+                        <div class="editSala-elements">
+                            <label class="label-sala" for="">Tamaño</label>
+                            <input class="sala-input" type="text" name="metros_cuadrados" id="metros_cuadrados"
                                 value="<%= sala.metros_cuadrados %> ">
                             <div class="tamaño-errors">
                                 <% if (locals.errors && tamaño.errors) { %>
@@ -32,9 +32,9 @@
                                     <% } %>
                             </div>
                         </div>
-                        <div>
-                            <label for="">Turno</label>
-                            <input type="text" name="turno_sala" id="turno_sala" value="<%= sala.turno_sala %> ">
+                        <div class="editSala-elements">
+                            <label class="label-sala" for="">Turno</label>
+                            <input class="sala-input" type="text" name="turno_sala" id="turno_sala" value="<%= sala.turno_sala %> ">
                             <div class="turno-errors">
                                 <% if (locals.errors && turno.errors) { %>
                                     <h4 class="error">
@@ -43,9 +43,9 @@
                                     <% } %>
                             </div>
                         </div>
-                        <div>
-                            <label for="">Precio</label>
-                            <input type="text" name="precio" id="precio" value="<%= sala.precio %> ">
+                        <div class="editSala-elements">
+                            <label class="label-sala" for="">Precio</label>
+                            <input class="sala-input" type="text" name="precio" id="precio" value="<%= sala.precio %> ">
                             <div class="precio-sala-errors">
                                 <% if (locals.errors && precio.errors) { %>
                                     <h4 class="error">
@@ -54,8 +54,8 @@
                                     <% } %>
                             </div>
                         </div>
-                        <div>
-                            <label for="">Imagen</label>
+                        <div class="editSala-elements">
+                            <label class="label-sala" for="">Imagen</label>
                             <input type="file" name="images" id="images" value="<%= sala.images %> ">
                             <p class="allowed-formats">
                                 JPG,JPEG,PNG,GIF
@@ -68,9 +68,9 @@
                                     <% } %>
                             </div>
                         </div>
-                        <div>
-                            <label for="">Descripción</label>
-                            <input type="text" name="descripcion" id="descripcion" value="<%= sala.descripcion %> ">
+                        <div class="editSala-elements">
+                            <label class="label-sala" for="">Descripción</label>
+                            <input class="sala-input" type="text" name="descripcion" id="descripcion" value="<%= sala.descripcion %> ">
                             <div class="descripcion-sala-errors">
                                 <% if (locals.errors && descripcion.errors) { %>
                                     <h4 class="error">
@@ -79,11 +79,13 @@
                                     <% } %>
                             </div>
                         </div>
-                        <button type="submit">Editar</button>
+                        <div class="salaEdit-buttons">
+                            <button type="submit">Editar</button>
                     </form>
                     <form action="/salas/delete" method="POST" style="display: inline-flex">
-                        <button type="submit" class="action-button delete">ELIMINAR</button>
+                        <button type="submit" class="action-button delete">Eliminar</button>
                     </form>
+                </div>
                 </div>
                 <script src="/scripts/salaValidations.js"></script>
 

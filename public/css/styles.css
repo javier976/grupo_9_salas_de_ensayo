@@ -164,6 +164,87 @@ section.info .description-1771 button {
     width: 32%;
 }
 
+/* Perfil */
+.perfil-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-image {
+    /* border: solid 1px red; */
+    display: flex;
+    justify-content: center;
+}
+
+img.profile-img {
+    border: solid 2px black;
+    border-radius: 20px;
+    width: 50%;
+    padding: 25px;
+}
+
+h5.card-title {
+    font-size: 20px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: 50px;
+}
+
+p.card-text {
+    border: solid 3px black;
+    border-radius: 20px;
+    background-color: #edae1a;
+    color: #fff;
+    font-size: 15px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 8px;
+}
+
+button.perfil-edit {
+    margin-bottom: 45px;
+    margin-left: 85px;
+}
+
+/* User Edit */
+.edit-user-row {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+}
+
+.edit-user-title {
+    border: solid 2px black;
+    border-radius: 20px;
+    background-color: #edae1a;
+    color: #fff;
+    padding: 8px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+div.data-user {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+input.user-input {
+    margin-left: 65px;
+}
+
+label.user-label {
+    display: flex;
+    justify-content: center;
+}
+
+button.user-edit {
+    margin-bottom: 45px;
+    margin-left: 150px;
+}
+
 /* Lista Cursos */
 
 div.curso-container {
@@ -208,6 +289,50 @@ div.button-container {
     margin-bottom: 15px;
 }
 
+/* Editar Curso */
+
+.form-cursoEdit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2.editCurso-title {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    margin-right: 10px;
+    border: solid 2px black;
+    color: #fff;
+    background-color: #edae1a;
+    padding: 8px;
+    border-radius: 20px;
+}
+
+.cursoEdit-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: stretch;
+    justify-content: space-evenly;
+    margin-bottom: 45px;
+    margin-right: 10px;
+}
+
+.editCurso-elements {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+input.curso-input {
+    margin-left: 25px;
+}
+
+label.label-curso {
+    display: flex;
+    justify-content: center;
+    margin-right: 10px;
+}
+
 /* Detalle Salas */
 
 div.container.salas-wrapper {
@@ -237,6 +362,47 @@ h2.salas-title {
     color: #fff;
 }
 
+/* Editar Sala */
+
+.form-salaEdit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2.editSala-title {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: solid 2px black;
+    color: #fff;
+    background-color: #edae1a;
+    padding: 8px;
+    border-radius: 20px;
+}
+
+.salaEdit-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: stretch;
+    justify-content: space-evenly;
+    margin-bottom: 45px;
+}
+
+.editSala-elements {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+input.sala-input {
+    margin-left: 35px;
+}
+
+label.label-sala {
+    display: flex;
+    justify-content: center;
+}
+
 /* About */
 
 div.description-about {
@@ -248,6 +414,7 @@ div.description-about {
     align-items: center;
     margin-bottom: 5%;
 }
+
 .about {
     display: flex;
     flex-direction: row;

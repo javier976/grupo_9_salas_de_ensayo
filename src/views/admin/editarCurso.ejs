@@ -1,52 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--TIPOGRAFIA ROBOTO-->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
-    <!-- LIBRERIA FONTAWESOME-->
-    <script src="https://kit.fontawesome.com/439c181295.js" crossorigin="anonymous"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <!-- ESTILOS PROPIOS-->
-    <link href="/css/styles.css" rel="stylesheet">
-    <link href="/css/register.css" rel="stylesheet">
-
-
-    <!--TITULO -->
-    <title>1771 Studios</title>
-
-</head>
+    <%- include('../partials/head') %>
 
 <body>
     <%- include('../partials/header') %>
         <main>
-            <h2>Editar Curso</h2>
-            <form action="/cursos/editarCurso/<%= curso.id %> " method="POST">
-                <div>
-                    <label for="">Título</label>
-                    <input type="text" name="titulo" value="<%= curso.titulo %> ">
-                </div>
-                <div>
-                    <label for="">Duración</label>
-                    <input type="text" name="duracion" value="<%= curso.duracion %>">
-                </div>
-                <div>
-                    <label for="">Precio</label>
-                    <input type="text" name="precio" value="<%= curso.precio %>">
-                </div>
-                <div>
-                    <label for="">Imagen</label>
-                    <input type="img" name="imagenCurso" value="<%= curso.imagen %>">
-                </div>
-                <button type="submit">Editar</button>
-            </form>
-            <form action="/cursos/delete/<%= curso.id %>" method="POST" style="display: inline-flex">
-                <button type="submit" class="action-button delete">ELIMINAR</button>
-            </form>
+            <div class="form-cursoEdit" id="curso-edit">
+                <h2 class="editCurso-title">Editar Curso</h2>
+                <form action="/cursos/editarCurso/<%= curso.id %>?_method=PUT" id="editarCurso" method="POST">
+                    <div class="editCurso-elements">
+                        <label class="label-curso" id="curso-titulo" for="">Título</label>
+                        <input class="curso-input" type="text" name="titulo" value="<%= curso.titulo %> ">
+                        <div class="curso-titulo-errors">
+                            <% if (locals.errors && titulo.errors) { %>
+                                <h4 class="error">
+                                    <%= errors.titulo.msg %>
+                                </h4>
+                                <% } %>
+                        </div>
+                    </div>
+                    <div class="editCurso-elements">
+                        <label class="label-curso" for="">Duración</label>
+                        <input class="curso-input" type="text" name="duracion" id="duracion" value="<%= curso.duracion %>">
+                        <div class="duracion-errors">
+                            <% if (locals.errors && duracion.errors) { %>
+                                <h4 class="error">
+                                    <%= errors.duracion.msg %>
+                                </h4>
+                                <% } %>
+                        </div>
+                    </div>
+                    <div class="editCurso-elements">
+                        <label class="label-curso" for="">Precio</label>
+                        <input class="curso-input" type="text" name="precio" id="precio-curso" value="<%= curso.precio %>">
+                        <div class="precio-curso-errors">
+                            <% if (locals.errors && precio.errors) { %>
+                                <h4 class="error">
+                                    <%= errors.precio.msg %>
+                                </h4>
+                                <% } %>
+                        </div>
+                    </div>
+                    <div class="editCurso-elements">
+                        <label class="label-curso" for="">Imagen</label>
+                        <input type="file" name="images" id="images" value="<%= curso.images %> ">
+                            <p class="allowed-formats">
+                                JPG,JPEG,PNG,GIF
+                            </p>
+                            <div class="img-curso-errors">
+                                <% if (locals.errors && imagen.errors) { %>
+                                    <h4 class="error">
+                                        <%= errors.imagen.msg %>
+                                    </h4>
+                                    <% } %>
+                            </div>
+                    </div>
+                    <div class="cursoEdit-buttons">
+                        <button type="submit">Editar</button>
+                </form>
+                <form action="/cursos/delete/<%= curso.id %>" method="POST" style="display: inline-flex">
+                    <button type="submit" class="action-button delete">ELIMINAR</button>
+                </form>
+            </div>
+            </div>
 
         </main>
 

@@ -4,14 +4,43 @@
 <!-- HEAD -->
 <%- include('../partials/head') %>
 
-    <body>
-        <%- include('../partials/header') %>
-            <main>
-                HOLA
-            </main>
+  <body>
+    <%- include('../partials/header') %>
 
-            <%- include('../partials/footer') %>
+      <main>
+        <div class="perfil-row">
+          <div class="profile-image">
+            <img src="/images/user/<%=user.profile_image%>" class="profile-img" alt="usuario-avatar">
+          </div>
+          <div class="profile-data">
+            <div class="profile-body">
+              <h5 class="card-title">
+                <%=user.nombre%>
+                  <%= user.apellido %>
+              </h5>
+              <p class="card-text">Email: <%= user.email %>
+              </p>
+              <p class="card-text">Dirección: <%= user.direccion %>
+              </p>
+              <p class="card-text">Ciudad: <%= user.ciudad %>
+              </p>
+              <p class="card-text">Estado o Provincia: <%= user.estado_provincia %>
+              </p>
+              <p class="card-text">País: <%= user.pais %>
+              </p>
+              <p class="card-text">Codigo Postal: <%= user.codigo_postal %>
+              </p>
+              <p class="card-text">Teléfono: <%= user.telefono %>
+              </p>
+              <a href="/users/userEdit/<%=user.id%>"><button type="botonBuy" class="perfil-edit">Editar</button></a>
+            </div>
+          </div>
+        </div>
+      </main>
 
-    </body>
+
+      <%- include('../partials/footer') %>
+
+  </body>
 
 </html>

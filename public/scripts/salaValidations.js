@@ -60,7 +60,7 @@ window.addEventListener('load', () => {
         let errors = 0;
 
         //INPUTS
-        const titulo = document.querySelector('#titulo');
+        const titulo = document.querySelector('#sala-titulo');
         const tamaño = document.querySelector('#metros_cuadrados');
         const turno = document.querySelector('#turno_sala');
         const precio = document.querySelector('#precio');
@@ -68,7 +68,7 @@ window.addEventListener('load', () => {
         const descripcion = document.querySelector('#descripcion');
 
         //DIVS
-        const tituloErrors = document.querySelector('.titulo-errors');
+        const tituloErrors = document.querySelector('.sala-titulo-errors');
         const tamañoErrors = document.querySelector('.tamaño-errors');
         const turnoErrors = document.querySelector('.turno-errors');
         const precioErrors = document.querySelector('.precio-sala-errors');
@@ -80,10 +80,10 @@ window.addEventListener('load', () => {
         if (tituloValidation) {
             errors += 1;
             tituloErrors.innerHTML = tituloValidation
-            titulo.classList.add('titulo-errors')
+            titulo.classList.add('sala-titulo-errors')
         } else {
             tituloErrors.innerHTML = '';
-            titulo.classList.remove('titulo-errors')
+            titulo.classList.remove('sala-titulo-errors')
         }
 
         console.log(validateTamaño(''));

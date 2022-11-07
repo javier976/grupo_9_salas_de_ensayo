@@ -93,7 +93,7 @@ const controller = {
                     email: req.body.email,
                     profile_image: req.file.filename,
                     categoria_usuario_id: 2,
-                    password: bcryptjs.hashSync(req.body.password),
+                    password: bcryptjs.hashSync(req.body.password)
                 };
 
                 await Users.create(newUser);
@@ -122,24 +122,18 @@ const controller = {
             let userToLogin = await Users.findOne({ where: { email: userData.email } });
 
             if (userToLogin) {
-                if (userToLogin.password.substr(0, 7), '$2OS905$') {
+                let passwordOk = bcryptjs.compareSync(req.body.password, userToLogin.password)
+                if (passwordOk) {
 
-                    let passwordOk = bcryptjs.compareSync(req.body.password, userToLogin.password)
-                    if (passwordOk) {
+                    delete userToLogin.password;
+                    req.session.userLogged = userToLogin;
 
-                        delete userToLogin.password;
+                    if (req.body.recordar) {
+                        res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 60 })
+                    }; //Creo cookie 'recordar'
 
-                        req.session.userLogged = userToLogin;
-
-                        if (req.body.recordar) {
-                            res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 60 })
-                        }; //Creo cookie 'recordar'
-
-                    }
-                    return res.redirect('/');
                 }
-            } else {
-                return res.render("users/login", { errors: { email: { msg: "Email incorrecto" }, password: { msg: "constraseña incorrecta" } }, oldDataLogin: userToLogin.email });
+                return res.redirect('/');
             }
         } catch (error) {
 
@@ -160,30 +154,11 @@ const controller = {
         }
     },
 
-    update: async (req, res) => {
-        try {
-            let user = await Users.findOne({ where: { id: req.params.id } });
-            let errors = validationResult(req)
-            if (!errors.isEmpty()) {
-                errors = errors.mapped()
+    update: function (req, res) {
+        // try {
+            // const userId = req.params.id;
 
-                let oldData = {
-                    nombre: req.body.nombre,
-                    apellido: req.body.apellido,
-                    direccion: req.body.direccion,
-                    ciudad: req.body.ciudad,
-                    estado_provincia: req.body.estado_provincia,
-                    pais: req.body.pais,
-                    codigo_postal: req.body.codigo_postal,
-                    telefono: req.body.telefono,
-                    email: req.body.email,
-                    profile_image: req.body.profile_image,
-                    categoria_usuario_id: 2
-                };
-
-                return res.render('userEdit', { user, errors, oldData })
-            }
-            let updatedData = {
+            Users.update = ({
                 nombre: req.body.nombre,
                 apellido: req.body.apellido,
                 direccion: req.body.direccion,
@@ -193,23 +168,101 @@ const controller = {
                 codigo_postal: req.body.codigo_postal,
                 telefono: req.body.telefono,
                 email: req.body.email,
-                profile_image: req.body.profile_image,
-                categoria_usuario_id: 2
-            };
-            req.body.password ? updatedData.password = bcryptjs.hashSync(req.body.password, 10) : null;
-
-            await Users.update(updatedData, {
+                profile_image: req.file?.filename
+            }, {
                 where: {
-                    id: Users.id
+                    id: req.params.id
                 }
             });
-            return res.redirect('/user/perfil');
+            res.redirect('users/' + req.params.id);
+            // const passwordToUpdate = {
+            //     password: bcryptjs.hashSync(req.body.newPassword)
+            // }
+            // Users.update(userToUpdate, { where: { id: userId } });
 
-        } catch (error) {
-            console.log("Falle en userController.update: " + error);
-            return res.json(error);
-        }
+        // } catch (error) {
+        //     res.send(error)
+        // }
     },
+
+    // updatePassword: async function (req, res) {
+    //     try {
+    //         const userId = req.params.id;
+
+    //         const passwordToUpdate = {
+    //             password: bcryptjs.hashSync(req.body.newPassword)
+    //         }
+    //         await Users.update(passwordToUpdate, { where: { id: userId } });
+    //         return res.redirect('users/perfil');
+
+    //     } catch (error) {
+    //         res.send(error)
+    //     }
+    // },
+
+    // update: async (req, res) => {
+    //     console.log('aca estoy');
+    //     try {
+    //         // Salas.update({
+    //         //     titulo: req.body.titulo,
+    //         //     metros_cuadrados: req.body.metros_cuadrados,
+    //         //     turno_sala: req.body.turno_sala,
+    //         //     precio: req.body.precio,
+    //         //     imagen: req.body.imagen,
+    //         //     descripcion: req.body.descripcion
+    //         // }, {
+    //         //     where: {
+    //         //         id: req.params.id
+    //         //     }
+    //         // });
+    //         // res.redirect('products/listaSalas' + req.params.id);
+
+    //         let user = await Users.findOne({ where: { id: req.params.id } });
+    //         let errors = validationResult(req)
+    //         if (!errors.isEmpty()) {
+    //             errors = errors.mapped()
+
+    //             let oldData = {
+    //                 nombre: req.body.nombre,
+    //                 apellido: req.body.apellido,
+    //                 direccion: req.body.direccion,
+    //                 ciudad: req.body.ciudad,
+    //                 estado_provincia: req.body.estado_provincia,
+    //                 pais: req.body.pais,
+    //                 codigo_postal: req.body.codigo_postal,
+    //                 telefono: req.body.telefono,
+    //                 email: req.body.email,
+    //                 profile_image: req.body.profile_image,
+    //             };
+
+    //             return res.render('admin/userEdit', { user, errors, oldData })
+    //         }
+    //         let updatedData = {
+    //             nombre: req.body.nombre,
+    //             apellido: req.body.apellido,
+    //             direccion: req.body.direccion,
+    //             ciudad: req.body.ciudad,
+    //             estado_provincia: req.body.estado_provincia,
+    //             pais: req.body.pais,
+    //             codigo_postal: req.body.codigo_postal,
+    //             telefono: req.body.telefono,
+    //             email: req.body.email,
+    //             profile_image: req.body.profile_image
+    //         };
+    //         req.body.password ? updatedData.password = bcryptjs.hashSync(req.body.password, 10) : null;
+
+    //         await Users.update(updatedData, {
+    //             where: {
+    //                 id: Users.id
+    //             }
+    //         });
+    //         return res.redirect('/users/perfil');
+
+    //     } catch (error) {
+    //         console.log("Falle en userController.update: " + error);
+    //         return res.json(error);
+    //     }
+    // },
 
     profile: (req, res) => {
         return res.render('users/perfil', {

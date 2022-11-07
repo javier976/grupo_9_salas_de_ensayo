@@ -26,7 +26,7 @@ router.get('/perfil', authMiddleware, usersController.profile);
 
 //EDIT
 router.get('/userEdit/:id', usersController.edit);
-router.put('/userEdit/:id', multerUserMiddleware.single('profile_image'), userValidationsMiddleware, usersController.update);
+router.post('/:id', multerUserMiddleware.single('profile_image'), userValidationsMiddleware, usersController.update);
 
 //LOGOUT
 router.get('/logout/', usersController.logout);

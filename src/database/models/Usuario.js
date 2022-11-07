@@ -48,7 +48,7 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false
         },
         profile_image: {
-            type: dataTypes.STRING,
+            type: dataTypes.TEXT,
             allowNull: true
         },
         categoria_usuario_id: {

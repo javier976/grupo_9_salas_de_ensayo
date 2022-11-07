@@ -41,20 +41,30 @@ const controller = {
         res.render('admin/editarSala', { sala });
 
     },
-    updatedSala: (req, res) => {
-        Salas.update({
-            titulo: req.body.titulo,
-            metros_cuadrados: req.body.metros_cuadrados,
-            turno_sala: req.body.turno_sala,
-            precio: req.body.precio,
-            imagen: req.body.imagen,
-            descripcion: req.body.descripcion
-        }, {
-            where: {
-                id: req.params.id
-            }
-        });
-        res.redirect('products/listaSalas' + req.params.id);
+    updatedSala: async (req, res) => {
+        try {
+            let editedSala = await Salas.findByPk(req.params.id);
+
+            await Salas.update({
+                titulo: req.body.titulo,
+                metros_cuadrados: req.body.metros_cuadrados,
+                turno_sala: req.body.turno_sala,
+                precio: req.body.precio,
+                imagen: req.body.imagen,
+                descripcion: req.body.descripcion
+            }, {
+                where: {
+                    id: editedSala.id
+                }
+            });
+
+            return res.redirect(`/salass/${editedSala.id}`)
+
+        } catch (error) {
+            console.log('falle en prodctcontroller.update: ' + error);
+            return res.json(error);
+        }
+
     },
     deleteSala: (req, res) => {
         Salas.destroy({
