@@ -1,4 +1,7 @@
+<!DOCTYPE html>
 <html lang="en">
+
+<!-- HEAD -->
 
 <head>
     <meta charset="UTF-8">
@@ -12,7 +15,11 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <!-- ESTILOS PROPIOS-->
     <link href="/css/styles.css" rel="stylesheet">
-    <link href="/css/register.css" rel="stylesheet">
+    <link href="/css/article.css" rel="stylesheet">
+    <link href="/css/footer.css" rel="stylesheet">
+    <link href="/css/lista.css" rel="stylesheet">
+
+
 
 
     <!--TITULO -->
@@ -23,41 +30,59 @@
 <body>
     <%- include('../partials/header') %>
         <main>
-            <h3>Lista de Cursos</h3>
+            <h3 class="titulo">Lista de Cursos</h3>
             <section class="main-section">
-                <div class="curso-container">
+                <div class="lista-container">
                     <div class="cursos">
                         <% cursos.forEach(curso=> { %>
-                            <div class="curso-under">
+                            <div class="img-under">
                                 <figure class="curso-image">
-                                    <img src="/images/<%= curso.img %>" />
+                                    <img src="/images/<%= curso.images %>" />
                                     <div class="curso-over">
-                                        <a href="/products/<%= curso.id %>"></a>
+                                        <a href="/cursos/<%= curso.id %>"></a>
                                     </div>
                                 </figure>
-                                <div class="curso-summary">
-                                    <h4>
-                                        <%= curso.titulo %>
-                                    </h4>
-                                    <p>
-                                        <%= curso.descripcionClase %>
-                                    </p>
-                                    <p>
-                                        <%= curso.descripcionDocentes %>
-                                    </p>
-                                    <h6 class="price">
-                                        $<span class="priceValue">
-                                            <%= curso.precio %>
-                                        </span>
-                                    </h6>
-                                    <button class="btn btn-small addToCart" data-curso-id="3">
-                                        <i class="fas fa-cart-plus"></i>Add to cart
-                                    </button>
-                                </div>
+                                <a href="/cursos/<%= curso.id %>" style="text-decoration: none; color: #fff;">
+                                    <div class="curso-summary">
+                                        <h4 class="titulo-curso">
+                                            <%= curso.titulo %>:
+                                        </h4>
+                                        <h6 class="price">
+                                            $<span class="priceValue">
+                                                <%= curso.precio %> por mes
+                                            </span>
+                                            </h3>
+                                    </div>
+                                </a>
                             </div>
                             <% }); %>
-                        </div>
+                    </div>
+                    <a class="prev" onclick="plusSlides(-1)">❮</a>
+                    <a class="next" onclick="plusSlides(1)">❯</a>
                 </div>
+                <script>
+                    let slideIndex = 1;
+                    showSlides(slideIndex);
+
+                    function plusSlides(n) {
+                        showSlides(slideIndex += n);
+                    }
+
+                    function currentSlide(n) {
+                        showSlides(slideIndex = n);
+                    }
+
+                    function showSlides(n) {
+                        let i;
+                        let slides = document.getElementsByClassName("img-under");
+                        if (n > slides.length) { slideIndex = 1 }
+                        if (n < 1) { slideIndex = slides.length }
+                        for (i = 0; i < slides.length; i++) {
+                            slides[i].style.display = "none";
+                        }
+                        slides[slideIndex - 1].style.display = "block";
+                    }
+                </script>
             </section>
         </main>
 

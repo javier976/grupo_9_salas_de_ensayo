@@ -1,27 +1,36 @@
 const express = require('express');
-const multer = require('multer');
-const { body } = require('express-validator')
-const router = express.Router();
-
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, './public/images');
-    },
-    filename: (req, file, cb) => {
-        cb(null, Date.now() + '-' + file.originalname);
-    },
-});
-
-const upload = multer({ storage });
-
-const logMiddleWare = require('../middleWares/logDBMiddleWare')
-
 const usersController = require('../controllers/usersController');
 
-router.get('/', usersController.login);
-router.post('/', logMiddleWare, usersController.logged);
-router.get('/register', usersController.registro);
-router.post('/register', usersController.createUser);
+//Middlewares
+const authMiddleware = require('../middleWares/authMiddleware');
+const guestMiddleware = require('../middleWares/guestMiddleware');
+const multerUserMiddleware = require('../middleWares/multerUserMiddleware');
+const userValidationsMiddleware = require('../middleWares/userValidationsMiddleware');
+const userEditValidations = require('../middleWares/userEditValidations')
+// const logDBMiddleware = require('../middleWares/logDBMiddleware'); //Ruta de middleWares para DB
+
+
+const router = express.Router();
+
+//LOGIN
+router.get('/login', guestMiddleware, usersController.login);
+
+router.post('/login', usersController.processLogin);
+
+//REGISTER
+router.get('/register', guestMiddleware, usersController.registro);
+
+router.post('/register', multerUserMiddleware.single('profile_image'), userValidationsMiddleware, usersController.processRegister);
+
+//PERFIL
+router.get('/perfil', authMiddleware, usersController.profile);
+
+//EDIT
+router.get('/userEdit/:id', usersController.edit);
+router.post('/userEdit/:id', multerUserMiddleware.single('profile_image'), userEditValidations, usersController.update);
+
+//LOGOUT
+router.get('/logout/', usersController.logout);
 
 
 module.exports = router;

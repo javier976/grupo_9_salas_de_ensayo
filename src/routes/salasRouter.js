@@ -1,12 +1,27 @@
 const express = require('express');
-
-const router = express.Router();
+const { body } = require('express-validator');
 
 const salasController = require('../controllers/salasController');
 
-router.get('/productCart', salasController.productCart);
+const router = express.Router();
+
+const authMiddleware = require('../middleWares/authMiddleware');
+const multerCursosMiddleware = require('../middleWares/multerCursosMiddleware');
+const salasValidationsMiddleware = require('../middleWares/salasValidationsMiddleware');
+
+
 router.get('/', salasController.listaSalas);
-router.get('/detalleSalas/:id', salasController.detalleSalas);
-router.delete('/delete/:id', salasController.delete);
+
+router.get('/crearSala', authMiddleware, salasController.createSala);
+
+router.post('/crearSala', salasValidationsMiddleware, multerCursosMiddleware.single('img'), salasController.newSala);
+
+router.get('/editarSala/:id', authMiddleware, salasController.editSala);
+
+router.post('/:id', salasValidationsMiddleware, multerCursosMiddleware.single('img'), salasController.updatedSala);
+
+router.delete('/deleteSala/:id', authMiddleware, salasController.deleteSala);
+
+router.get('/:id', salasController.detalleSalas);
 
 module.exports = router;

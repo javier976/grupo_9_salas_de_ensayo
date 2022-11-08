@@ -1,73 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--TIPOGRAFIA ROBOTO-->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
-    <!-- LIBRERIA FONTAWESOME-->
-    <script src="https://kit.fontawesome.com/439c181295.js" crossorigin="anonymous"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <!-- ESTILOS PROPIOS-->
-    <link href="/css/styles.css" rel="stylesheet">
-    <link href="/css/register.css" rel="stylesheet">
+<!-- HEAD -->
+<%- include('../partials/head') %>
 
-
-    <!--TITULO -->
-    <title>1771 Studios</title>
-
-</head>
-
-<body>
-    <!-- HEADER -->
-    <%- include('../partials/header') %>
-        <main>
-            <!-- curso detail -->
-            <div class="container cursos-wrapper">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="cursos-title">Detalle del curso: <%= curso.titulo %>
-                        </h2>
-                    </div>
-                </div>
-                <div class="curso-detail">
-                    <div class="img-box">
-                        <img src="/images/<%= curso.img %> ">
-                        <p class="curso-detail-description">
-                            <%= curso.descripcionClase %>
-                                <%= curso.descripcionDocentes %>
-                        </p>
-                    </div>
-                    <div class="curso-info-box">
-                        <article class="curso-detail-info">
-                            <h2 class="curso-detail-title">
-                                <%= curso.titulo %>
+    <body>
+        <!-- HEADER -->
+        <%- include('../partials/header') %>
+            <main>
+                <!-- curso detail -->
+                <div class="container cursos-wrapper">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="cursos-title">Detalle del curso: <%= curso.titulo %>
                             </h2>
+                        </div>
+                    </div>
+                    <div class="curso-detail">
+                        <div class="img-box">
+                            <img src="/images/<%= curso.images %> ">
+                        </div>
+                        <div class="curso-info-box">
+                            <article class="curso-detail-info">
+                                <div class="detalle">
+                                    <p class="curso-detail-description">
+                                        En tus clases tendrás un encuentro personalizado con el docente a cargo con
+                                        quién
+                                        trabajarás técnica y repertorio a tu elección. El docente diseña ejercicios
+                                        específicos
+                                        para que logres aprender en forma dinámica, práctica y veloz. Podés optar por la
+                                        modalidad online o presencial con protocolo. En algunas actividades tendrás la
+                                        opción de
+                                        optar por la modalidad grupal, son grupos super reducidos de hasta 2 o 3 alumnos
+                                        por
+                                        curso. Los horarios son a combinar con el docente.
+                                        Nuestros docentes son profesionales recibidos que se adaptaran al nivel en el
+                                        que te
+                                        encuentres. Inicial/Intermedio /Avanzado. Desde tu primera clase notarás el
+                                        avance.
+                                        Respecto a tu edad… NO HAY EDAD PARA LA MÚSICA.
+                                    </p>
+                                    <p class="curso-detail-price">
+                                        Precio por mes $<%= curso.precio %>
+                                    </p>
+                                </div>
 
-                            <p class="curso-detail-price">
-                                $<%= curso.precio %>
-                            </p>
-
-                            <button class="btn btn-small addToCart" data-curso-id="3">
-                                <i class="fas fa-cart-plus"></i>Add to cart
-                            </button>
-
-                            <!-- <a href="/products/edit/%=//sala.id //% " class="action-button edit">EDITAR PRODUCTO</a> -->
-                            <form action="/products/delete/<%= curso.id %>?_method=DELETE" method="POST"
-                                style="display: inline-flex">
-                                <button type="submit" class="action-button delete">ELIMINAR</button>
-                            </form>
-                        </article>
+                                <div class="button-container">
+                                    <% if (locals.userLogged && userLogged.categoria_usuario_id==1) { %>
+                                        <button class="botonBuy">Agregar al carrito</button>
+                                        <a href="/cursos/editarCurso/<%=curso.id%>"><button
+                                                class="botonBuy">Editar</button></a>
+                                        <% } %>
+                                </div>
+                            </article>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- /sala detail -->
-        </main>
-        <!-- FOOTER -->
-        <%- include('../partials/footer') %>
-</body>
+                <!-- /sala detail -->
+            </main>
+            <!-- FOOTER -->
+            <%- include('../partials/footer') %>
+    </body>
 
 </html>

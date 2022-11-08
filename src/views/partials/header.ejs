@@ -4,8 +4,25 @@
             <img src="/images/logo1771.png" alt="logo1771">
         </a>
         <ul class="enlaces">
-            <li><a href="/users/register">Registrarme</a></li>
-            <li><a href="#mapa">¿Cómo llegar?</a></li>
+            <%if(locals.isLogged){%>
+                <li class="perfil">
+                    <a href="/users/perfil" id="perfil" role="button" class="nav-divnk dropdown-toggle">Perfil</a>
+                </li>
+                <li class="cerrar-sesion">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <a href="/users/logout">Cerrar sesion</a>
+                </li>
+            <%}else{%>
+                <li class="iniciar-sesion">
+                    <a href="/users/login">Iniciar sesión</a>
+                </li>
+                <li class="registro">
+                    <a href="/users/register" >Registrate</a>
+                </li>
+            <%}%>
+            <!-- <li><a href="../users/register">Registrarme</a></li>
+            <li><a href="../users/login">Ingresa</a></li> -->
+            <li><a href="/#mapa">¿Cómo llegar?</a></li>
             <li><a href="/cursos">Reservar clase</a></li>
             <li><a href="/salas">Reservar ensayo</a></li>
             <li><a href="/productCart">Paga tu reserva</a></li>
