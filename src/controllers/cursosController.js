@@ -6,6 +6,8 @@
 // const cursos = JSON.parse(fs.readFileSync(cursosFilePath, 'utf-8'));
 const db = require('../database/models');
 const sequelize = db.sequelize;
+const { validationResult } = require('express-validator');
+
 
 const Cursos = db.Curso;
 
@@ -27,15 +29,50 @@ const controller = {
         const cursos = Cursos.findAll();
         res.render('admin/crearCurso', { cursos });
     },
-    newCurso: (req, res) => {
-        Cursos.create({
-            titulo: req.body.titulo,
-            duracion: req.body.duracion,
-            precio: req.body.precio,
-            imagen: req.body.imagen
-        });
-        res.redirect('/products/listaCursos');
-    },
+    newCurso:
+        // (req, res) => {
+        async (req, res) => {
+
+            try {
+                let resultValidation = validationResult(req);
+                // console.log(resultValidation);
+                if (resultValidation.errors.length > 0) {
+                    if (req.file) {
+                        req.file ? fs.unlinkSync(path.join(__dirname, '../public/images/' + req.file.filename)) : null;
+                    }
+                    return res.render('admin/crearCurso', {
+                        oldData: req.body,
+                        errors: resultValidation.mapped()
+                    }, 'Error en la creacion');
+                } else {
+                    let newCurso = {
+                        titulo: req.body.titulo,
+                        duracion: req.body.duracion,
+                        precio: req.body.precio,
+                        imagen: req.file.filename,
+                    };
+
+                    await Cursos.create(newCurso);
+
+
+                    res.redirect('/products/listaCursos');
+                }
+
+            } catch (error) {
+
+                console.log('falle en cursoscontroller.upload' + error);
+                return res.send(error);
+
+            };
+        },
+    // Cursos.create({
+    //     titulo: req.body.titulo,
+    //     duracion: req.body.duracion,
+    //     precio: req.body.precio,
+    //     imagen: req.body.imagen
+    // });
+    // res.redirect('/products/listaCursos');
+    // },
     editCurso: async (req, res) => {
         let curso = await Cursos.findOne({ where: { id: req.params.id } })
         res.render('admin/editarCurso', { curso });

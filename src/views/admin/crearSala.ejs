@@ -1,62 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--TIPOGRAFIA ROBOTO-->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
-    <!-- LIBRERIA FONTAWESOME-->
-    <script src="https://kit.fontawesome.com/439c181295.js" crossorigin="anonymous"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <!-- ESTILOS PROPIOS-->
-    <link href="/css/styles.css" rel="stylesheet">
-    <link href="/css/register.css" rel="stylesheet">
+<%- include('../partials/head') %>
 
-
-    <!--TITULO -->
-    <title>1771 Studios</title>
-
-</head>
-
-<body>
-    <%- include('../partials/header') %>
-        <main>
-            <h2>Crear Sala</h2>
-            <form action="/salas/crearSala" method="POST">
-                <div>
-                    <label for="">Título</label>
-                    <input type="text" name="titulo">
+    <body>
+        <%- include('../partials/header') %>
+            <main>
+                <div class="form-salaCreate">
+                    <h2 class="crearSala-title">Crear Sala</h2>
+                    <form action="/salas/crearSala" method="POST">
+                        <div class="crearSala-elements">
+                            <label class="label-crearSala" for="">Título</label>
+                            <input class="crearSala-input" type="text" name="titulo" id="sala-titulo">
+                            <div class="sala-titulo-errors">
+                                <% if (locals.errors && errors.titulo) { %>
+                                    <h4 class="error">
+                                        <%= errors.titulo.msg %>
+                                    </h4>
+                                    <% } %>
+                            </div>
+                        </div>
+                        <div class="crearSala-elements">
+                            <label class="label-crearSala" for="">Tamaño</label>
+                            <input class="crearSala-input" type="text" name="metros_cuadrados" id="metros_cuadrados">
+                            <div class="tamaño-errors">
+                                <% if (locals.errors && errors.tamaño) { %>
+                                    <h4 class="error">
+                                        <%= errors.tamaño.msg %>
+                                    </h4>
+                                    <% } %>
+                            </div>
+                        </div>
+                        <div class="crearSala-elements">
+                            <label class="label-crearSala" for="">Turno</label>
+                            <input class="crearSala-input" type="text" name="turno_sala" id="turno_sala">
+                            <div class="turno-errors">
+                                <% if (locals.errors && errors.turno) { %>
+                                    <h4 class="error">
+                                        <%= errors.turno.msg %>
+                                    </h4>
+                                    <% } %>
+                            </div>
+                        </div>
+                        <div class="crearSala-elements">
+                            <label class="label-crearSala" for="">Precio</label>
+                            <input class="crearSala-input" type="text" name="precio" id="precio">
+                            <div class="precio-sala-errors">
+                                <% if (locals.errors && errors.precio) { %>
+                                    <h4 class="error">
+                                        <%= errors.precio.msg %>
+                                    </h4>
+                                    <% } %>
+                            </div>
+                        </div>
+                        <div class="crearSala-elements">
+                            <label class="label-crearSala" for="">Imagen</label>
+                            <input class="crearSala-input" type="file" name="images" id="images">
+                            <p class="allowed-formats">
+                                JPG,JPEG,PNG,GIF
+                            </p>
+                            <div class="img-sala-errors">
+                                <% if (locals.errors && errors.imagen) { %>
+                                    <h4 class="error">
+                                        <%= errors.imagen.msg %>
+                                    </h4>
+                                    <% } %>
+                            </div>
+                        </div>
+                        <div class="crearSala-elements">
+                            <label class="label-crearSala" for="">Descripción</label>
+                            <input class="crearSala-input" type="text" name="descripcion" id="descripcion">
+                            <div class="descripcion-sala-errors">
+                                <% if (locals.errors && errors.descripcion) { %>
+                                    <h4 class="error">
+                                        <%= errors.descripcion.msg %>
+                                    </h4>
+                                    <% } %>
+                            </div>
+                        </div>
+                        <button class="crearSala-button" type="submit">Crear</button>
+                    </form>
                 </div>
-                <div>
-                    <label for="">Tamaño</label>
-                    <input type="text" name="metros_cuadrados">
-                </div>
-                <div>
-                    <label for="">Turno</label>
-                    <input type="text" name="turno_sala">
-                </div>
-                <div>
-                    <label for="">Precio</label>
-                    <input type="text" name="precio">
-                </div>
-                <div>
-                    <label for="">Imagen</label>
-                    <input type="img" name="imagen">
-                </div>
-                <div>
-                    <label for="">Descripción</label>
-                    <input type="text" name="descripcion">
-                </div>
-                <button type="submit">Crear</button>
-            </form>
+                <script src="/scripts/salaValidations.js"></script>
+            </main>
 
-        </main>
+            <%- include('../partials/footer') %>
 
-        <%- include('../partials/footer') %>
-
-</body>
+    </body>
 
 </html>

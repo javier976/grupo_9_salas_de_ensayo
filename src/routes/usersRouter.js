@@ -6,6 +6,7 @@ const authMiddleware = require('../middleWares/authMiddleware');
 const guestMiddleware = require('../middleWares/guestMiddleware');
 const multerUserMiddleware = require('../middleWares/multerUserMiddleware');
 const userValidationsMiddleware = require('../middleWares/userValidationsMiddleware');
+const userEditValidations = require('../middleWares/userEditValidations')
 // const logDBMiddleware = require('../middleWares/logDBMiddleware'); //Ruta de middleWares para DB
 
 
@@ -26,7 +27,7 @@ router.get('/perfil', authMiddleware, usersController.profile);
 
 //EDIT
 router.get('/userEdit/:id', usersController.edit);
-router.post('/:id', multerUserMiddleware.single('profile_image'), userValidationsMiddleware, usersController.update);
+router.post('/userEdit/:id', multerUserMiddleware.single('profile_image'), userEditValidations, usersController.update);
 
 //LOGOUT
 router.get('/logout/', usersController.logout);

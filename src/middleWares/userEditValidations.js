@@ -21,8 +21,6 @@ module.exports = [
     body('telefono').notEmpty().withMessage('Completar').bail()
         .isLength({ max: 12 }).withMessage('Superaste el límite de caracteres'),
 
-    body('password').notEmpty().withMessage('Tienes que escribir una contraseña'),
-
     body('profile_image').custom((value, { req }) => {
         let file = req.file;
         let acceptedExtensions = ['.jpg', '.png', '.gif'];

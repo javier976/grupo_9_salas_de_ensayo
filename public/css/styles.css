@@ -333,6 +333,10 @@ label.label-curso {
     margin-right: 10px;
 }
 
+/* Crear Curso */
+
+
+
 /* Detalle Salas */
 
 div.container.salas-wrapper {
@@ -401,6 +405,45 @@ input.sala-input {
 label.label-sala {
     display: flex;
     justify-content: center;
+}
+
+/* Crear Sala */
+
+.form-salaCreate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2.crearSala-title {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: solid 2px black;
+    color: #fff;
+    background-color: #edae1a;
+    padding: 8px;
+    border-radius: 20px;
+    margin-right: 15px;
+}
+
+button.crearSala-button {
+    margin-bottom: 45px;
+    margin-left: 120px;
+}
+
+.crearSala-elements {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+input.crearSala-input {
+    margin-left: 45px;
+}
+
+label.label-crearSala {
+    display: flex;
+    justify-content: center;
+    margin-right: 20px;
 }
 
 /* About */

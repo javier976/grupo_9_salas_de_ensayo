@@ -7,6 +7,7 @@
 
 const db = require('../database/models');
 const sequelize = db.sequelize;
+const { validationResult } = require('express-validator');
 
 const Salas = db.Sala;
 
@@ -22,19 +23,45 @@ const controller = {
         res.render('products/detalleSalas', { sala });
     },
     createSala: (req, res) => {
-        const salas = Cursos.findAll();
+        const salas = Salas.findAll();
         res.render('admin/crearSala', { salas });
     },
-    newSala: (req, res) => {
-        Salas.create({
-            titulo: req.body.titulo,
-            metros_cuadrados: req.body.metros_cuadrados,
-            turno_sala: req.body.turno_sala,
-            precio: req.body.precio,
-            imagen: req.body.imagen,
-            descripcion: req.body.descripcion
-        });
-        res.redirect('products/listaSalas');
+    newSala: async (req, res) => {
+
+        try {
+            let resultValidation = validationResult(req);
+            // console.log(resultValidation);
+            if (resultValidation.errors.length > 0) {
+                if (req.file) {
+                    req.file ? fs.unlinkSync(path.join(__dirname, '../public/images/' + req.file.filename)) : null;
+                }
+                return res.render('admin/crearSala', {
+                    oldData: req.body,
+                    errors: resultValidation.mapped()
+                }, 'Error en la creacion');
+            
+            } else {
+                let newSala = {
+                    titulo: req.body.titulo,
+                    metros_cuadrados: req.body.metros_cuadrados,
+                    turno_sala: req.body.turno_sala,
+                    precio: req.body.precio,
+                    imagen: req.file.filename,
+                    descripcion: req.body.descripcion
+                };
+
+                await Salas.create(newSala);
+
+
+                res.redirect('products/listaSalas');
+            }
+
+        } catch (error) {
+
+            console.log('falle en salascontroller.upload' + error);
+            return res.send(error);
+
+        };
     },
     editSala: async (req, res) => {
         let sala = await Salas.findOne({ where: { id: req.params.id } })
