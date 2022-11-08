@@ -15,16 +15,31 @@
                                 <label class="user-label" for="">Nombre</label>
                                 <input class="user-input" type="text" name="nombre" id="nombre"
                                     value="<%= user.nombre %>">
+                                <div class="nombre-errors">
+
+                                    <% if (locals.errors && errors.nombre) { %>
+                                        <h4 class="error">
+                                            <%= errors.nombre.msg %>
+                                        </h4>
+                                        <% } %>
+                                </div>
                             </div>
                             <div class="data-user">
                                 <label class="user-label" for="">Apellido</label>
                                 <input class="user-input" type="text" name="apellido" id="apellido"
                                     value="<%= user.apellido %>">
+                                <div class="apellido-errors">
+
+                                    <% if (locals.errors && errors.apellido) { %>
+                                        <h4 class="error">
+                                            <%= errors.apellido.msg %>
+                                        </h4>
+                                        <% } %>
+                                </div>
                             </div>
                             <div class="data-user">
                                 <label class="user-label" for="">Email</label>
-                                <input class="user-input" type="text" name="email" id="email"
-                                    value="<%= user.email %>">
+                                <input class="user-input" type="text" name="email" id="email" value="<%= user.email %>">
                             </div>
                             <div class="data-user">
                                 <label class="user-label" for="">Direccion</label>
