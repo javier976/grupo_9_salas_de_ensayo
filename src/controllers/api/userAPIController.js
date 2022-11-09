@@ -9,11 +9,23 @@ const userApiController = {
                     meta: {
                         status: 200,
                         total: users.length,
-                        url: req.url
+                        url: 'api/users'
                     },
                     data: users
                 });
             })
+    },
+    detail: (req, res) => {
+        Users.findByPk(req.params.id)
+            .then(user => {
+                res.json({
+                    meta: {
+                        status: 200,
+                        url: req.url
+                    },
+                    data: user
+                });
+            });
     },
 }
 

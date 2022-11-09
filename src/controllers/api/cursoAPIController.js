@@ -1,8 +1,8 @@
 const { validationResult } = require('express-validator');
 const db = require('../../database/models')
-let Curso = db.Curso; 
+let Curso = db.Curso;
 
-const cursoController = {
+const cursoAPIController = {
     list: (req, res) => {
         Curso.findAll()
             .then(curso => {
@@ -33,4 +33,4 @@ const cursoController = {
 };
 
 
-module.exports = cursoController;
+module.exports = cursoAPIController;

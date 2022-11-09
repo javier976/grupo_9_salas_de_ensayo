@@ -2,7 +2,7 @@ const { validationResult } = require('express-validator');
 const db = require('../../database/models')
 let Sala = db.Sala;
 
-const salaController = {
+const salaAPIController = {
     list: (req, res) => {
         Sala.findAll()
             .then(sala => {
@@ -33,4 +33,4 @@ const salaController = {
 };
 
 
-module.exports = salaController;
+module.exports = salaAPIController;
