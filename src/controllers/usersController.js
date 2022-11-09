@@ -1,5 +1,5 @@
-// const fs = require('fs');
-// const path = require('path');
+const fs = require('fs');
+const path = require('path');
 const { validationResult } = require('express-validator');
 const bcryptjs = require('bcryptjs');
 
@@ -79,9 +79,11 @@ const controller = {
                         res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 60 })
                     }; //Creo cookie 'recordar'
 
+                    return res.redirect('/');
                 }
-                return res.redirect('/');
+                return res.render("users/login", { errors: { password: { msg: "constraseña incorrecta" } }, oldDataLogin: userToLogin.email });
             }
+            return res.render("users/login", { errors: { email: { msg: "Email incorrecto" } } });
         } catch (error) {
 
             console.log('Falla en el controlador: proccesLogin');
@@ -102,22 +104,11 @@ const controller = {
     },
 
     update: async function (req, res) {
-        let resultValidation = validationResult(req);
-        if (resultValidation.errors.length > 0) {
-            if (req.file) {
-                req.file ? fs.unlinkSync(path.join(__dirname, '../public/images/user/' + req.file.filename)) : null;
-            }
-            return res.render('admin/userEdit', {
-                oldData: req.body,
-                errors: resultValidation.mapped()
-            }, 'Error en la edicion');
-        } else {
-            const user = await Users.findOne({
-                where: {
-                    id: req.session.userLogged.id
-                }
-            })
-            await user.update({
+
+        try {
+            await Users.findOne({ where: { id: req.params.id } });
+
+            await Users.update({
                 nombre: req.body.nombre,
                 apellido: req.body.apellido,
                 direccion: req.body.direccion,
@@ -127,9 +118,17 @@ const controller = {
                 codigo_postal: req.body.codigo_postal,
                 telefono: req.body.telefono,
                 email: req.body.email,
-                profile_image: (req.file) ? req.file.filename : user.profile_image,
-            })
+                profile_image: req.file.filename,
+            }, {
+                where: {
+                    id: req.params.id
+                }
+            });
             return res.redirect('/users/perfil');
+
+        } catch (error) {
+            console.log('falle en user.update: ' + error);
+            return res.json(error);
         }
     },
 
@@ -147,6 +146,27 @@ const controller = {
         res.clearCookie('userEmail');
         req.session.destroy();
         return res.redirect('/');
+    },
+    listaUsers: (req, res) => {
+        Users.findAll()
+            .then(function (users) {
+                res.render('users/userList', { users });
+            })
+    },
+    deleteUser: async (req, res) => {
+        try {
+            const userId = req.params.id
+            await Users.destroy({
+                where: {
+                    id: userId
+                }
+            });
+
+            res.redirect('/')
+        } catch (error) {
+            console.log('falle en deleteUser: ' + error);
+            return res.json(error);
+        }
     }
 
 }

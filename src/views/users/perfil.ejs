@@ -30,9 +30,14 @@
               </p>
               <p class="card-text">Codigo Postal: <%= user.codigo_postal %>
               </p>
-              <p class="card-text">Teléfono: <%= user.id %>
+              <p class="card-text">Teléfono: <%= user.telefono %>
               </p>
-              <a href="/users/userEdit/<%=user.id%>"><button type="botonBuy" class="perfil-edit">Editar</button></a>
+              <div class="button-container">
+                <a href="/users/userEdit/<%=user.id%>"><button type="botonBuy" class="perfil-edit">Editar</button></a>
+                <% if (locals.userLogged && userLogged.categoria_usuario_id==1) { %>
+                  <a href="/users/userList"><button class="botonBuy">Lista de Usuarios</button></a>
+                  <% } %>
+              </div>
             </div>
           </div>
         </div>

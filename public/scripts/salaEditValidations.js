@@ -1,7 +1,7 @@
 window.addEventListener('load', () => {
     console.log('aca estoy');
 
-    const form = document.querySelector('#crearSala');
+    const form = document.querySelector('#editarSala');
 
     const validateTitulo = (titulo) => {
         let errorMsg = '';
@@ -30,7 +30,7 @@ window.addEventListener('load', () => {
     const validatePrecio = (precio) => {
         let errorMsg = ''
         let regEx = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/g;
-        if (!regEx.test(precio)) {
+        if (!regEx.test(precio) && precio.length == 0) {
             errorMsg = `<p class="error">Formato numerico</p>`;
         };
         return errorMsg;

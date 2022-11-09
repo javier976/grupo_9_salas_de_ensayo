@@ -25,6 +25,12 @@ router.post('/register', multerUserMiddleware.single('profile_image'), userValid
 //PERFIL
 router.get('/perfil', authMiddleware, usersController.profile);
 
+//LISTA USERS
+router.get('/userList', usersController.listaUsers);
+
+//DELETE USER
+router.delete('/deleteUser/:id', usersController.deleteUser);
+
 //EDIT
 router.get('/userEdit/:id', usersController.edit);
 router.post('/userEdit/:id', multerUserMiddleware.single('profile_image'), userEditValidations, usersController.update);

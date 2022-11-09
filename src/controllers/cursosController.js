@@ -1,6 +1,6 @@
 // const { json } = require('express');
-// const fs = require('fs');
-// const path = require('path');
+const fs = require('fs');
+const path = require('path');
 
 // const cursosFilePath = path.join(__dirname, '../database/cursosData.json');
 // const cursos = JSON.parse(fs.readFileSync(cursosFilePath, 'utf-8'));
@@ -29,83 +29,56 @@ const controller = {
         const cursos = Cursos.findAll();
         res.render('admin/crearCurso', { cursos });
     },
-    newCurso:
-        // (req, res) => {
-        async (req, res) => {
+    newCurso: async (req, res) => {
+        await Cursos.create({
+            titulo: req.body.titulo,
+            duracion: req.body.duracion,
+            precio: req.body.precio,
+            images: req.file.filename
+        })
 
-            try {
-                let resultValidation = validationResult(req);
-                // console.log(resultValidation);
-                if (resultValidation.errors.length > 0) {
-                    if (req.file) {
-                        req.file ? fs.unlinkSync(path.join(__dirname, '../public/images/' + req.file.filename)) : null;
-                    }
-                    return res.render('admin/crearCurso', {
-                        oldData: req.body,
-                        errors: resultValidation.mapped()
-                    }, 'Error en la creacion');
-                } else {
-                    let newCurso = {
-                        titulo: req.body.titulo,
-                        duracion: req.body.duracion,
-                        precio: req.body.precio,
-                        imagen: req.file.filename,
-                    };
-
-                    await Cursos.create(newCurso);
-
-
-                    res.redirect('/products/listaCursos');
-                }
-
-            } catch (error) {
-
-                console.log('falle en cursoscontroller.upload' + error);
-                return res.send(error);
-
-            };
-        },
-    // Cursos.create({
-    //     titulo: req.body.titulo,
-    //     duracion: req.body.duracion,
-    //     precio: req.body.precio,
-    //     imagen: req.body.imagen
-    // });
-    // res.redirect('/products/listaCursos');
-    // },
+        res.redirect('/');
+    },
     editCurso: async (req, res) => {
         let curso = await Cursos.findOne({ where: { id: req.params.id } })
         res.render('admin/editarCurso', { curso });
     },
     updatedCurso: async (req, res) => {
         try {
-            let editedCurso = await Cursos.findByPk(req.params.id);
+            await Cursos.findOne({ where: { id: req.params.id } });
 
             await Cursos.update({
                 titulo: req.body.titulo,
                 duracion: req.body.duracion,
                 precio: req.body.precio,
+                images: req.file.filename
             }, {
                 where: {
-                    id: editedCurso.id
+                    id: req.params.id
                 }
             });
 
-            return res.redirect(`/cursos/${editedCurso.id}`)
+            return res.redirect('/')
 
         } catch (error) {
-            console.log('falle en prodctcontroller.update: ' + error);
+            console.log('falle en curso.update: ' + error);
             return res.json(error);
         }
 
     },
     deleteCurso: async (req, res) => {
+
         try {
-            let cursoId = req.params.id;
-            let curso = await Cursos.findByPk(cursoId);
-            res.render('deleteCurso', { curso });
+            const cursoId = req.params.id
+            await Cursos.destroy({
+                where: {
+                    id: cursoId
+                }
+            });
+
+            res.redirect('/')
         } catch (error) {
-            console.log('falle en prodctcontroller.delete: ' + error);
+            console.log('falle en deleteCurso: ' + error);
             return res.json(error);
         }
     }

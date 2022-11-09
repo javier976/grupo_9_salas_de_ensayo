@@ -207,6 +207,65 @@ button.perfil-edit {
     margin-left: 85px;
 }
 
+/* Lista Usuarios */
+
+h3.titulo {
+    border: solid 3px black;
+    border-radius: 20px;
+    background-color: #edae1a;
+    color: #fff;
+    font-size: 15px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 8px;
+}
+
+.lista-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img.lista-image {
+    border: solid 2px black;
+    border-radius: 20px;
+    width: 50%;
+    padding: 25px;
+}
+
+figure.user-image {
+    display: flex;
+    justify-content: center;
+}
+
+.user-datos {
+    display: flex;
+    font-size: 14px;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2.user-nameList {
+    border: solid 3px black;
+    border-radius: 20px;
+    background-color: #edae1a;
+    color: #fff;
+    font-size: 15px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 5px;
+}
+
+span.data-user {
+    font-size: 13px;
+}
+
+form#delete-user {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
 /* User Edit */
 .edit-user-row {
     display: flex;
@@ -244,6 +303,7 @@ button.user-edit {
     margin-bottom: 45px;
     margin-left: 150px;
 }
+
 
 /* Lista Cursos */
 
@@ -287,6 +347,7 @@ div.detalle {
 
 div.button-container {
     margin-bottom: 15px;
+    direction: rtl;
 }
 
 /* Editar Curso */
@@ -335,7 +396,42 @@ label.label-curso {
 
 /* Crear Curso */
 
+.form-cursoCreate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+h2.crearCurso-title {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: solid 2px black;
+    color: #fff;
+    background-color: #edae1a;
+    padding: 8px;
+    border-radius: 20px;
+    margin-right: 15px;
+}
+
+button.crearCurso-button {
+    margin-bottom: 45px;
+    margin-left: 120px;
+}
+
+.crearCurso-elements {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+input.crearCurso-input {
+    margin-left: 45px;
+}
+
+label.label-crearCurso {
+    display: flex;
+    justify-content: center;
+    margin-right: 20px;
+}
 
 /* Detalle Salas */
 
