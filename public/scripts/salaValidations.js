@@ -29,18 +29,23 @@ window.addEventListener('load', () => {
 
     const validatePrecio = (precio) => {
         let errorMsg = ''
-        let regEx = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/g;
-        if (!regEx.test(precio)) {
+        if (!parseInt(precio)) { 
             errorMsg = `<p class="error">Formato numerico</p>`;
         };
+        // let regEx = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/g;
+        // if (!regEx.test(precio)) {
+        //     errorMsg = `<p class="error">Formato numerico</p>`;
+        // };
         return errorMsg;
     };
 
     const validateImg = (images) => {
-        console.log(images)
-        let supportedFormats = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
+        console.log({images})
+        let supportedFormats = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif', '.JPG'];
         let errorMsg = '';
-
+        if (!images) {
+            return errorMsg;
+        }
         if (!supportedFormats.includes(images?.type)) {
             errorMsg = `<p class="error">Archivo no valido</p>`
         }
@@ -119,8 +124,7 @@ window.addEventListener('load', () => {
             precio.classList.remove('precio-sala-errors')
         }
 
-        console.log(validateImg(''));
-        let imagenValidation = validateImg(imagen.value);
+        let imagenValidation = validateImg(imagen?.files[0]);
         if (imagenValidation) {
             errors += 1;
             imagenErrors.innerHTML = imagenValidation

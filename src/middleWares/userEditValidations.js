@@ -23,7 +23,7 @@ module.exports = [
 
     body('profile_image').custom((value, { req }) => {
         let file = req.file;
-        let acceptedExtensions = ['.jpg', '.png', '.gif'];
+        let acceptedExtensions = ['.jpg', '.png', '.gif','.JPG','.JPEG'];
 
         if (file && !acceptedExtensions.includes(path.extname(file.originalname))) {
             throw new Error(`Las extensiones de archivo permitidas son ${acceptedExtensions.join(', ')}.`);

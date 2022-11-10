@@ -8,7 +8,7 @@
             <main>
                 <div class="form-salaEdit" id="sala-edit">
                     <h2 class="editSala-title">Editar Sala</h2>
-                    <form action="/salas/editarSala/<%= sala.id %>" id="editarSala" method="POST">
+                    <form action="/salas/editarSala/<%= sala.id %>" enctype="multipart/form-data" id="editarSala" method="POST">
                         <div class="editSala-elements">
                             <label class="label-sala" for="">Título</label>
                             <input class="sala-input" type="text" name="titulo" id="sala-titulo" value="<%= sala.titulo %> ">

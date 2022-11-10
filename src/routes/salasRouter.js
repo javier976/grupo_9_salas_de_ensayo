@@ -14,11 +14,11 @@ router.get('/', salasController.listaSalas);
 
 router.get('/crearSala', authMiddleware, salasController.createSala);
 
-router.post('/crearSala', salasValidationsMiddleware, multerCursosMiddleware.single('img'), salasController.newSala);
+router.post('/crearSala', multerCursosMiddleware.single('images'), salasValidationsMiddleware, salasController.newSala);
 
 router.get('/editarSala/:id', authMiddleware, salasController.editSala);
 
-router.post('/:id', salasValidationsMiddleware, multerCursosMiddleware.single('img'), salasController.updatedSala);
+router.post('/editarSala/:id', multerCursosMiddleware.single('images'), salasValidationsMiddleware, salasController.updatedSala);
 
 router.delete('/deleteSala/:id', authMiddleware, salasController.deleteSala);
 

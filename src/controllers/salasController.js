@@ -27,10 +27,9 @@ const controller = {
         res.render('admin/crearSala', { salas });
     },
     newSala: async (req, res) => {
-
+        
         try {
             let resultValidation = validationResult(req);
-            // console.log(resultValidation);
             if (resultValidation.errors.length > 0) {
                 if (req.file) {
                     req.file ? fs.unlinkSync(path.join(__dirname, '../public/images/' + req.file.filename)) : null;
@@ -46,14 +45,14 @@ const controller = {
                     metros_cuadrados: req.body.metros_cuadrados,
                     turno_sala: req.body.turno_sala,
                     precio: req.body.precio,
-                    imagen: req.file.filename,
+                    images: req.file.filename,
                     descripcion: req.body.descripcion
                 };
 
                 await Salas.create(newSala);
 
 
-                res.redirect('products/listaSalas');
+                res.redirect('/salas');
             }
 
         } catch (error) {
@@ -69,23 +68,35 @@ const controller = {
 
     },
     updatedSala: async (req, res) => {
+        console.log(req.file)
         try {
-            let editedSala = await Salas.findByPk(req.params.id);
-
-            await Salas.update({
+            let resultValidation = validationResult(req);
+            console.log(resultValidation)
+        if (resultValidation.errors.length > 0) {
+            if (req.file) {
+                req.file ? fs.unlinkSync(path.join(__dirname, '../public/images/' + req.file.filename)) : null;
+            }
+            return res.render('/salas/editarSala', {
+                oldData: req.body,
+                errors: resultValidation.mapped()
+            }, 'Error en la edicion');
+        }
+            const sala = await Salas.findOne({
+                where: {
+                    id: req.params.id
+                }
+            })
+            console.log({sala})
+            await sala.update({
                 titulo: req.body.titulo,
                 metros_cuadrados: req.body.metros_cuadrados,
                 turno_sala: req.body.turno_sala,
                 precio: req.body.precio,
-                imagen: req.body.imagen,
+                images: (req.file) ? req.file.filename : sala.images,
                 descripcion: req.body.descripcion
-            }, {
-                where: {
-                    id: editedSala.id
-                }
             });
 
-            return res.redirect(`/salass/${editedSala.id}`)
+            return res.redirect(`/salas/${sala.id}`)
 
         } catch (error) {
             console.log('falle en prodctcontroller.update: ' + error);
