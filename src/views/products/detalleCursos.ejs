@@ -18,7 +18,7 @@
                     </div>
                     <div class="curso-detail">
                         <div class="img-box">
-                            <img src="/images/<%= curso.images %> ">
+                            <img src="/images/<%= curso.images %>">
                         </div>
                         <div class="curso-info-box">
                             <article class="curso-detail-info">
@@ -47,10 +47,16 @@
 
                                 <div class="button-container">
                                     <% if (locals.userLogged && userLogged.categoria_usuario_id==1) { %>
-                                        <button class="botonBuy">Agregar al carrito</button>
                                         <a href="/cursos/editarCurso/<%=curso.id%>"><button
                                                 class="botonBuy">Editar</button></a>
+                                        <form action="/cursos/deleteCurso/<%=curso.id%>?_method=DELETE" method="POST"
+                                            style="display: inline-flex">
+                                            <button type="submit" class="action-button delete">Eliminar</button>
+                                        </form>
                                         <% } %>
+                                            <% if (locals.userLogged) { %>
+                                                <button class="botonBuy">Agregar al carrito</button>
+                                                <% } %>
                                 </div>
                             </article>
                         </div>

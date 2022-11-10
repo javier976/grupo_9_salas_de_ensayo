@@ -8,6 +8,6 @@ const storage = multer.diskStorage({
         cb(null, Date.now() + '-' + file.originalname)
       }
 });
-const multerSalasMiddleware = multer({storage});
+const multerSalasMiddleware = multer({ storage });
 
 module.exports = multerSalasMiddleware;

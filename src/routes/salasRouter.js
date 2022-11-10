@@ -6,7 +6,7 @@ const salasController = require('../controllers/salasController');
 const router = express.Router();
 
 const authMiddleware = require('../middleWares/authMiddleware');
-const multerCursosMiddleware = require('../middleWares/multerCursosMiddleware');
+const multerSalasMiddleware = require('../middleWares/multerSalasMiddleware');
 const salasValidationsMiddleware = require('../middleWares/salasValidationsMiddleware');
 
 
@@ -20,7 +20,7 @@ router.get('/editarSala/:id', authMiddleware, salasController.editSala);
 
 router.post('/editarSala/:id', multerCursosMiddleware.single('images'), salasValidationsMiddleware, salasController.updatedSala);
 
-router.delete('/deleteSala/:id', authMiddleware, salasController.deleteSala);
+router.delete('/deleteSala/:id', salasController.deleteSala);
 
 router.get('/:id', salasController.detalleSalas);
 

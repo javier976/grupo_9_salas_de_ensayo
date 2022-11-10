@@ -20,14 +20,14 @@ router.get('/', cursosController.listaCursos);
 router.get('/crearCurso', authMiddleware, cursosController.createCurso);
 
 // Carga los datos del nuevo curso
-router.post('/crearCurso', cursosValidationsMiddleware, multerCursosMiddleware.single('img'), cursosController.newCurso);
+router.post('/crearCurso', cursosValidationsMiddleware, multerCursosMiddleware.single('images'), cursosController.newCurso);
 
 // Muestra la vista de edición del curso
 router.get('/editarCurso/:id', authMiddleware, cursosController.editCurso);
 
-router.put('/editarCurso/:id', cursosValidationsMiddleware, multerCursosMiddleware.single('img'), cursosController.updatedCurso);
+router.put('/editarCurso/:id', cursosValidationsMiddleware, multerCursosMiddleware.single('images'), cursosController.updatedCurso);
 
-router.delete('/deleteCurso/:id', authMiddleware, cursosController.deleteCurso);
+router.delete('/deleteCurso/:id', cursosController.deleteCurso);
 
 router.get('/:id', cursosController.detalleCursos);
 

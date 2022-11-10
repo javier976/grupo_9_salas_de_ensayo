@@ -8,7 +8,7 @@
         <main>
             <div class="form-cursoEdit" id="curso-edit">
                 <h2 class="editCurso-title">Editar Curso</h2>
-                <form action="/cursos/editarCurso/<%= curso.id %>?_method=PUT" id="editarCurso" method="POST">
+                <form action="/cursos/editarCurso/<%= curso.id %>?_method=PUT" enctype="multipart/form-data" id="editarCurso" method="POST">
                     <div class="editCurso-elements">
                         <label class="label-curso" id="curso-titulo" for="">Título</label>
                         <input class="curso-input" type="text" name="titulo" value="<%= curso.titulo %> ">
@@ -24,7 +24,7 @@
                         <label class="label-curso" for="">Duración</label>
                         <input class="curso-input" type="text" name="duracion" id="duracion" value="<%= curso.duracion %>">
                         <div class="duracion-errors">
-                            <% if (locals.errors && duracion.errors) { %>
+                            <% if (locals.errors && errors.duracion) { %>
                                 <h4 class="error">
                                     <%= errors.duracion.msg %>
                                 </h4>
@@ -35,7 +35,7 @@
                         <label class="label-curso" for="">Precio</label>
                         <input class="curso-input" type="text" name="precio" id="precio-curso" value="<%= curso.precio %>">
                         <div class="precio-curso-errors">
-                            <% if (locals.errors && precio.errors) { %>
+                            <% if (locals.errors && errors.precio) { %>
                                 <h4 class="error">
                                     <%= errors.precio.msg %>
                                 </h4>
@@ -49,7 +49,7 @@
                                 JPG,JPEG,PNG,GIF
                             </p>
                             <div class="img-curso-errors">
-                                <% if (locals.errors && imagen.errors) { %>
+                                <% if (locals.errors && errors.imagen) { %>
                                     <h4 class="error">
                                         <%= errors.imagen.msg %>
                                     </h4>
@@ -59,12 +59,9 @@
                     <div class="cursoEdit-buttons">
                         <button type="submit">Editar</button>
                 </form>
-                <form action="/cursos/delete/<%= curso.id %>" method="POST" style="display: inline-flex">
-                    <button type="submit" class="action-button delete">ELIMINAR</button>
-                </form>
             </div>
             </div>
-
+            <script src="/scripts/cursoEditValidations.js"></script>
         </main>
 
         <%- include('../partials/footer') %>

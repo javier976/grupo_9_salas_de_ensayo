@@ -1,6 +1,6 @@
 // const { json } = require('express');
-// const fs = require('fs');
-// const path = require('path');
+const fs = require('fs');
+const path = require('path');
 
 // const salasFilePath = path.join(__dirname, '../database/salasData.json');
 // const salas = JSON.parse(fs.readFileSync(salasFilePath, 'utf-8'));
@@ -104,13 +104,20 @@ const controller = {
         }
 
     },
-    deleteSala: (req, res) => {
-        Salas.destroy({
-            where: {
-                id: req.params.id
-            }
-        })
-        res.redirect('products/listaSalas');
+    deleteSala: async (req, res) => {
+        try {
+            const salaId = req.params.id
+            await Salas.destroy({
+                where: {
+                    id: salaId
+                }
+            });
+
+            res.redirect('/')
+        } catch (error) {
+            console.log('falle en deleteCurso: ' + error);
+            return res.json(error);
+        }
     }
 }
 

@@ -22,7 +22,7 @@ window.addEventListener('load', () => {
         return errorMsg;
     }
 
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async(event) => {
         
         let errors = 0;
         // INPUTS
