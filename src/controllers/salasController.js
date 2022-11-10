@@ -27,15 +27,40 @@ const controller = {
         res.render('admin/crearSala', { salas });
     },
     newSala: async (req, res) => {
-        await Salas.create({
-            titulo: req.body.titulo,
-            metros_cuadrados: req.body.metros_cuadrados,
-            turno_sala: req.body.turno_sala,
-            precio: req.body.precio,
-            images: req.file.filename,
-            descripcion: req.body.descripcion
-        });
-        res.redirect('/');
+        
+        try {
+            let resultValidation = validationResult(req);
+            if (resultValidation.errors.length > 0) {
+                if (req.file) {
+                    req.file ? fs.unlinkSync(path.join(__dirname, '../public/images/' + req.file.filename)) : null;
+                }
+                return res.render('admin/crearSala', {
+                    oldData: req.body,
+                    errors: resultValidation.mapped()
+                }, 'Error en la creacion');
+            
+            } else {
+                let newSala = {
+                    titulo: req.body.titulo,
+                    metros_cuadrados: req.body.metros_cuadrados,
+                    turno_sala: req.body.turno_sala,
+                    precio: req.body.precio,
+                    images: req.file.filename,
+                    descripcion: req.body.descripcion
+                };
+
+                await Salas.create(newSala);
+
+
+                res.redirect('/salas');
+            }
+
+        } catch (error) {
+
+            console.log('falle en salascontroller.upload' + error);
+            return res.send(error);
+
+        };
     },
     editSala: async (req, res) => {
         let sala = await Salas.findOne({ where: { id: req.params.id } })
@@ -43,23 +68,35 @@ const controller = {
 
     },
     updatedSala: async (req, res) => {
+        console.log(req.file)
         try {
-            await Salas.findOne({ where: { id: req.params.id } });
-
-            await Salas.update({
+            let resultValidation = validationResult(req);
+            console.log(resultValidation)
+        if (resultValidation.errors.length > 0) {
+            if (req.file) {
+                req.file ? fs.unlinkSync(path.join(__dirname, '../public/images/' + req.file.filename)) : null;
+            }
+            return res.render('/salas/editarSala', {
+                oldData: req.body,
+                errors: resultValidation.mapped()
+            }, 'Error en la edicion');
+        }
+            const sala = await Salas.findOne({
+                where: {
+                    id: req.params.id
+                }
+            })
+            console.log({sala})
+            await sala.update({
                 titulo: req.body.titulo,
                 metros_cuadrados: req.body.metros_cuadrados,
                 turno_sala: req.body.turno_sala,
                 precio: req.body.precio,
-                images: req.file.filename,
+                images: (req.file) ? req.file.filename : sala.images,
                 descripcion: req.body.descripcion
-            }, {
-                where: {
-                    id: req.params.id
-                }
             });
 
-            return res.redirect('/')
+            return res.redirect(`/salas/${sala.id}`)
 
         } catch (error) {
             console.log('falle en prodctcontroller.update: ' + error);
