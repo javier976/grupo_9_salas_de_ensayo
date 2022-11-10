@@ -19,9 +19,9 @@ const controller = {
 
         try {
             let resultValidation = validationResult(req);
-            if (resultValidation.errors.length > 0) {
+            if (resultValidation.errors.length < 0) {
                 if (req.file) {
-                    req.file ? fs.unlinkSync(path.join(__dirname, '../public/images/user/' + req.file.filename)) : null;
+                    req.file ? fs.unlinkSync(path.join(__dirname, '../../public/images/user/' + req.file.filename)) : null;
                 }
                 return res.render('users/register', {
                     oldData: req.body,

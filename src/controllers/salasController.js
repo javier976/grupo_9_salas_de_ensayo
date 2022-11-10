@@ -74,7 +74,7 @@ const controller = {
             console.log(resultValidation)
         if (resultValidation.errors.length > 0) {
             if (req.file) {
-                req.file ? fs.unlinkSync(path.join(__dirname, '../public/images/' + req.file.filename)) : null;
+                req.file ? fs.unlinkSync(path.join(__dirname, '../../public/images/' + req.file.filename)) : null;
             }
             return res.render('/salas/editarSala', {
                 oldData: req.body,
